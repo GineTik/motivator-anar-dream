@@ -1,4 +1,39 @@
+# Product Overview
+
+## Brand
+
+**Name:** Anara Dreams Spirituality Center (Центр Духовності Anara Dreams)
+
+**Mission:** Platform for inner awakening and conscious development through spiritual mentorship and transformation
+
+**Core Message:** "Changes begin from within. When you connect with yourself, life begins to respond."
+
+## Product
+
+**Type:** Multilingual spiritual transformation platform
+
+**Target Markets:**
+
+- Russian-speaking audience
+- Ukrainian-speaking audience
+- American/European/International audiences
+
+**Key Offerings:**
+
+- Consciousness and self-discovery practices
+- Applicable spiritual knowledge for real life
+- Personal transformation support
+- Inner stability and clarity guidance
+
+**Philosophy:** Transformation happens through inner connection, not through struggle. Conscious creation of reality at your own pace.
+
+---
+
 # Frontend Architecture
+
+## General Rules
+
+- **Language**: All code, comments, documentation, commit messages, and variable names must be in English
 
 ## File Naming Convention
 
