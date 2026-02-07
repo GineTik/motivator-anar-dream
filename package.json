@@ -10,7 +10,7 @@
         "build:all": "pnpm --recursive build",
         "lint": "pnpm --recursive lint",
         "clean": "pnpm --recursive exec rm -rf node_modules dist .next && rm -rf node_modules",
-        "migrate:create": "pnpm --filter landing migrate:create",
+        "migrate:create": "pnpm --filter landing migrate:create --",
         "migrate:status": "pnpm --filter landing migrate:status",
         "migrate": "pnpm --filter landing migrate",
         "migrate:down": "pnpm --filter landing migrate:down",

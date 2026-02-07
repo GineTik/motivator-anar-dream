@@ -59,10 +59,14 @@ export const HeroBlock: Block = {
             ],
         },
         {
-            name: "dashboardImage",
+            name: "personImage",
             type: "upload",
             relationTo: "media",
             required: false,
+            admin: {
+                description:
+                    "Image of a person with transparent background, cropped above waist",
+            },
         },
     ],
 };

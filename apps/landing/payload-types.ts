@@ -229,7 +229,10 @@ export interface HeroBlock {
     inputPlaceholder: string;
     buttonText: string;
   };
-  dashboardImage?: (number | null) | Media;
+  /**
+   * Image of a person with transparent background, cropped above waist
+   */
+  personImage?: (number | null) | Media;
   id?: string | null;
   blockName?: string | null;
   blockType: 'hero';
@@ -440,7 +443,7 @@ export interface HeroBlockSelect<T extends boolean = true> {
         inputPlaceholder?: T;
         buttonText?: T;
       };
-  dashboardImage?: T;
+  personImage?: T;
   id?: T;
   blockName?: T;
 }

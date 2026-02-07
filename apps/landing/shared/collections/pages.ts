@@ -1,5 +1,5 @@
 import type { CollectionConfig } from "payload";
-import { HeroBlock } from "../../features/payload-page/blocks/hero-block";
+import { HeroBlock } from "./blocks/hero-block";
 
 export const Pages: CollectionConfig = {
     slug: "pages",
