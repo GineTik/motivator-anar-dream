@@ -1,0 +1,29 @@
+{
+    "name": "motivator-test",
+    "version": "1.0.0",
+    "description": "Motivator platform - монорепозиторій з Next.js, Payload CMS і Supabase",
+    "private": true,
+    "scripts": {
+        "dev": "pnpm --filter landing dev",
+        "dev:all": "pnpm --parallel --filter \"./apps/*\" dev",
+        "build": "pnpm --filter landing build",
+        "build:all": "pnpm --recursive build",
+        "lint": "pnpm --recursive lint",
+        "clean": "pnpm --recursive exec rm -rf node_modules dist .next && rm -rf node_modules",
+        "migrate:create": "pnpm --filter landing migrate:create",
+        "migrate:status": "pnpm --filter landing migrate:status",
+        "migrate": "pnpm --filter landing migrate",
+        "migrate:down": "pnpm --filter landing migrate:down",
+        "migrate:refresh": "pnpm --filter landing migrate:refresh"
+    },
+    "keywords": [
+        "monorepo",
+        "next.js",
+        "payload",
+        "supabase",
+        "pnpm"
+    ],
+    "author": "",
+    "license": "MIT",
+    "packageManager": "pnpm@10.17.1"
+}

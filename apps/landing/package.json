@@ -1,0 +1,50 @@
+{
+    "name": "landing",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint",
+        "payload": "payload",
+        "migrate:create": "payload migrate:create",
+        "migrate:status": "payload migrate:status",
+        "migrate": "payload migrate",
+        "migrate:down": "payload migrate:down",
+        "migrate:refresh": "payload migrate:refresh"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "packageManager": "pnpm@10.17.1",
+    "dependencies": {
+        "@payloadcms/db-postgres": "^3.75.0",
+        "@payloadcms/next": "^3.75.0",
+        "@payloadcms/richtext-lexical": "^3.75.0",
+        "@supabase/ssr": "^0.8.0",
+        "@supabase/supabase-js": "^2.95.3",
+        "class-variance-authority": "^0.7.1",
+        "clsx": "^2.1.1",
+        "lucide-react": "^0.563.0",
+        "next": "^16.1.6",
+        "payload": "^3.75.0",
+        "react": "^19.2.4",
+        "react-dom": "^19.2.4",
+        "tailwind-merge": "^3.4.0"
+    },
+    "devDependencies": {
+        "@payloadcms/graphql": "^3.75.0",
+        "@types/node": "^25.2.1",
+        "@types/react": "^19.2.13",
+        "@types/react-dom": "^19.2.3",
+        "autoprefixer": "^10.4.24",
+        "eslint": "^10.0.0",
+        "eslint-config-next": "^16.1.6",
+        "postcss": "^8.5.6",
+        "sass": "^1.97.3",
+        "tailwindcss": "^4.1.18",
+        "typescript": "^5.9.3"
+    }
+}
