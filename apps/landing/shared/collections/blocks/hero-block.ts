@@ -19,7 +19,7 @@ export const HeroBlock: Block = {
                     type: "text",
                     required: true,
                     localized: true,
-                    defaultValue: "Trusted by spiritual seekers worldwide",
+                    defaultValue: "Space for inner awakening",
                 },
             ],
         },
@@ -28,7 +28,7 @@ export const HeroBlock: Block = {
             type: "text",
             required: true,
             localized: true,
-            defaultValue: "Transform your workflow with spiritual awakening",
+            defaultValue: "CREATE YOUR PATH",
         },
         {
             name: "subtitle",
@@ -36,7 +36,7 @@ export const HeroBlock: Block = {
             required: true,
             localized: true,
             defaultValue:
-                "Track the growth and engagement of your consciousness through detailed practices. Understand what works and supercharge your inner journey.",
+                "Connect with yourself, unlock your potential, and create your reality through love, clarity, and strength",
         },
         {
             name: "ctaForm",
@@ -54,7 +54,7 @@ export const HeroBlock: Block = {
                     type: "text",
                     required: true,
                     localized: true,
-                    defaultValue: "Join Waitlist",
+                    defaultValue: "Start Your Journey",
                 },
             ],
         },

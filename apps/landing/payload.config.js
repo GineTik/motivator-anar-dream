@@ -4,7 +4,7 @@ import { lexicalEditor } from "@payloadcms/richtext-lexical";
 import { s3Storage } from "@payloadcms/storage-s3";
 import path from "path";
 import { fileURLToPath } from "url";
-import { Media, Pages } from "./shared/collections/index.js";
+import { Media, Pages } from "./shared/collections";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
