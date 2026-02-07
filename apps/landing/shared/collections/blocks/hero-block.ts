@@ -28,7 +28,7 @@ export const HeroBlock: Block = {
             type: "text",
             required: true,
             localized: true,
-            defaultValue: "CREATE YOUR PATH",
+            defaultValue: "Create your path",
         },
         {
             name: "subtitle",
