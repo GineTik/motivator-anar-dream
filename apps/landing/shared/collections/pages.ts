@@ -1,5 +1,6 @@
 import type { CollectionConfig } from "payload";
 import { HeroBlock } from "./blocks/hero-block";
+import { ProcessBlock } from "./blocks/process-block";
 
 export const Pages: CollectionConfig = {
     slug: "pages",
@@ -42,7 +43,7 @@ export const Pages: CollectionConfig = {
         {
             name: "blocks",
             type: "blocks",
-            blocks: [HeroBlock],
+            blocks: [HeroBlock, ProcessBlock],
             required: true,
             minRows: 1,
         },

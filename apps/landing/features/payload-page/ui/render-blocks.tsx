@@ -1,5 +1,6 @@
 import type { Page } from "@/payload-types";
 import { HeroBlock } from "./hero-block";
+import { ProcessBlock } from "./process-block";
 
 interface RenderBlocksProps {
 	blocks: Page["blocks"];
@@ -17,6 +18,10 @@ export function RenderBlocks({ blocks }: RenderBlocksProps) {
 					case "hero":
 						return (
 							<HeroBlock key={`${block.blockType}-${index}`} block={block} />
+						);
+					case "process":
+						return (
+							<ProcessBlock key={`${block.blockType}-${index}`} block={block} />
 						);
 					default:
 						return null;

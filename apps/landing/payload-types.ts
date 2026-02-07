@@ -202,7 +202,7 @@ export interface Page {
   id: number;
   title: string;
   slug: string;
-  blocks: HeroBlock[];
+  blocks: (HeroBlock | ProcessBlock)[];
   seo?: {
     title?: string | null;
     description?: string | null;
@@ -236,6 +236,44 @@ export interface HeroBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'hero';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ProcessBlock".
+ */
+export interface ProcessBlock {
+  badge: {
+    icon?: (number | null) | Media;
+    text: string;
+  };
+  heading: string;
+  subtitle: string;
+  tabs?:
+    | {
+        /**
+         * Icon for the tab (16x16 recommended)
+         */
+        icon?: (number | null) | Media;
+        /**
+         * Icon for active state (16x16 recommended)
+         */
+        iconActive?: (number | null) | Media;
+        title: string;
+        badge: string;
+        heading: string;
+        description: string;
+        buttonText: string;
+        buttonLink?: string | null;
+        /**
+         * Visual representation for this tab
+         */
+        image?: (number | null) | Media;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'process';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -410,6 +448,7 @@ export interface PagesSelect<T extends boolean = true> {
     | T
     | {
         hero?: T | HeroBlockSelect<T>;
+        process?: T | ProcessBlockSelect<T>;
       };
   seo?:
     | T
@@ -444,6 +483,36 @@ export interface HeroBlockSelect<T extends boolean = true> {
         buttonText?: T;
       };
   personImage?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ProcessBlock_select".
+ */
+export interface ProcessBlockSelect<T extends boolean = true> {
+  badge?:
+    | T
+    | {
+        icon?: T;
+        text?: T;
+      };
+  heading?: T;
+  subtitle?: T;
+  tabs?:
+    | T
+    | {
+        icon?: T;
+        iconActive?: T;
+        title?: T;
+        badge?: T;
+        heading?: T;
+        description?: T;
+        buttonText?: T;
+        buttonLink?: T;
+        image?: T;
+        id?: T;
+      };
   id?: T;
   blockName?: T;
 }
