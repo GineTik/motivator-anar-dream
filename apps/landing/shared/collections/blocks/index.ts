@@ -1,2 +1,12 @@
 export { HeroBlock } from "./hero-block";
 export { ProcessBlock } from "./process-block";
+export { PricingBlock } from "./pricing-block";
+export { PricingAltBlock } from "./pricing-alt-block";
+export { FeatureBlock } from "./feature-block";
+export { IntegrationBlock } from "./integration-block";
+export { TestimonialBlock } from "./testimonial-block";
+export { FaqBlock } from "./faq-block";
+export { CtaBlock } from "./cta-block";
+export { HeaderBlock } from "./header-block";
+export { FooterBlock } from "./footer-block";
+export { BlogBlock } from "./blog-block";

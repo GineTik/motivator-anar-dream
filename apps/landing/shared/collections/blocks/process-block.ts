@@ -43,6 +43,32 @@ export const ProcessBlock: Block = {
             type: "array",
             minRows: 1,
             maxRows: 4,
+            defaultValue: [
+                {
+                    title: "Awareness",
+                    badge: "Step 1",
+                    heading: "Awaken to your inner truth",
+                    description:
+                        "Begin by cultivating present-moment awareness. Learn to observe your thoughts and emotions without judgment, creating space for authentic self-discovery.",
+                    buttonText: "Learn More",
+                },
+                {
+                    title: "Connection",
+                    badge: "Step 2",
+                    heading: "Connect with your deeper self",
+                    description:
+                        "Develop a profound relationship with your inner world through guided meditation, breathwork, and consciousness practices tailored to your journey.",
+                    buttonText: "Learn More",
+                },
+                {
+                    title: "Transformation",
+                    badge: "Step 3",
+                    heading: "Transform from within",
+                    description:
+                        "Experience lasting change as you integrate spiritual insights into daily life. Watch as your outer reality begins to reflect your inner awakening.",
+                    buttonText: "Learn More",
+                },
+            ],
             fields: [
                 {
                     name: "icon",

@@ -202,7 +202,20 @@ export interface Page {
   id: number;
   title: string;
   slug: string;
-  blocks: (HeroBlock | ProcessBlock)[];
+  blocks: (
+    | HeroBlock
+    | HeaderBlock
+    | ProcessBlock
+    | PricingBlock
+    | PricingAltBlock
+    | FeatureBlock
+    | IntegrationBlock
+    | TestimonialBlock
+    | FaqBlock
+    | CtaBlock
+    | BlogBlock
+    | FooterBlock
+  )[];
   seo?: {
     title?: string | null;
     description?: string | null;
@@ -236,6 +249,35 @@ export interface HeroBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'hero';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "HeaderBlock".
+ */
+export interface HeaderBlock {
+  /**
+   * Site logo for the navbar
+   */
+  logo?: (number | null) | Media;
+  navLinks?:
+    | {
+        label: string;
+        href: string;
+        children?:
+          | {
+              label: string;
+              href: string;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
+  ctaText: string;
+  ctaLink?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'header';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -274,6 +316,305 @@ export interface ProcessBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'process';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PricingBlock".
+ */
+export interface PricingBlock {
+  badge: {
+    icon?: (number | null) | Media;
+    text: string;
+  };
+  heading: string;
+  subtitle: string;
+  plan: {
+    /**
+     * Plan icon image
+     */
+    icon?: (number | null) | Media;
+    name: string;
+    description: string;
+    price: string;
+    period: string;
+    features?:
+      | {
+          text: string;
+          id?: string | null;
+        }[]
+      | null;
+    buttonText: string;
+    buttonLink?: string | null;
+  };
+  /**
+   * Testimonials will auto-scroll in columns (minimum 4 recommended for smooth animation)
+   */
+  testimonials?:
+    | {
+        quote: string;
+        authorName: string;
+        authorRole: string;
+        authorImage?: (number | null) | Media;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'pricing';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PricingAltBlock".
+ */
+export interface PricingAltBlock {
+  badge: {
+    icon?: (number | null) | Media;
+    text: string;
+  };
+  heading: string;
+  subtitle: string;
+  discountLabel?: string | null;
+  plans?:
+    | {
+        name: string;
+        badgeIcon?: (number | null) | Media;
+        badgeText?: string | null;
+        monthlyPrice: string;
+        yearlyPrice?: string | null;
+        period?: string | null;
+        yearlyPeriod?: string | null;
+        buttonText: string;
+        buttonLink?: string | null;
+        /**
+         * Highlight this plan with gradient background
+         */
+        highlighted?: boolean | null;
+        features?:
+          | {
+              text: string;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'pricingAlt';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FeatureBlock".
+ */
+export interface FeatureBlock {
+  badge: {
+    icon?: (number | null) | Media;
+    text: string;
+  };
+  heading: string;
+  subtitle: string;
+  features?:
+    | {
+        /**
+         * Feature icon
+         */
+        icon?: (number | null) | Media;
+        heading: string;
+        description: string;
+        /**
+         * Visual illustration for this feature
+         */
+        image?: (number | null) | Media;
+        /**
+         * Large cards span 6 columns (half width), small cards span 4 columns (third width) on desktop
+         */
+        layoutType: 'large' | 'small';
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'feature';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "IntegrationBlock".
+ */
+export interface IntegrationBlock {
+  badge: {
+    icon?: (number | null) | Media;
+    text: string;
+  };
+  heading: string;
+  /**
+   * Main integration visualization image
+   */
+  mainImage?: (number | null) | Media;
+  description: string;
+  linkText: string;
+  linkUrl?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'integration';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TestimonialBlock".
+ */
+export interface TestimonialBlock {
+  badge: {
+    icon?: (number | null) | Media;
+    text: string;
+  };
+  heading: string;
+  subtitle: string;
+  testimonials?:
+    | {
+        /**
+         * Optional logo for this testimonial
+         */
+        logo?: (number | null) | Media;
+        quote: string;
+        authorName: string;
+        authorRole: string;
+        /**
+         * Author avatar image (48x48 recommended)
+         */
+        authorImage?: (number | null) | Media;
+        /**
+         * Card style - highlighted cards use purple background with white text
+         */
+        cardStyle: 'normal' | 'highlighted';
+        /**
+         * Grid span - double height cards span 2 rows (desktop only)
+         */
+        gridSpan: 'single' | 'double';
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'testimonial';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FaqBlock".
+ */
+export interface FaqBlock {
+  badge: {
+    icon?: (number | null) | Media;
+    text: string;
+  };
+  heading: string;
+  subtitle: string;
+  questions?:
+    | {
+        /**
+         * Icon for this FAQ item (optional)
+         */
+        icon?: (number | null) | Media;
+        question: string;
+        answer: string;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'faq';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CtaBlock".
+ */
+export interface CtaBlock {
+  badge: {
+    icon?: (number | null) | Media;
+    text: string;
+  };
+  heading: string;
+  subtitle: string;
+  emailPlaceholder?: string | null;
+  buttonText: string;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'cta';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "BlogBlock".
+ */
+export interface BlogBlock {
+  badge: {
+    icon?: (number | null) | Media;
+    text: string;
+  };
+  heading: string;
+  subtitle: string;
+  posts?:
+    | {
+        /**
+         * Blog post thumbnail image
+         */
+        image?: (number | null) | Media;
+        title: string;
+        description?: string | null;
+        href?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  explore: {
+    heading: string;
+    subtitle?: string | null;
+    buttonText: string;
+    buttonLink?: string | null;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'blog';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FooterBlock".
+ */
+export interface FooterBlock {
+  /**
+   * Footer logo (light version recommended)
+   */
+  logo?: (number | null) | Media;
+  menuGroups?:
+    | {
+        title: string;
+        links?:
+          | {
+              label: string;
+              href: string;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
+  newsletter: {
+    heading: string;
+    subtitle?: string | null;
+    placeholder?: string | null;
+    buttonText: string;
+  };
+  copyright?: string | null;
+  socialLinks?:
+    | {
+        icon?: (number | null) | Media;
+        href: string;
+        /**
+         * Accessible label (e.g. 'Twitter', 'Instagram')
+         */
+        label?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'footer';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -448,7 +789,17 @@ export interface PagesSelect<T extends boolean = true> {
     | T
     | {
         hero?: T | HeroBlockSelect<T>;
+        header?: T | HeaderBlockSelect<T>;
         process?: T | ProcessBlockSelect<T>;
+        pricing?: T | PricingBlockSelect<T>;
+        pricingAlt?: T | PricingAltBlockSelect<T>;
+        feature?: T | FeatureBlockSelect<T>;
+        integration?: T | IntegrationBlockSelect<T>;
+        testimonial?: T | TestimonialBlockSelect<T>;
+        faq?: T | FaqBlockSelect<T>;
+        cta?: T | CtaBlockSelect<T>;
+        blog?: T | BlogBlockSelect<T>;
+        footer?: T | FooterBlockSelect<T>;
       };
   seo?:
     | T
@@ -488,6 +839,31 @@ export interface HeroBlockSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "HeaderBlock_select".
+ */
+export interface HeaderBlockSelect<T extends boolean = true> {
+  logo?: T;
+  navLinks?:
+    | T
+    | {
+        label?: T;
+        href?: T;
+        children?:
+          | T
+          | {
+              label?: T;
+              href?: T;
+              id?: T;
+            };
+        id?: T;
+      };
+  ctaText?: T;
+  ctaLink?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "ProcessBlock_select".
  */
 export interface ProcessBlockSelect<T extends boolean = true> {
@@ -511,6 +887,273 @@ export interface ProcessBlockSelect<T extends boolean = true> {
         buttonText?: T;
         buttonLink?: T;
         image?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PricingBlock_select".
+ */
+export interface PricingBlockSelect<T extends boolean = true> {
+  badge?:
+    | T
+    | {
+        icon?: T;
+        text?: T;
+      };
+  heading?: T;
+  subtitle?: T;
+  plan?:
+    | T
+    | {
+        icon?: T;
+        name?: T;
+        description?: T;
+        price?: T;
+        period?: T;
+        features?:
+          | T
+          | {
+              text?: T;
+              id?: T;
+            };
+        buttonText?: T;
+        buttonLink?: T;
+      };
+  testimonials?:
+    | T
+    | {
+        quote?: T;
+        authorName?: T;
+        authorRole?: T;
+        authorImage?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PricingAltBlock_select".
+ */
+export interface PricingAltBlockSelect<T extends boolean = true> {
+  badge?:
+    | T
+    | {
+        icon?: T;
+        text?: T;
+      };
+  heading?: T;
+  subtitle?: T;
+  discountLabel?: T;
+  plans?:
+    | T
+    | {
+        name?: T;
+        badgeIcon?: T;
+        badgeText?: T;
+        monthlyPrice?: T;
+        yearlyPrice?: T;
+        period?: T;
+        yearlyPeriod?: T;
+        buttonText?: T;
+        buttonLink?: T;
+        highlighted?: T;
+        features?:
+          | T
+          | {
+              text?: T;
+              id?: T;
+            };
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FeatureBlock_select".
+ */
+export interface FeatureBlockSelect<T extends boolean = true> {
+  badge?:
+    | T
+    | {
+        icon?: T;
+        text?: T;
+      };
+  heading?: T;
+  subtitle?: T;
+  features?:
+    | T
+    | {
+        icon?: T;
+        heading?: T;
+        description?: T;
+        image?: T;
+        layoutType?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "IntegrationBlock_select".
+ */
+export interface IntegrationBlockSelect<T extends boolean = true> {
+  badge?:
+    | T
+    | {
+        icon?: T;
+        text?: T;
+      };
+  heading?: T;
+  mainImage?: T;
+  description?: T;
+  linkText?: T;
+  linkUrl?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TestimonialBlock_select".
+ */
+export interface TestimonialBlockSelect<T extends boolean = true> {
+  badge?:
+    | T
+    | {
+        icon?: T;
+        text?: T;
+      };
+  heading?: T;
+  subtitle?: T;
+  testimonials?:
+    | T
+    | {
+        logo?: T;
+        quote?: T;
+        authorName?: T;
+        authorRole?: T;
+        authorImage?: T;
+        cardStyle?: T;
+        gridSpan?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FaqBlock_select".
+ */
+export interface FaqBlockSelect<T extends boolean = true> {
+  badge?:
+    | T
+    | {
+        icon?: T;
+        text?: T;
+      };
+  heading?: T;
+  subtitle?: T;
+  questions?:
+    | T
+    | {
+        icon?: T;
+        question?: T;
+        answer?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CtaBlock_select".
+ */
+export interface CtaBlockSelect<T extends boolean = true> {
+  badge?:
+    | T
+    | {
+        icon?: T;
+        text?: T;
+      };
+  heading?: T;
+  subtitle?: T;
+  emailPlaceholder?: T;
+  buttonText?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "BlogBlock_select".
+ */
+export interface BlogBlockSelect<T extends boolean = true> {
+  badge?:
+    | T
+    | {
+        icon?: T;
+        text?: T;
+      };
+  heading?: T;
+  subtitle?: T;
+  posts?:
+    | T
+    | {
+        image?: T;
+        title?: T;
+        description?: T;
+        href?: T;
+        id?: T;
+      };
+  explore?:
+    | T
+    | {
+        heading?: T;
+        subtitle?: T;
+        buttonText?: T;
+        buttonLink?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FooterBlock_select".
+ */
+export interface FooterBlockSelect<T extends boolean = true> {
+  logo?: T;
+  menuGroups?:
+    | T
+    | {
+        title?: T;
+        links?:
+          | T
+          | {
+              label?: T;
+              href?: T;
+              id?: T;
+            };
+        id?: T;
+      };
+  newsletter?:
+    | T
+    | {
+        heading?: T;
+        subtitle?: T;
+        placeholder?: T;
+        buttonText?: T;
+      };
+  copyright?: T;
+  socialLinks?:
+    | T
+    | {
+        icon?: T;
+        href?: T;
+        label?: T;
         id?: T;
       };
   id?: T;

@@ -1,6 +1,16 @@
 import type { CollectionConfig } from "payload";
 import { HeroBlock } from "./blocks/hero-block";
 import { ProcessBlock } from "./blocks/process-block";
+import { PricingBlock } from "./blocks/pricing-block";
+import { PricingAltBlock } from "./blocks/pricing-alt-block";
+import { FeatureBlock } from "./blocks/feature-block";
+import { IntegrationBlock } from "./blocks/integration-block";
+import { TestimonialBlock } from "./blocks/testimonial-block";
+import { FaqBlock } from "./blocks/faq-block";
+import { CtaBlock } from "./blocks/cta-block";
+import { HeaderBlock } from "./blocks/header-block";
+import { FooterBlock } from "./blocks/footer-block";
+import { BlogBlock } from "./blocks/blog-block";
 
 export const Pages: CollectionConfig = {
     slug: "pages",
@@ -43,7 +53,20 @@ export const Pages: CollectionConfig = {
         {
             name: "blocks",
             type: "blocks",
-            blocks: [HeroBlock, ProcessBlock],
+            blocks: [
+                HeroBlock,
+                HeaderBlock,
+                ProcessBlock,
+                PricingBlock,
+                PricingAltBlock,
+                FeatureBlock,
+                IntegrationBlock,
+                TestimonialBlock,
+                FaqBlock,
+                CtaBlock,
+                BlogBlock,
+                FooterBlock,
+            ],
             required: true,
             minRows: 1,
         },

@@ -99,4 +99,49 @@
     --color-brand-purple-light: #887cf8;
     --color-brand-gradient-from: rgb(136, 124, 248);
     --color-brand-gradient-to: rgb(89, 75, 236);
+
+    /* Pricing block colors */
+    --color-brand-pricing-card-bg: rgba(37, 10, 99, 0.02);
+    --color-brand-pricing-plan-subtitle: rgba(37, 10, 99, 0.6);
+    --color-brand-pricing-period: rgba(6, 0, 32, 0.7);
+    --color-brand-pricing-card-gradient-from: rgba(235, 246, 255, 0);
+    --color-brand-pricing-card-gradient-to: #ebf6ff;
+    --color-brand-pricing-card-border: #edf7ff;
+    --color-brand-testimonial-border: rgba(122, 135, 255, 0.18);
+    --color-brand-testimonial-shadow: rgba(255, 255, 255, 0.4);
+    --color-brand-badge-gradient-from: rgba(196, 68, 222, 0);
+    --color-brand-badge-gradient-to: rgba(89, 75, 236, 0.17);
+    --color-brand-badge-outline-from: rgba(77, 0, 255, 0);
+    --color-brand-badge-outline-to: rgba(46, 0, 153, 0.14);
+    --color-brand-badge-border-from: rgba(77, 0, 255, 0.34);
+    --color-brand-badge-border-to: #2e0099;
+    --color-brand-shadow-overlay-start: #ecf2fe;
+    --color-brand-shadow-overlay-end: #efeaff;
+    --color-brand-shadow-overlay-md-start: #eef0ff;
+    --color-brand-shadow-overlay-sm-start: #eeedff;
+
+    /* Feature block colors */
+    --color-brand-feature-card-bg: rgba(255, 255, 255, 0.6);
+    --color-brand-feature-card-gradient-from: #ebf6ff;
+    --color-brand-feature-card-gradient-via: #fbfcff;
+    --color-brand-feature-card-gradient-to: #fff;
+    --color-brand-feature-icon-shadow: rgba(97, 83, 238, 0.1);
+    --color-brand-feature-icon-gradient-from: rgba(196, 68, 222, 0);
+    --color-brand-feature-icon-gradient-to: rgba(89, 75, 236, 0.14);
+    --color-brand-feature-card-shadow: rgba(176, 184, 210, 0.24);
+
+    /* Testimonial block colors */
+    --color-brand-testimonial-border: rgba(235, 237, 255, 0.6);
+    --color-brand-testimonial-tagline: rgba(37, 10, 99, 0.7);
+    --color-brand-testimonial-tagline-white: rgba(255, 255, 255, 0.7);
+    --color-brand-testimonial-card-gradient-from: rgba(235, 246, 255, 0.7);
+    --color-brand-testimonial-card-gradient-via: #fbfcff;
+    --color-brand-testimonial-card-gradient-to: #fff;
+
+    /* Footer block colors */
+    --color-brand-footer-border: rgba(183, 183, 214, 0.3);
+    --color-brand-footer-gradient-to: rgba(145, 209, 249, 0.15);
+    --color-brand-footer-subscribe-placeholder: rgba(57, 30, 121, 0.6);
+    --color-brand-footer-subscribe-border: rgba(77, 0, 255, 0.14);
+    --color-brand-footer-subscribe-btn: #7b87fe;
 }
