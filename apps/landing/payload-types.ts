@@ -275,6 +275,10 @@ export interface HeaderBlock {
     | null;
   ctaText: string;
   ctaLink?: string | null;
+  /**
+   * Arrow icon for the CTA button
+   */
+  ctaArrowIcon?: (number | null) | Media;
   id?: string | null;
   blockName?: string | null;
   blockType: 'header';
@@ -859,6 +863,7 @@ export interface HeaderBlockSelect<T extends boolean = true> {
       };
   ctaText?: T;
   ctaLink?: T;
+  ctaArrowIcon?: T;
   id?: T;
   blockName?: T;
 }

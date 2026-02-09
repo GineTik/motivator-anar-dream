@@ -70,5 +70,14 @@ export const HeaderBlock: Block = {
             required: false,
             defaultValue: "#",
         },
+        {
+            name: "ctaArrowIcon",
+            type: "upload",
+            relationTo: "media",
+            required: false,
+            admin: {
+                description: "Arrow icon for the CTA button",
+            },
+        },
     ],
 };
