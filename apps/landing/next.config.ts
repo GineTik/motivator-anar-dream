@@ -1,8 +1,11 @@
 import type { NextConfig } from "next";
 import { withPayload } from "@payloadcms/next/withPayload";
+import path from "path";
 
 const nextConfig: NextConfig = {
-    // Your Next.js config here
+    turbopack: {
+        root: path.join(__dirname, "../.."),
+    },
 };
 
 export default withPayload(nextConfig);
