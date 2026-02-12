@@ -56,8 +56,15 @@ jobs:
 
             - run: npm i -g vercel
 
+            - name: Link Vercel project
+              run: |
+                  mkdir -p .vercel
+                  echo '{"orgId":"'"$VERCEL_ORG_ID"'","projectId":"'"$VERCEL_PROJECT_ID"'"}' > .vercel/project.json
+              env:
+                  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+                  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
             - name: Vercel Deploy
-              working-directory: ./apps/landing
               run: |
                   vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
                   vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
