@@ -3,6 +3,8 @@ import config from "@/payload.config";
 import { RenderBlocks } from "./ui/render-blocks";
 import { notFound } from "next/navigation";
 
+export const dynamicParams = true;
+
 interface PageProps {
 	params: {
 		slug?: string[];
@@ -10,16 +12,20 @@ interface PageProps {
 }
 
 export async function generateStaticParams() {
-	const payload = await getPayload({ config });
+	try {
+		const payload = await getPayload({ config });
 
-	const pages = await payload.find({
-		collection: "pages",
-		limit: 100,
-	});
+		const pages = await payload.find({
+			collection: "pages",
+			limit: 100,
+		});
 
-	return pages.docs.map((page) => ({
-		slug: page.slug === "home" ? [] : [page.slug],
-	}));
+		return pages.docs.map((page) => ({
+			slug: page.slug === "home" ? [] : [page.slug],
+		}));
+	} catch {
+		return [];
+	}
 }
 
 export async function generateMetadata({ params }: PageProps) {

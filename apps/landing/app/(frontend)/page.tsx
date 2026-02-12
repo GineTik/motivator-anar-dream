@@ -1,3 +1,6 @@
-import { PayloadPage } from "@/features/payload-page";
-
-export default PayloadPage;
+export {
+	default,
+	dynamicParams,
+	generateStaticParams,
+	generateMetadata,
+} from "@/features/payload-page/page";
