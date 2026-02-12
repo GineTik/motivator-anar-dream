@@ -39,6 +39,9 @@ jobs:
         runs-on: ubuntu-latest
         environment: production
         needs: migrate
+        defaults:
+            run:
+                working-directory: .
 
         steps:
             - uses: actions/checkout@v4
