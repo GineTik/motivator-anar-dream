@@ -2,6 +2,7 @@
 
 import type { FeatureBlock as FeatureBlockType } from "@/payload-types";
 import { useEffect, useRef, useState } from "react";
+import { useScrollAnimation, fadeClass } from "../lib/use-scroll-animation";
 
 interface FeatureBlockProps {
 	block: FeatureBlockType;
@@ -16,6 +17,8 @@ export function FeatureBlock({ block }: FeatureBlockProps) {
 	const features = block.features || [];
 	const [visibleCards, setVisibleCards] = useState<Set<number>>(new Set());
 	const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+	const { ref: headerRef, isVisible: isHeaderVisible } =
+		useScrollAnimation<HTMLDivElement>();
 
 	useEffect(() => {
 		const observers = cardRefs.current.map((card, index) => {
@@ -52,9 +55,14 @@ export function FeatureBlock({ block }: FeatureBlockProps) {
 			<div className="relative z-[1] max-w-[1160px] mx-auto px-5">
 				<div className="w-full">
 					{/* Header Content */}
-					<div className="flex flex-col justify-start items-center max-w-[657px] mx-auto">
+					<div
+						ref={headerRef}
+						className="flex flex-col justify-start items-center max-w-[657px] mx-auto"
+					>
 						{/* Badge */}
-						<div className="flex justify-center items-center p-[0.82px] rounded-full relative shadow-[2.88px_25.11px_19.72px_rgba(93,72,236,0.04)]">
+						<div
+							className={`flex justify-center items-center p-[0.82px] rounded-full relative shadow-[2.88px_25.11px_19.72px_rgba(93,72,236,0.04)] ${fadeClass(isHeaderVisible)}`}
+						>
 							<div className="relative z-[1] flex gap-2 bg-white rounded-full justify-center items-center px-[14.82px] py-[3.33px] pl-[3.71px]">
 								<div className="rounded-full w-[33px] h-6 p-[0.82px] relative shadow-[0_4.12px_6.26px_rgba(97,83,238,0.1)]">
 									<div className="relative z-[1] bg-white bg-gradient-to-b from-brand-badge-gradient-from to-brand-badge-gradient-to rounded-full flex justify-center items-center w-[33px] h-6 p-0">
@@ -66,7 +74,9 @@ export function FeatureBlock({ block }: FeatureBlockProps) {
 												className="relative z-[2] w-auto h-auto drop-shadow-[0_4.53px_7px_rgba(97,83,238,0.31)]"
 											/>
 										) : (
-											<div className="text-xl font-bold text-brand-purple">✦</div>
+											<div className="text-xl font-bold text-brand-purple">
+												✦
+											</div>
 										)}
 									</div>
 									<div className="opacity-[0.14] bg-gradient-to-b from-brand-badge-outline-from to-brand-badge-outline-to rounded-full absolute inset-0"></div>
@@ -81,7 +91,10 @@ export function FeatureBlock({ block }: FeatureBlockProps) {
 						</div>
 
 						{/* Heading and Subtitle */}
-						<div className="flex flex-col gap-5 justify-start items-center w-full mt-5">
+						<div
+							className={`flex flex-col gap-5 justify-start items-center w-full mt-5 ${fadeClass(isHeaderVisible)}`}
+							style={{ transitionDelay: "100ms" }}
+						>
 							<div>
 								<h2 className="text-brand-primary tracking-[-0.02em] mt-0 mb-0 font-[family-name:var(--font-inter-tight)] text-[52px] font-medium leading-[60px] text-center max-md:text-5xl max-md:leading-[56px] max-sm:text-4xl max-sm:leading-[44px]">
 									{block.heading}

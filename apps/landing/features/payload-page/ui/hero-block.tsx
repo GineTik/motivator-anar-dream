@@ -1,4 +1,7 @@
+"use client";
+
 import type { HeroBlock as HeroBlockType } from "@/payload-types";
+import { useScrollAnimation, fadeInUp } from "../lib/use-scroll-animation";
 import styles from "./hero-block.module.css";
 
 interface HeroBlockProps {
@@ -16,13 +19,18 @@ export function HeroBlock({ block }: HeroBlockProps) {
 			? block.personImage.url
 			: null;
 
+	const { ref: sectionRef, isVisible } = useScrollAnimation<HTMLElement>(0.05);
+
 	return (
-		<section className={styles.hero}>
+		<section ref={sectionRef} className={styles.hero}>
 			<div className={styles.container}>
 				<div className={styles.heroWrap}>
 					<div className={styles.heroContentWrap}>
 						<div className={styles.heroHeaderWrap}>
-							<div className={styles.animateOnLoad01}>
+							<div
+								className={`${fadeInUp.transition} ${isVisible ? fadeInUp.visible : fadeInUp.hidden}`}
+								style={{ transitionDelay: "0ms" }}
+							>
 								<div className={styles.sectionBadge}>
 									<div className={styles.sectionBadgeWrap}>
 										<div className={styles.sectionBadgeIconWrap}>
@@ -50,12 +58,18 @@ export function HeroBlock({ block }: HeroBlockProps) {
 								</div>
 							</div>
 							<div className={styles.heroTextWrap}>
-								<div className={styles.animateOnLoad02}>
+								<div
+									className={`${fadeInUp.transition} ${isVisible ? fadeInUp.visible : fadeInUp.hidden}`}
+									style={{ transitionDelay: "100ms" }}
+								>
 									<div className={styles.heroHeadingWrap}>
 										<h1 className={styles.h1}>{block.heading}</h1>
 									</div>
 								</div>
-								<div className={styles.animateOnLoad03}>
+								<div
+									className={`${fadeInUp.transition} ${isVisible ? fadeInUp.visible : fadeInUp.hidden}`}
+									style={{ transitionDelay: "200ms" }}
+								>
 									<div className={styles.heroSubtitleWrap}>
 										<div className={styles.paragraphText02}>
 											{block.subtitle}
@@ -63,7 +77,10 @@ export function HeroBlock({ block }: HeroBlockProps) {
 									</div>
 								</div>
 							</div>
-							<div className={styles.animateOnLoad04}>
+							<div
+								className={`${fadeInUp.transition} ${isVisible ? fadeInUp.visible : fadeInUp.hidden}`}
+								style={{ transitionDelay: "300ms" }}
+							>
 								<div className={styles.heroFormWrap}>
 									<div className={styles.subscribeFormBlock}>
 										<form className={styles.subscribeForm}>
@@ -87,7 +104,10 @@ export function HeroBlock({ block }: HeroBlockProps) {
 								</div>
 							</div>
 						</div>
-						<div className={styles.animateOnLoad05}>
+						<div
+							className={`${fadeInUp.transition} ${isVisible ? fadeInUp.visible : fadeInUp.hidden}`}
+							style={{ transitionDelay: "400ms" }}
+						>
 							<div className={styles.heroPersonWrap}>
 								{personImageUrl ? (
 									<img

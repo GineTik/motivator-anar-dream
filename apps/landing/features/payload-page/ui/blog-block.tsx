@@ -1,6 +1,11 @@
 "use client";
 
 import type { BlogBlock as BlogBlockType } from "@/payload-types";
+import {
+	useScrollAnimation,
+	useStaggerAnimation,
+	fadeClass,
+} from "../lib/use-scroll-animation";
 
 interface BlogBlockProps {
 	block: BlogBlockType;
@@ -13,15 +18,26 @@ export function BlogBlock({ block }: BlogBlockProps) {
 			: null;
 
 	const posts = block.posts || [];
+	const totalCards = posts.length + (block.explore ? 1 : 0);
+
+	const { ref: headerRef, isVisible: isHeaderVisible } =
+		useScrollAnimation<HTMLDivElement>();
+	const { visibleItems: visibleCards, setItemRef: setCardRef } =
+		useStaggerAnimation(totalCards);
 
 	return (
 		<section className="py-[60px] sm:py-[72px] md:py-[80px] lg:py-[100px]">
 			<div className="relative z-[1] max-w-[1160px] mx-auto px-4 sm:px-5">
 				<div className="w-full">
 					{/* Header */}
-					<div className="flex flex-col justify-start items-center max-w-[701px] mx-auto">
+					<div
+						ref={headerRef}
+						className="flex flex-col justify-start items-center max-w-[701px] mx-auto"
+					>
 						{/* Badge */}
-						<div className="flex justify-center items-center p-[0.82px] rounded-full relative shadow-[2.88px_25.11px_19.72px_rgba(93,72,236,0.04)]">
+						<div
+							className={`flex justify-center items-center p-[0.82px] rounded-full relative shadow-[2.88px_25.11px_19.72px_rgba(93,72,236,0.04)] ${fadeClass(isHeaderVisible)}`}
+						>
 							<div className="relative z-[1] flex gap-2 bg-white rounded-full justify-center items-center px-[14.82px] py-[3.33px] pl-[3.71px] max-md:px-[10px] max-md:pl-[3px] max-sm:pr-[10px]">
 								<div className="rounded-full w-[33px] h-6 p-[0.82px] relative shadow-[0_4.12px_6.26px_rgba(97,83,238,0.1)] max-md:w-10 max-sm:w-auto">
 									<div className="relative z-[1] bg-white bg-gradient-to-b from-brand-badge-gradient-from to-brand-badge-gradient-to rounded-full flex justify-center items-center w-[33px] h-6 p-0 max-md:p-[5px] max-md:w-10 max-md:h-8 max-sm:p-1 max-sm:w-auto max-sm:h-auto">
@@ -50,7 +66,10 @@ export function BlogBlock({ block }: BlogBlockProps) {
 						</div>
 
 						{/* Heading + Subtitle */}
-						<div className="flex flex-col gap-4 sm:gap-5 justify-start items-center w-full mt-4 sm:mt-5">
+						<div
+							className={`flex flex-col gap-4 sm:gap-5 justify-start items-center w-full mt-4 sm:mt-5 ${fadeClass(isHeaderVisible)}`}
+							style={{ transitionDelay: "100ms" }}
+						>
 							<div>
 								<h2 className="text-brand-primary tracking-[-0.02em] mt-0 mb-0 font-[family-name:var(--font-inter-tight)] text-4xl leading-[44px] sm:text-5xl sm:leading-[56px] md:text-[52px] md:leading-[60px] font-medium text-center">
 									{block.heading}
@@ -74,7 +93,12 @@ export function BlogBlock({ block }: BlogBlockProps) {
 									: null;
 
 							return (
-								<div key={index} className="w-full">
+								<div
+									key={index}
+									ref={setCardRef(index)}
+									className={`w-full ${fadeClass(visibleCards.has(index))}`}
+									style={{ transitionDelay: `${index * 100}ms` }}
+								>
 									<a
 										href={post.href || "#"}
 										className="w-full no-underline group"
@@ -150,7 +174,11 @@ export function BlogBlock({ block }: BlogBlockProps) {
 
 						{/* Explore Card */}
 						{block.explore && (
-							<div className="flex flex-col gap-5 sm:gap-6 md:gap-7 lg:gap-8 rounded-2xl sm:rounded-xl md:rounded-2xl bg-brand-pricing-card-gradient-to p-5 sm:p-6 md:p-[40px_30px_24px] justify-between max-md:col-span-1 max-lg:col-span-2 lg:col-span-1">
+							<div
+								ref={setCardRef(posts.length)}
+								className={`flex flex-col gap-5 sm:gap-6 md:gap-7 lg:gap-8 rounded-2xl sm:rounded-xl md:rounded-2xl bg-brand-pricing-card-gradient-to p-5 sm:p-6 md:p-[40px_30px_24px] justify-between max-md:col-span-1 max-lg:col-span-2 lg:col-span-1 ${fadeClass(visibleCards.has(posts.length))}`}
+								style={{ transitionDelay: `${posts.length * 100}ms` }}
+							>
 								<div className="flex justify-start items-center">
 									<svg
 										width="28"

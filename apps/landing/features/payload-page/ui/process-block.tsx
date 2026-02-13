@@ -2,6 +2,7 @@
 
 import type { ProcessBlock as ProcessBlockType } from "@/payload-types";
 import { useState } from "react";
+import { useScrollAnimation, fadeClass } from "../lib/use-scroll-animation";
 
 interface ProcessBlockProps {
 	block: ProcessBlockType;
@@ -18,14 +19,26 @@ export function ProcessBlock({ block }: ProcessBlockProps) {
 	const tabs = block.tabs || [];
 	const currentTab = tabs[activeTab];
 
+	const { ref: headerRef, isVisible: isHeaderVisible } =
+		useScrollAnimation<HTMLDivElement>();
+	const { ref: tabsRef, isVisible: isTabsVisible } =
+		useScrollAnimation<HTMLDivElement>();
+	const { ref: contentRef, isVisible: isContentVisible } =
+		useScrollAnimation<HTMLDivElement>();
+
 	return (
 		<section className="relative py-16 md:py-20 lg:py-24">
 			<div className="relative z-[1] max-w-[1184px] mx-auto px-4">
 				<div className="w-full">
 					{/* Header Content */}
-					<div className="flex flex-col justify-start items-center max-w-[503px] mx-auto mb-8 md:mb-10 lg:mb-12">
+					<div
+						ref={headerRef}
+						className="flex flex-col justify-start items-center max-w-[503px] mx-auto mb-8 md:mb-10 lg:mb-12"
+					>
 						{/* Badge */}
-						<div className="flex justify-center items-center p-[0.82px] rounded-full relative shadow-[2.88px_25.11px_19.72px_rgba(93,72,236,0.04)]">
+						<div
+							className={`flex justify-center items-center p-[0.82px] rounded-full relative shadow-[2.88px_25.11px_19.72px_rgba(93,72,236,0.04)] ${fadeClass(isHeaderVisible)}`}
+						>
 							<div className="relative z-[1] flex gap-2 bg-white rounded-full justify-center items-center px-[14.82px] py-[3.33px] pl-[3.71px]">
 								<div className="rounded-full w-auto md:w-10 lg:w-[50.63px] p-[0.82px] relative shadow-[0_4.12px_6.26px_rgba(97,83,238,0.1)]">
 									<div className="relative z-[1] bg-white bg-gradient-to-b from-[rgba(196,68,222,0)] to-[rgba(89,75,236,0.17)] rounded-full flex justify-center items-center w-8 h-6 md:w-10 md:h-8 lg:w-[50px] lg:h-[33px]">
@@ -52,7 +65,10 @@ export function ProcessBlock({ block }: ProcessBlockProps) {
 						</div>
 
 						{/* Heading and Subtitle */}
-						<div className="flex flex-col gap-4 md:gap-5 justify-start items-center w-full mt-5">
+						<div
+							className={`flex flex-col gap-4 md:gap-5 justify-start items-center w-full mt-5 ${fadeClass(isHeaderVisible)}`}
+							style={{ transitionDelay: "100ms" }}
+						>
 							<div>
 								<h2 className="text-[#250a63] tracking-[-0.02em] mt-0 mb-0 text-4xl md:text-5xl lg:text-[52px] font-medium leading-[44px] md:leading-[56px] lg:leading-[60px] text-center">
 									{block.heading}
@@ -67,10 +83,12 @@ export function ProcessBlock({ block }: ProcessBlockProps) {
 					</div>
 
 					{/* Tabs */}
-					<div className="mt-8 md:mt-10 lg:mt-12">
+					<div ref={tabsRef} className="mt-8 md:mt-10 lg:mt-12">
 						<div className="flex flex-col justify-start items-center">
 							{/* Tab Menu */}
-							<div className="flex flex-wrap gap-2.5 md:gap-3 lg:gap-5 justify-center items-center">
+							<div
+								className={`flex flex-wrap gap-2.5 md:gap-3 lg:gap-5 justify-center items-center ${fadeClass(isTabsVisible)}`}
+							>
 								{tabs.map((tab, index) => {
 									const isActive = activeTab === index;
 									const iconUrl =
@@ -134,9 +152,15 @@ export function ProcessBlock({ block }: ProcessBlockProps) {
 							</div>
 
 							{/* Tab Content */}
-							<div className="w-full mt-10 md:mt-12 lg:mt-[60px] mx-auto max-w-[1000px]">
+							<div
+								ref={contentRef}
+								className="w-full mt-10 md:mt-12 lg:mt-[60px] mx-auto max-w-[1000px]"
+							>
 								{currentTab && (
-									<div className="flex flex-col-reverse md:flex-row gap-8 md:gap-8 lg:gap-10 justify-between items-center">
+									<div
+										className={`flex flex-col-reverse md:flex-row gap-8 md:gap-8 lg:gap-10 justify-between items-center ${fadeClass(isContentVisible)}`}
+										style={{ transitionDelay: "100ms" }}
+									>
 										{/* Left Content */}
 										<div className="flex flex-col justify-center items-start w-1/2 max-w-1/2">
 											<div className="rounded-full p-[0.82px] relative overflow-hidden shadow-[2.88px_25.11px_19.72px_rgba(93,72,236,0.04)]">

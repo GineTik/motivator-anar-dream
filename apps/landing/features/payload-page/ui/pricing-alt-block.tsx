@@ -2,6 +2,11 @@
 
 import type { PricingAltBlock as PricingAltBlockType } from "@/payload-types";
 import { useState } from "react";
+import {
+	useScrollAnimation,
+	useStaggerAnimation,
+	fadeClass,
+} from "../lib/use-scroll-animation";
 
 interface PricingAltBlockProps {
 	block: PricingAltBlockType;
@@ -17,14 +22,26 @@ export function PricingAltBlock({ block }: PricingAltBlockProps) {
 
 	const plans = block.plans || [];
 
+	const { ref: headerRef, isVisible: isHeaderVisible } =
+		useScrollAnimation<HTMLDivElement>();
+	const { ref: toggleRef, isVisible: isToggleVisible } =
+		useScrollAnimation<HTMLDivElement>();
+	const { visibleItems: visibleCards, setItemRef: setCardRef } =
+		useStaggerAnimation(plans.length);
+
 	return (
 		<section className="py-[60px] sm:py-[72px] md:py-[80px] lg:py-[100px]">
 			<div className="relative z-[1] max-w-[1160px] mx-auto px-4 sm:px-5">
 				<div className="w-full">
 					{/* Header */}
-					<div className="flex flex-col justify-start items-center max-w-[588px] mx-auto">
+					<div
+						ref={headerRef}
+						className="flex flex-col justify-start items-center max-w-[588px] mx-auto"
+					>
 						{/* Badge */}
-						<div className="flex justify-center items-center p-[0.82px] rounded-full relative shadow-[2.88px_25.11px_19.72px_rgba(93,72,236,0.04)]">
+						<div
+							className={`flex justify-center items-center p-[0.82px] rounded-full relative shadow-[2.88px_25.11px_19.72px_rgba(93,72,236,0.04)] ${fadeClass(isHeaderVisible)}`}
+						>
 							<div className="relative z-[1] flex gap-2 bg-white rounded-full justify-center items-center px-[14.82px] py-[3.33px] pl-[3.71px] max-md:px-[10px] max-md:pl-[3px] max-sm:pr-[10px]">
 								<div className="rounded-full w-[33px] h-6 p-[0.82px] relative shadow-[0_4.12px_6.26px_rgba(97,83,238,0.1)] max-md:w-10 max-sm:w-auto">
 									<div className="relative z-[1] bg-white bg-gradient-to-b from-brand-badge-gradient-from to-brand-badge-gradient-to rounded-full flex justify-center items-center w-[33px] h-6 p-0 max-md:p-[5px] max-md:w-10 max-md:h-8 max-sm:p-1 max-sm:w-auto max-sm:h-auto">
@@ -53,7 +70,10 @@ export function PricingAltBlock({ block }: PricingAltBlockProps) {
 						</div>
 
 						{/* Heading + Subtitle */}
-						<div className="flex flex-col gap-4 sm:gap-5 justify-start items-center w-full mt-4 sm:mt-5">
+						<div
+							className={`flex flex-col gap-4 sm:gap-5 justify-start items-center w-full mt-4 sm:mt-5 ${fadeClass(isHeaderVisible)}`}
+							style={{ transitionDelay: "100ms" }}
+						>
 							<div>
 								<h2 className="text-brand-primary tracking-[-0.02em] mt-0 mb-0 font-[family-name:var(--font-inter-tight)] text-4xl leading-[44px] sm:text-5xl sm:leading-[56px] md:text-[52px] md:leading-[60px] font-medium text-center">
 									{block.heading}
@@ -71,20 +91,19 @@ export function PricingAltBlock({ block }: PricingAltBlockProps) {
 					<div className="mt-7 sm:mt-8 md:mt-10">
 						<div className="flex flex-col justify-start items-center">
 							{/* Tab Menu */}
-							<div className="rounded-xl bg-white border-2 border-[rgba(235,237,255,0.6)] flex justify-center items-center p-1 overflow-hidden">
+							<div
+								ref={toggleRef}
+								className={`rounded-xl bg-white border-2 border-[rgba(235,237,255,0.6)] flex justify-center items-center p-1 overflow-hidden ${fadeClass(isToggleVisible)}`}
+							>
 								<button
 									onClick={() => setIsYearly(false)}
 									className={`flex gap-2.5 justify-center items-center rounded-[7px] px-[22px] py-2 border-none cursor-pointer transition-colors duration-200 ${
-										!isYearly
-											? "bg-[#7b87fe]"
-											: "bg-transparent"
+										!isYearly ? "bg-[#7b87fe]" : "bg-transparent"
 									}`}
 								>
 									<span
 										className={`font-[family-name:var(--font-inter-tight)] text-base font-medium leading-6 tracking-[-0.01em] ${
-											!isYearly
-												? "text-white"
-												: "text-brand-primary"
+											!isYearly ? "text-white" : "text-brand-primary"
 										}`}
 									>
 										Monthly
@@ -93,16 +112,12 @@ export function PricingAltBlock({ block }: PricingAltBlockProps) {
 								<button
 									onClick={() => setIsYearly(true)}
 									className={`flex gap-2.5 justify-center items-center rounded-[7px] px-[22px] py-2 border-none cursor-pointer transition-colors duration-200 ${
-										isYearly
-											? "bg-[#7b87fe]"
-											: "bg-transparent"
+										isYearly ? "bg-[#7b87fe]" : "bg-transparent"
 									}`}
 								>
 									<span
 										className={`font-[family-name:var(--font-inter-tight)] text-base font-medium leading-6 tracking-[-0.01em] ${
-											isYearly
-												? "text-white"
-												: "text-brand-primary"
+											isYearly ? "text-white" : "text-brand-primary"
 										}`}
 									>
 										Yearly
@@ -110,9 +125,7 @@ export function PricingAltBlock({ block }: PricingAltBlockProps) {
 									{block.discountLabel && (
 										<span
 											className={`font-[family-name:var(--font-inter-tight)] text-base font-normal leading-6 tracking-[-0.03em] ${
-												isYearly
-													? "text-white/80"
-													: "text-[#7b87fe]"
+												isYearly ? "text-white/80" : "text-[#7b87fe]"
 											}`}
 										>
 											{block.discountLabel}
@@ -126,13 +139,17 @@ export function PricingAltBlock({ block }: PricingAltBlockProps) {
 								<div className="flex flex-col md:flex-row gap-5 sm:gap-6 md:gap-8 justify-center">
 									{plans.map((plan, index) => {
 										const planBadgeIconUrl =
-											typeof plan.badgeIcon === "object" &&
-											plan.badgeIcon?.url
+											typeof plan.badgeIcon === "object" && plan.badgeIcon?.url
 												? plan.badgeIcon.url
 												: null;
 
 										return (
-											<div key={index} className="flex-1">
+											<div
+												key={index}
+												ref={setCardRef(index)}
+												className={`flex-1 ${fadeClass(visibleCards.has(index))}`}
+												style={{ transitionDelay: `${index * 100}ms` }}
+											>
 												<div className="rounded-[10px] backdrop-blur-[32px] bg-brand-pricing-card-bg h-full p-1 max-md:p-[3px] overflow-hidden">
 													<div className="rounded-[10px] bg-white w-full h-full">
 														{/* Top */}
@@ -190,14 +207,12 @@ export function PricingAltBlock({ block }: PricingAltBlockProps) {
 																<div className="flex gap-1 items-end mt-3.5 sm:mt-5 md:mt-8">
 																	<h2 className="text-brand-primary tracking-[-0.02em] mt-0 mb-0 font-[family-name:var(--font-inter-tight)] text-4xl leading-[44px] sm:text-5xl sm:leading-[56px] md:text-[52px] md:leading-[60px] font-medium">
 																		{isYearly
-																			? plan.yearlyPrice ||
-																				plan.monthlyPrice
+																			? plan.yearlyPrice || plan.monthlyPrice
 																			: plan.monthlyPrice}
 																	</h2>
 																	<div className="text-brand-pricing-period mb-2 font-[family-name:var(--font-inter-tight)] text-base font-normal leading-6">
 																		{isYearly
-																			? plan.yearlyPeriod ||
-																				plan.period
+																			? plan.yearlyPeriod || plan.period
 																			: plan.period}
 																	</div>
 																</div>

@@ -1,6 +1,7 @@
 "use client";
 
 import type { CtaBlock as CtaBlockType } from "@/payload-types";
+import { useScrollAnimation, fadeClass } from "../lib/use-scroll-animation";
 
 interface CtaBlockProps {
 	block: CtaBlockType;
@@ -12,6 +13,8 @@ export function CtaBlock({ block }: CtaBlockProps) {
 			? block.badge.icon.url
 			: null;
 
+	const { ref: sectionRef, isVisible } = useScrollAnimation<HTMLDivElement>();
+
 	return (
 		<section
 			className="relative py-[60px] sm:py-[72px] lg:py-[80px] xl:py-[134px] pb-[60px] sm:pb-[72px] lg:pb-[80px] xl:pb-[164px] overflow-hidden bg-cover bg-center bg-no-repeat"
@@ -21,9 +24,14 @@ export function CtaBlock({ block }: CtaBlockProps) {
 			}}
 		>
 			<div className="relative z-[1] max-w-[1160px] mx-auto px-4 sm:px-5">
-				<div className="flex flex-col items-center max-w-[697px] mx-auto">
+				<div
+					ref={sectionRef}
+					className="flex flex-col items-center max-w-[697px] mx-auto"
+				>
 					{/* Badge */}
-					<div className="flex justify-center items-center p-[0.82px] rounded-full relative shadow-[2.88px_25.11px_19.72px_rgba(93,72,236,0.04)]">
+					<div
+						className={`flex justify-center items-center p-[0.82px] rounded-full relative shadow-[2.88px_25.11px_19.72px_rgba(93,72,236,0.04)] ${fadeClass(isVisible)}`}
+					>
 						<div className="relative z-[1] flex gap-2 bg-white rounded-full justify-center items-center px-[14.82px] py-[3.33px] pl-[3.71px] max-md:px-[10px] max-md:pl-[3px] max-sm:pr-[10px]">
 							<div className="rounded-full w-[50.63px] p-[0.82px] relative shadow-[0_4.12px_6.26px_rgba(97,83,238,0.1)] max-md:w-10 max-sm:w-auto">
 								<div className="relative z-[1] bg-white bg-gradient-to-b from-brand-badge-gradient-from to-brand-badge-gradient-to rounded-full flex justify-center items-center w-[50px] h-[33px] max-md:p-[5px] max-sm:p-1">
@@ -52,7 +60,10 @@ export function CtaBlock({ block }: CtaBlockProps) {
 					</div>
 
 					{/* Text Content */}
-					<div className="w-full mt-3 sm:mt-4 md:mt-5">
+					<div
+						className={`w-full mt-3 sm:mt-4 md:mt-5 ${fadeClass(isVisible)}`}
+						style={{ transitionDelay: "100ms" }}
+					>
 						<div className="max-w-[697px] mx-auto">
 							<h2 className="text-brand-primary tracking-[-0.02em] mt-0 mb-0 font-[family-name:var(--font-inter-tight)] text-[42px] leading-[50px] sm:text-[52px] sm:leading-[60px] lg:text-[56px] lg:leading-[64px] xl:text-[62px] xl:leading-[70px] font-medium text-center">
 								{block.heading}
@@ -66,7 +77,10 @@ export function CtaBlock({ block }: CtaBlockProps) {
 					</div>
 
 					{/* Email Form */}
-					<div className="w-[95%] sm:w-[85%] md:w-[472px] max-w-full mt-7 sm:mt-8 md:mt-10">
+					<div
+						className={`w-[95%] sm:w-[85%] md:w-[472px] max-w-full mt-7 sm:mt-8 md:mt-10 ${fadeClass(isVisible)}`}
+						style={{ transitionDelay: "200ms" }}
+					>
 						<form className="mb-0">
 							<div className="flex gap-1 sm:gap-1.5 md:gap-2 justify-center">
 								<input

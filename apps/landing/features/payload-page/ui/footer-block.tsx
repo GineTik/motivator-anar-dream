@@ -1,6 +1,7 @@
 "use client";
 
 import type { FooterBlock as FooterBlockType } from "@/payload-types";
+import { useScrollAnimation, fadeClass } from "../lib/use-scroll-animation";
 
 interface FooterBlockProps {
 	block: FooterBlockType;
@@ -8,29 +9,35 @@ interface FooterBlockProps {
 
 export function FooterBlock({ block }: FooterBlockProps) {
 	const logoUrl =
-		typeof block.logo === "object" && block.logo?.url
-			? block.logo.url
-			: null;
+		typeof block.logo === "object" && block.logo?.url ? block.logo.url : null;
 
 	const menuGroups = block.menuGroups || [];
 	const socialLinks = block.socialLinks || [];
+
+	const { ref: topRef, isVisible: isTopVisible } =
+		useScrollAnimation<HTMLDivElement>();
+	const { ref: newsletterRef, isVisible: isNewsletterVisible } =
+		useScrollAnimation<HTMLDivElement>();
+	const { ref: bottomRef, isVisible: isBottomVisible } =
+		useScrollAnimation<HTMLDivElement>();
 
 	return (
 		<footer className="bg-gradient-to-b from-white from-60% to-[rgba(145,209,249,0.15)] pt-16 sm:pt-[72px] lg:pt-20 xl:pt-[87px] pb-6 sm:pb-8 lg:pb-9 xl:pb-10">
 			<div className="relative z-[1] max-w-[1160px] mx-auto px-4 sm:px-5">
 				<div className="w-full">
 					{/* Top: Logo + Menu Groups */}
-					<div className="flex flex-wrap justify-between items-start gap-6 sm:gap-7 md:gap-8">
+					<div
+						ref={topRef}
+						className={`flex flex-wrap justify-between items-start gap-6 sm:gap-7 md:gap-8 ${fadeClass(isTopVisible)}`}
+					>
 						{/* Logo */}
 						<div className="w-full sm:w-auto">
-							<a href="/" className="inline-block max-sm:w-[90px] max-md:w-[95px]">
+							<a
+								href="/"
+								className="inline-block max-sm:w-[90px] max-md:w-[95px]"
+							>
 								{logoUrl ? (
-									<img
-										src={logoUrl}
-										loading="lazy"
-										alt=""
-										className="w-auto"
-									/>
+									<img src={logoUrl} loading="lazy" alt="" className="w-auto" />
 								) : (
 									<span className="text-brand-primary font-[family-name:var(--font-inter-tight)] text-xl font-semibold">
 										Anara Dreams
@@ -65,7 +72,10 @@ export function FooterBlock({ block }: FooterBlockProps) {
 					</div>
 
 					{/* Center: Newsletter */}
-					<div className="flex flex-col md:flex-row gap-5 sm:gap-6 md:gap-8 justify-between items-start md:items-center mt-8 sm:mt-10 md:mt-[60px] lg:mt-[100px]">
+					<div
+						ref={newsletterRef}
+						className={`flex flex-col md:flex-row gap-5 sm:gap-6 md:gap-8 justify-between items-start md:items-center mt-8 sm:mt-10 md:mt-[60px] lg:mt-[100px] ${fadeClass(isNewsletterVisible)}`}
+					>
 						<div className="w-full md:w-[405px] max-w-full">
 							<div className="flex flex-col gap-2.5 sm:gap-3 md:gap-3.5 items-start">
 								<h4 className="text-brand-primary tracking-[-0.02em] mt-0 mb-0 font-[family-name:var(--font-inter-tight)] text-2xl font-medium leading-8 max-md:text-[22px] max-md:leading-[30px] max-sm:text-xl max-sm:leading-7">
@@ -81,9 +91,7 @@ export function FooterBlock({ block }: FooterBlockProps) {
 								<div className="flex gap-0">
 									<input
 										type="email"
-										placeholder={
-											block.newsletter?.placeholder || "Enter Email"
-										}
+										placeholder={block.newsletter?.placeholder || "Enter Email"}
 										className="border border-[rgba(77,0,255,0.14)] bg-white text-brand-primary rounded-full h-[50px] mb-0 pl-4 sm:pl-[25px] font-[family-name:var(--font-inter-tight)] text-base font-medium leading-6 w-full focus:border-brand-purple-light focus:outline-none placeholder:text-[rgba(57,30,121,0.6)] placeholder:tracking-[-0.01em] placeholder:font-[family-name:var(--font-inter-tight)] placeholder:text-base placeholder:font-medium placeholder:leading-6"
 									/>
 									<button
@@ -98,7 +106,10 @@ export function FooterBlock({ block }: FooterBlockProps) {
 					</div>
 
 					{/* Bottom: Copyright + Social */}
-					<div className="flex flex-col sm:flex-row flex-wrap justify-between items-center gap-4 sm:gap-6 md:gap-10 border-t border-[rgba(183,183,214,0.3)] mt-10 sm:mt-12 md:mt-[52px] lg:mt-[95px] pt-6 sm:pt-[25px]">
+					<div
+						ref={bottomRef}
+						className={`flex flex-col sm:flex-row flex-wrap justify-between items-center gap-4 sm:gap-6 md:gap-10 border-t border-[rgba(183,183,214,0.3)] mt-10 sm:mt-12 md:mt-[52px] lg:mt-[95px] pt-6 sm:pt-[25px] ${fadeClass(isBottomVisible)}`}
+					>
 						<div className="w-full sm:w-auto max-md:mx-auto">
 							<div className="text-brand-primary font-[family-name:var(--font-inter-tight)] text-base font-normal leading-6 max-sm:text-sm max-sm:leading-[22px] max-sm:text-center max-md:text-center">
 								&copy; {new Date().getFullYear()} - {block.copyright}

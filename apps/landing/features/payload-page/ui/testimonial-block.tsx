@@ -2,6 +2,7 @@
 
 import type { TestimonialBlock as TestimonialBlockType } from "@/payload-types";
 import { useEffect, useRef, useState } from "react";
+import { useScrollAnimation, fadeClass } from "../lib/use-scroll-animation";
 
 interface TestimonialBlockProps {
 	block: TestimonialBlockType;
@@ -17,6 +18,8 @@ export function TestimonialBlock({ block }: TestimonialBlockProps) {
 	const [visibleCards, setVisibleCards] = useState<Set<number>>(new Set());
 	const [hoveredCard, setHoveredCard] = useState<number | null>(null);
 	const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+	const { ref: headerRef, isVisible: isHeaderVisible } =
+		useScrollAnimation<HTMLDivElement>();
 
 	useEffect(() => {
 		const observers = cardRefs.current.map((card, index) => {
@@ -47,9 +50,14 @@ export function TestimonialBlock({ block }: TestimonialBlockProps) {
 			<div className="relative z-[1] max-w-[1160px] mx-auto px-5 max-sm:px-4">
 				<div className="w-full">
 					{/* Header Content */}
-					<div className="flex flex-col justify-start items-center max-w-[701px] mx-auto">
+					<div
+						ref={headerRef}
+						className="flex flex-col justify-start items-center max-w-[701px] mx-auto"
+					>
 						{/* Badge */}
-						<div className="flex justify-center items-center p-[0.82px] rounded-full relative shadow-[2.88px_25.11px_19.72px_rgba(93,72,236,0.04)]">
+						<div
+							className={`flex justify-center items-center p-[0.82px] rounded-full relative shadow-[2.88px_25.11px_19.72px_rgba(93,72,236,0.04)] ${fadeClass(isHeaderVisible)}`}
+						>
 							<div className="relative z-[1] flex gap-2 bg-white rounded-full justify-center items-center px-[14.82px] py-[3.33px] pl-[3.71px] max-md:px-[10px] max-md:pl-[3px] max-sm:pr-[10px]">
 								<div className="rounded-full w-[33px] h-6 p-[0.82px] relative shadow-[0_4.12px_6.26px_rgba(97,83,238,0.1)] max-md:w-10 max-sm:w-auto">
 									<div className="relative z-[1] bg-white bg-gradient-to-b from-brand-badge-gradient-from to-brand-badge-gradient-to rounded-full flex justify-center items-center w-[33px] h-6 p-0 max-md:p-[6px] max-md:w-10 max-md:h-8 max-sm:p-1 max-sm:w-auto max-sm:h-auto">
@@ -61,7 +69,9 @@ export function TestimonialBlock({ block }: TestimonialBlockProps) {
 												className="relative z-[2] w-auto h-auto drop-shadow-[0_4.53px_7px_rgba(97,83,238,0.31)] max-md:w-[15px] max-sm:w-auto"
 											/>
 										) : (
-											<div className="text-xl font-bold text-brand-purple">♥</div>
+											<div className="text-xl font-bold text-brand-purple">
+												♥
+											</div>
 										)}
 									</div>
 									<div className="opacity-[0.14] bg-gradient-to-b from-brand-badge-outline-from to-brand-badge-outline-to rounded-full absolute inset-0"></div>
@@ -76,7 +86,10 @@ export function TestimonialBlock({ block }: TestimonialBlockProps) {
 						</div>
 
 						{/* Heading and Subtitle */}
-						<div className="flex flex-col gap-5 justify-start items-center w-full mt-5 max-sm:gap-4 max-sm:mt-4">
+						<div
+							className={`flex flex-col gap-5 justify-start items-center w-full mt-5 max-sm:gap-4 max-sm:mt-4 ${fadeClass(isHeaderVisible)}`}
+							style={{ transitionDelay: "100ms" }}
+						>
 							<div>
 								<h2 className="text-brand-primary tracking-[-0.02em] mt-0 mb-0 font-[family-name:var(--font-inter-tight)] text-[52px] font-medium leading-[60px] text-center max-md:text-5xl max-md:leading-[56px] max-sm:text-4xl max-sm:leading-[44px]">
 									{block.heading}
@@ -178,7 +191,9 @@ export function TestimonialBlock({ block }: TestimonialBlockProps) {
 												<div className="flex flex-col">
 													<div
 														className={`tracking-[-0.01em] font-[family-name:var(--font-inter-tight)] text-base font-medium leading-6 ${
-															isHighlighted ? "text-white" : "text-brand-primary"
+															isHighlighted
+																? "text-white"
+																: "text-brand-primary"
 														}`}
 													>
 														{testimonial.authorName}
