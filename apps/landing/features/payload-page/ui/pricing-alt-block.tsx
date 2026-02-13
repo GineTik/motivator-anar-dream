@@ -7,6 +7,7 @@ import {
 	useStaggerAnimation,
 	fadeClass,
 } from "../lib/use-scroll-animation";
+import { Button } from "@/shared/ui/button";
 
 interface PricingAltBlockProps {
 	block: PricingAltBlockType;
@@ -98,7 +99,7 @@ export function PricingAltBlock({ block }: PricingAltBlockProps) {
 								<button
 									onClick={() => setIsYearly(false)}
 									className={`flex gap-2.5 justify-center items-center rounded-[7px] px-[22px] py-2 border-none cursor-pointer transition-colors duration-200 ${
-										!isYearly ? "bg-[#7b87fe]" : "bg-transparent"
+										!isYearly ? "bg-brand-accent" : "bg-transparent"
 									}`}
 								>
 									<span
@@ -112,7 +113,7 @@ export function PricingAltBlock({ block }: PricingAltBlockProps) {
 								<button
 									onClick={() => setIsYearly(true)}
 									className={`flex gap-2.5 justify-center items-center rounded-[7px] px-[22px] py-2 border-none cursor-pointer transition-colors duration-200 ${
-										isYearly ? "bg-[#7b87fe]" : "bg-transparent"
+										isYearly ? "bg-brand-accent" : "bg-transparent"
 									}`}
 								>
 									<span
@@ -125,7 +126,7 @@ export function PricingAltBlock({ block }: PricingAltBlockProps) {
 									{block.discountLabel && (
 										<span
 											className={`font-[family-name:var(--font-inter-tight)] text-base font-normal leading-6 tracking-[-0.03em] ${
-												isYearly ? "text-white/80" : "text-[#7b87fe]"
+												isYearly ? "text-white/80" : "text-brand-accent"
 											}`}
 										>
 											{block.discountLabel}
@@ -219,16 +220,13 @@ export function PricingAltBlock({ block }: PricingAltBlockProps) {
 
 																{/* Button */}
 																<div className="mt-5 md:mt-[25px]">
-																	<a
+																	<Button
 																		href={plan.buttonLink || "#"}
-																		className="relative flex justify-center items-center bg-gradient-to-b from-brand-gradient-from to-brand-gradient-to rounded-full w-full max-w-full py-3.5 sm:py-4 md:py-[18px] px-6 sm:px-7 md:px-[35px] no-underline overflow-hidden group"
+																		variant="gradient"
+																		className="w-full"
 																	>
-																		<div className="relative z-[2] text-white font-[family-name:var(--font-inter-tight)] text-base font-medium leading-6 tracking-[-0.01em]">
-																			{plan.buttonText}
-																		</div>
-																		<div className="absolute inset-0 bg-brand-primary rounded-full opacity-100"></div>
-																		<div className="absolute inset-0 bg-gradient-to-b from-brand-gradient-from to-brand-gradient-to rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-																	</a>
+																		{plan.buttonText}
+																	</Button>
 																</div>
 															</div>
 														</div>

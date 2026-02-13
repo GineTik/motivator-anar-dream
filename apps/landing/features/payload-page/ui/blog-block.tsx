@@ -6,6 +6,7 @@ import {
 	useStaggerAnimation,
 	fadeClass,
 } from "../lib/use-scroll-animation";
+import { Button } from "@/shared/ui/button";
 
 interface BlogBlockProps {
 	block: BlogBlockType;
@@ -217,17 +218,12 @@ export function BlogBlock({ block }: BlogBlockProps) {
 										)}
 									</div>
 									<div className="mt-4 sm:mt-5 md:mt-[26px]">
-										<a
+										<Button
 											href={block.explore.buttonLink || "/blog"}
-											className="relative flex justify-center items-center bg-brand-primary rounded-full px-[22px] py-2.5 sm:px-6 sm:py-3 md:px-[35px] md:py-4 no-underline overflow-hidden group"
+											variant="gradient"
 										>
-											<div className="relative z-[2] text-white tracking-[-0.02em] bg-gradient-to-b from-white to-white/70 bg-clip-text text-transparent font-[family-name:var(--font-inter-tight)] text-base leading-6 font-medium">
-												{block.explore.buttonText}
-											</div>
-											<div className="absolute inset-0 bg-gradient-to-b from-brand-gradient-from to-brand-gradient-to rounded-full opacity-100 group-hover:opacity-0 transition-opacity duration-300"></div>
-											<div className="absolute inset-0 bg-brand-primary rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-											<div className="z-[1] rounded-full absolute inset-0 shadow-[inset_0_1.41px_3.18px_rgba(255,255,255,0.75)] md:shadow-[inset_0_1.41px_3.18px_rgba(255,255,255,0.8)] lg:shadow-[inset_0_1.41px_3.18px_rgba(255,255,255,0.87)]"></div>
-										</a>
+											{block.explore.buttonText}
+										</Button>
 									</div>
 								</div>
 							</div>

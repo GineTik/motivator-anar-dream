@@ -2,6 +2,7 @@
 
 import type { CtaBlock as CtaBlockType } from "@/payload-types";
 import { useScrollAnimation, fadeClass } from "../lib/use-scroll-animation";
+import { Button } from "@/shared/ui/button";
 
 interface CtaBlockProps {
 	block: CtaBlockType;
@@ -88,12 +89,9 @@ export function CtaBlock({ block }: CtaBlockProps) {
 									placeholder={block.emailPlaceholder || "Enter Email"}
 									className="border border-white bg-white text-brand-primary rounded-full h-[57px] max-md:h-[52px] mb-0 pl-4 sm:pl-[25px] font-[family-name:var(--font-inter-tight)] text-base font-medium leading-6 w-full focus:border-brand-purple-light focus:outline-none placeholder:text-[rgba(57,30,121,0.6)] placeholder:tracking-[-0.01em] placeholder:font-[family-name:var(--font-inter-tight)] placeholder:text-base placeholder:font-medium placeholder:leading-6"
 								/>
-								<button
-									type="submit"
-									className="bg-gradient-to-b from-brand-gradient-from to-brand-gradient-to text-white tracking-[-0.01em] rounded-full h-[57px] max-md:h-[52px] px-5 sm:px-7 md:px-[34px] font-[family-name:var(--font-inter-tight)] text-base font-medium leading-6 cursor-pointer border-0 shadow-[inset_0_1.41px_3.18px_rgba(255,255,255,0.87)] hover:bg-brand-primary hover:bg-none transition-colors duration-300 whitespace-nowrap"
-								>
+								<Button type="submit" variant="gradient" size="lg">
 									{block.buttonText}
-								</button>
+								</Button>
 							</div>
 						</form>
 					</div>

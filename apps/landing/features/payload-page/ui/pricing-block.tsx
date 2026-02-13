@@ -3,6 +3,7 @@
 import type { PricingBlock as PricingBlockType } from "@/payload-types";
 import { CircleCheck } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { Button } from "@/shared/ui/button";
 
 interface PricingBlockProps {
 	block: PricingBlockType;
@@ -266,15 +267,13 @@ export function PricingBlock({ block }: PricingBlockProps) {
 
 										{/* Button */}
 										<div className="mt-10 md:mt-8 max-[767px]:mt-7 max-[479px]:mt-6">
-											<a
+											<Button
 												href={block.plan?.buttonLink || "#"}
-												className="relative flex justify-center items-center bg-gradient-to-b from-brand-gradient-from to-brand-gradient-to rounded-full px-[35px] py-[18px] w-full max-w-full no-underline overflow-hidden group md:px-7 md:py-4 max-[767px]:px-6 max-[767px]:py-[14px] max-[479px]:px-[22px] max-[479px]:py-3"
+												variant="gradient"
+												className="w-full"
 											>
-												<div className="relative z-[2] text-white tracking-[-0.01em] text-base leading-6 font-medium">
-													{block.plan?.buttonText}
-												</div>
-												<div className="absolute inset-0 bg-brand-primary rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-											</a>
+												{block.plan?.buttonText}
+											</Button>
 										</div>
 									</div>
 								</div>

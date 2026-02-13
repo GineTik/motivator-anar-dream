@@ -2,6 +2,7 @@
 
 import type { FooterBlock as FooterBlockType } from "@/payload-types";
 import { useScrollAnimation, fadeClass } from "../lib/use-scroll-animation";
+import { Button } from "@/shared/ui/button";
 
 interface FooterBlockProps {
 	block: FooterBlockType;
@@ -94,12 +95,13 @@ export function FooterBlock({ block }: FooterBlockProps) {
 										placeholder={block.newsletter?.placeholder || "Enter Email"}
 										className="border border-[rgba(77,0,255,0.14)] bg-white text-brand-primary rounded-full h-[50px] mb-0 pl-4 sm:pl-[25px] font-[family-name:var(--font-inter-tight)] text-base font-medium leading-6 w-full focus:border-brand-purple-light focus:outline-none placeholder:text-[rgba(57,30,121,0.6)] placeholder:tracking-[-0.01em] placeholder:font-[family-name:var(--font-inter-tight)] placeholder:text-base placeholder:font-medium placeholder:leading-6"
 									/>
-									<button
+									<Button
 										type="submit"
-										className="bg-[#7b87fe] text-white tracking-[-0.01em] rounded-full h-[50px] px-5 sm:px-[30px] font-[family-name:var(--font-inter-tight)] text-base font-medium leading-6 cursor-pointer border-0 hover:bg-brand-primary transition-colors duration-300 whitespace-nowrap"
+										variant="secondary"
+										className="h-[50px] px-5 sm:px-[30px]"
 									>
 										{block.newsletter?.buttonText}
-									</button>
+									</Button>
 								</div>
 							</form>
 						</div>

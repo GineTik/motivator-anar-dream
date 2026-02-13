@@ -3,6 +3,7 @@
 import type { ProcessBlock as ProcessBlockType } from "@/payload-types";
 import { useState } from "react";
 import { useScrollAnimation, fadeClass } from "../lib/use-scroll-animation";
+import { Button } from "@/shared/ui/button";
 
 interface ProcessBlockProps {
 	block: ProcessBlockType;
@@ -182,17 +183,12 @@ export function ProcessBlock({ block }: ProcessBlockProps) {
 												</div>
 											</div>
 											<div className="mt-6 md:mt-6 lg:mt-[30px]">
-												<a
+												<Button
 													href={currentTab.buttonLink || "#"}
-													className="relative flex justify-center items-center bg-[#250a63] rounded-full px-[22px] py-[10px] md:px-7 md:py-[14px] lg:px-[35px] lg:py-4 no-underline overflow-hidden group"
+													variant="gradient"
 												>
-													<div className="relative z-[2] text-white tracking-[-0.02em] bg-gradient-to-b from-white to-[rgba(255,255,255,0.7)] bg-clip-text text-transparent text-base leading-6 font-medium">
-														{currentTab.buttonText}
-													</div>
-													<div className="absolute inset-0 bg-gradient-to-b from-[rgb(136,124,248)] to-[rgb(89,75,236)] rounded-full opacity-100 group-hover:opacity-0 transition-opacity duration-300"></div>
-													<div className="absolute inset-0 bg-[#250a63] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-													<div className="z-[1] rounded-full absolute inset-0 shadow-[inset_0_1.41px_3.18px_rgba(255,255,255,0.75)] md:shadow-[inset_0_1.41px_3.18px_rgba(255,255,255,0.8)] lg:shadow-[inset_0_1.41px_3.18px_rgba(255,255,255,0.87)]"></div>
-												</a>
+													{currentTab.buttonText}
+												</Button>
 											</div>
 										</div>
 

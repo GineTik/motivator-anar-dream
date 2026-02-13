@@ -2,6 +2,7 @@
 
 import type { HeaderBlock as HeaderBlockType } from "@/payload-types";
 import { useState, useRef, useEffect } from "react";
+import { Button } from "@/shared/ui/button";
 
 interface HeaderBlockProps {
 	block: HeaderBlockType;
@@ -143,12 +144,14 @@ export function HeaderBlock({ block }: HeaderBlockProps) {
 					{/* Right — CTA + Mobile Toggle */}
 					<div className="flex items-center gap-4">
 						{/* CTA Button — Desktop */}
-						<a
+						<Button
 							href={block.ctaLink || "#"}
-							className="hidden lg:inline-flex items-center justify-center no-underline bg-brand-primary text-white font-[family-name:var(--font-inter-tight)] text-[15px] font-semibold leading-6 px-6 xl:px-7 py-2.5 xl:py-3 rounded-xl transition-all duration-200 hover:bg-brand-purple"
+							variant="solid"
+							size="sm"
+							className="hidden lg:inline-flex text-[15px] xl:px-7 xl:py-3"
 						>
 							{block.ctaText}
-						</a>
+						</Button>
 
 						{/* Mobile Menu Button */}
 						<button
@@ -241,12 +244,14 @@ export function HeaderBlock({ block }: HeaderBlockProps) {
 
 							{/* Mobile CTA */}
 							<li className="mt-3 pt-3 border-t border-[rgba(183,183,214,0.3)]">
-								<a
+								<Button
 									href={block.ctaLink || "#"}
-									className="inline-flex items-center justify-center no-underline bg-brand-primary text-white font-[family-name:var(--font-inter-tight)] text-[15px] font-semibold leading-6 px-6 py-2.5 rounded-xl transition-all duration-200 hover:bg-brand-purple w-full text-center"
+									variant="solid"
+									size="sm"
+									className="w-full text-center text-[15px]"
 								>
 									{block.ctaText}
-								</a>
+								</Button>
 							</li>
 						</ul>
 					</div>

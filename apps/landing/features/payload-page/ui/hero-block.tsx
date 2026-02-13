@@ -1,6 +1,7 @@
 "use client";
 
 import type { HeroBlock as HeroBlockType } from "@/payload-types";
+import { Button } from "@/shared/ui/button";
 import { useScrollAnimation, fadeInUp } from "../lib/use-scroll-animation";
 import styles from "./hero-block.module.css";
 
@@ -93,11 +94,9 @@ export function HeroBlock({ block }: HeroBlockProps) {
 													type="email"
 													required
 												/>
-												<input
-													type="submit"
-													className={styles.subscribeSubmitButton}
-													value={block.ctaForm?.buttonText}
-												/>
+												<Button type="submit" variant="gradient" size="lg">
+													{block.ctaForm?.buttonText}
+												</Button>
 											</div>
 										</form>
 									</div>
