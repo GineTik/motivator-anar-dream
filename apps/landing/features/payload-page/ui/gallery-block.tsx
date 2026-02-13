@@ -340,41 +340,44 @@ export function GalleryBlock({ block }: GalleryBlockProps) {
 					{/* 3-slide carousel: prev peek | active | next peek */}
 					<div
 						className={`
-							relative z-[55] flex items-center justify-center gap-5 w-full max-w-[1100px] mx-auto px-16
-							transition-all duration-500 max-sm:gap-3 max-sm:px-10
+							relative z-[55] flex items-center justify-center w-full
+							transition-all duration-500
 							${lightboxVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"}
 						`}
 						style={{ transitionDelay: "50ms" }}
 						onClick={(e) => e.stopPropagation()}
 					>
-						{/* Previous image peek */}
+						{/* Previous image peek — mostly off-screen */}
 						<div
-							className="flex-shrink-0 w-[12%] max-sm:w-[10%] cursor-pointer rounded-xl overflow-hidden opacity-50 hover:opacity-70 transition-all duration-500"
+							className="absolute left-0 top-1/2 -translate-y-1/2 w-[18%] max-sm:w-[14%] -translate-x-[75%] cursor-pointer rounded-xl overflow-hidden transition-all duration-500 hover:brightness-75"
 							onClick={goPrev}
 						>
-							{isFallback ? (
-								<div
-									className="w-full aspect-[3/4] bg-cover bg-center flex items-center justify-center"
-									style={{ backgroundImage: `url('${FALLBACK_BG}')` }}
-								>
-									<div className="text-brand-testimonial-tagline font-[family-name:var(--font-inter-tight)] text-xs font-medium text-center">
-										Visual representation
+							<div className="relative">
+								{isFallback ? (
+									<div
+										className="w-full h-[70vh] bg-cover bg-center flex items-center justify-center"
+										style={{ backgroundImage: `url('${FALLBACK_BG}')` }}
+									>
+										<div className="text-brand-testimonial-tagline font-[family-name:var(--font-inter-tight)] text-xs font-medium text-center">
+											Visual representation
+										</div>
 									</div>
-								</div>
-							) : (
-								<img
-									src={displayImages[prevIndex].url}
-									alt={displayImages[prevIndex].alt}
-									className="w-full object-cover aspect-[3/4]"
-								/>
-							)}
+								) : (
+									<img
+										src={displayImages[prevIndex].url}
+										alt={displayImages[prevIndex].alt}
+										className="w-full h-[70vh] object-cover"
+									/>
+								)}
+								<div className="absolute inset-0 bg-brand-primary/40" />
+							</div>
 						</div>
 
-						{/* Active image */}
-						<div className="flex-1 min-w-0 max-w-[70%] max-sm:max-w-[75%] rounded-2xl overflow-hidden shadow-2xl transition-all duration-500">
+						{/* Active image — centered */}
+						<div className="w-[65%] max-sm:w-[80%] mx-auto rounded-2xl overflow-hidden shadow-2xl transition-all duration-500">
 							{isFallback ? (
 								<div
-									className="w-full aspect-[4/3] bg-cover bg-center flex items-center justify-center"
+									className="w-full h-[70vh] bg-cover bg-center flex items-center justify-center"
 									style={{ backgroundImage: `url('${FALLBACK_BG}')` }}
 								>
 									<div className="text-brand-testimonial-tagline font-[family-name:var(--font-inter-tight)] text-lg font-medium text-center">
@@ -385,32 +388,35 @@ export function GalleryBlock({ block }: GalleryBlockProps) {
 								<img
 									src={displayImages[activeIndex].url}
 									alt={displayImages[activeIndex].alt}
-									className="w-full max-h-[80vh] object-contain"
+									className="w-full h-[70vh] object-contain"
 								/>
 							)}
 						</div>
 
-						{/* Next image peek */}
+						{/* Next image peek — mostly off-screen */}
 						<div
-							className="flex-shrink-0 w-[12%] max-sm:w-[10%] cursor-pointer rounded-xl overflow-hidden opacity-50 hover:opacity-70 transition-all duration-500"
+							className="absolute right-0 top-1/2 -translate-y-1/2 w-[18%] max-sm:w-[14%] translate-x-[75%] cursor-pointer rounded-xl overflow-hidden transition-all duration-500 hover:brightness-75"
 							onClick={goNext}
 						>
-							{isFallback ? (
-								<div
-									className="w-full aspect-[3/4] bg-cover bg-center flex items-center justify-center"
-									style={{ backgroundImage: `url('${FALLBACK_BG}')` }}
-								>
-									<div className="text-brand-testimonial-tagline font-[family-name:var(--font-inter-tight)] text-xs font-medium text-center">
-										Visual representation
+							<div className="relative">
+								{isFallback ? (
+									<div
+										className="w-full h-[70vh] bg-cover bg-center flex items-center justify-center"
+										style={{ backgroundImage: `url('${FALLBACK_BG}')` }}
+									>
+										<div className="text-brand-testimonial-tagline font-[family-name:var(--font-inter-tight)] text-xs font-medium text-center">
+											Visual representation
+										</div>
 									</div>
-								</div>
-							) : (
-								<img
-									src={displayImages[nextIndex].url}
-									alt={displayImages[nextIndex].alt}
-									className="w-full object-cover aspect-[3/4]"
-								/>
-							)}
+								) : (
+									<img
+										src={displayImages[nextIndex].url}
+										alt={displayImages[nextIndex].alt}
+										className="w-full h-[70vh] object-cover"
+									/>
+								)}
+								<div className="absolute inset-0 bg-brand-primary/40" />
+							</div>
 						</div>
 					</div>
 
