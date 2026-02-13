@@ -23,7 +23,7 @@ export function FooterBlock({ block }: FooterBlockProps) {
 		useScrollAnimation<HTMLDivElement>();
 
 	return (
-		<footer className="bg-gradient-to-b from-white from-60% to-[rgba(145,209,249,0.15)] pt-16 sm:pt-[72px] lg:pt-20 xl:pt-[87px] pb-6 sm:pb-8 lg:pb-9 xl:pb-10">
+		<footer className="bg-gradient-to-b from-white from-60% to-brand-footer-gradient-to pt-16 sm:pt-[72px] lg:pt-20 xl:pt-[87px] pb-6 sm:pb-8 lg:pb-9 xl:pb-10">
 			<div className="relative z-[1] max-w-[1160px] mx-auto px-4 sm:px-5">
 				<div className="w-full">
 					{/* Top: Logo + Menu Groups */}
@@ -93,7 +93,7 @@ export function FooterBlock({ block }: FooterBlockProps) {
 									<input
 										type="email"
 										placeholder={block.newsletter?.placeholder || "Enter Email"}
-										className="border border-[rgba(77,0,255,0.14)] bg-white text-brand-primary rounded-full h-[50px] mb-0 pl-4 sm:pl-[25px] font-[family-name:var(--font-inter-tight)] text-base font-medium leading-6 w-full focus:border-brand-purple-light focus:outline-none placeholder:text-[rgba(57,30,121,0.6)] placeholder:tracking-[-0.01em] placeholder:font-[family-name:var(--font-inter-tight)] placeholder:text-base placeholder:font-medium placeholder:leading-6"
+										className="border border-brand-footer-subscribe-border bg-white text-brand-primary rounded-full h-[50px] mb-0 pl-4 sm:pl-[25px] font-[family-name:var(--font-inter-tight)] text-base font-medium leading-6 w-full focus:border-brand-purple-light focus:outline-none placeholder:text-brand-footer-subscribe-placeholder placeholder:tracking-[-0.01em] placeholder:font-[family-name:var(--font-inter-tight)] placeholder:text-base placeholder:font-medium placeholder:leading-6"
 									/>
 									<Button
 										type="submit"
@@ -110,7 +110,7 @@ export function FooterBlock({ block }: FooterBlockProps) {
 					{/* Bottom: Copyright + Social */}
 					<div
 						ref={bottomRef}
-						className={`flex flex-col sm:flex-row flex-wrap justify-between items-center gap-4 sm:gap-6 md:gap-10 border-t border-[rgba(183,183,214,0.3)] mt-10 sm:mt-12 md:mt-[52px] lg:mt-[95px] pt-6 sm:pt-[25px] ${fadeClass(isBottomVisible)}`}
+						className={`flex flex-col sm:flex-row flex-wrap justify-between items-center gap-4 sm:gap-6 md:gap-10 border-t border-brand-footer-border mt-10 sm:mt-12 md:mt-[52px] lg:mt-[95px] pt-6 sm:pt-[25px] ${fadeClass(isBottomVisible)}`}
 					>
 						<div className="w-full sm:w-auto max-md:mx-auto">
 							<div className="text-brand-primary font-[family-name:var(--font-inter-tight)] text-base font-normal leading-6 max-sm:text-sm max-sm:leading-[22px] max-sm:text-center max-md:text-center">

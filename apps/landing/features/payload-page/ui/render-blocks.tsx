@@ -12,6 +12,7 @@ import { CtaBlock } from "./cta-block";
 import { BlogBlock } from "./blog-block";
 import { FooterBlock } from "./footer-block";
 import { PartnershipBlock } from "./partnership-block";
+import { GalleryBlock } from "./gallery-block";
 
 interface RenderBlocksProps {
 	blocks: Page["blocks"];
@@ -89,6 +90,10 @@ export function RenderBlocks({ blocks }: RenderBlocksProps) {
 								key={`${block.blockType}-${index}`}
 								block={block}
 							/>
+						);
+					case "gallery":
+						return (
+							<GalleryBlock key={`${block.blockType}-${index}`} block={block} />
 						);
 					default:
 						return null;

@@ -14,7 +14,8 @@
         "migrate:status": "pnpm --filter landing migrate:status",
         "migrate": "pnpm --filter landing migrate",
         "migrate:down": "pnpm --filter landing migrate:down",
-        "migrate:refresh": "pnpm --filter landing migrate:refresh"
+        "migrate:refresh": "pnpm --filter landing migrate:refresh",
+        "audit:colors": "pnpm --filter @motivator/scripts audit-colors --"
     },
     "keywords": [
         "monorepo",

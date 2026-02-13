@@ -87,7 +87,7 @@ export function CtaBlock({ block }: CtaBlockProps) {
 								<input
 									type="email"
 									placeholder={block.emailPlaceholder || "Enter Email"}
-									className="border border-white bg-white text-brand-primary rounded-full h-[57px] max-md:h-[52px] mb-0 pl-4 sm:pl-[25px] font-[family-name:var(--font-inter-tight)] text-base font-medium leading-6 w-full focus:border-brand-purple-light focus:outline-none placeholder:text-[rgba(57,30,121,0.6)] placeholder:tracking-[-0.01em] placeholder:font-[family-name:var(--font-inter-tight)] placeholder:text-base placeholder:font-medium placeholder:leading-6"
+									className="border border-white bg-white text-brand-primary rounded-full h-[57px] max-md:h-[52px] mb-0 pl-4 sm:pl-[25px] font-[family-name:var(--font-inter-tight)] text-base font-medium leading-6 w-full focus:border-brand-purple-light focus:outline-none placeholder:text-brand-footer-subscribe-placeholder placeholder:tracking-[-0.01em] placeholder:font-[family-name:var(--font-inter-tight)] placeholder:text-base placeholder:font-medium placeholder:leading-6"
 								/>
 								<Button type="submit" variant="gradient" size="lg">
 									{block.buttonText}

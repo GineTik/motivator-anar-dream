@@ -110,7 +110,7 @@ export function HeaderBlock({ block }: HeaderBlockProps) {
 												{/* Dropdown */}
 												{isOpen && (
 													<div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 z-[900]">
-														<div className="bg-white rounded-xl shadow-[0_10px_40px_-8px_rgba(176,184,210,0.3)] border border-[rgba(235,237,255,0.6)]">
+														<div className="bg-white rounded-xl shadow-[0_10px_40px_-8px_rgba(176,184,210,0.3)] border border-brand-testimonial-border">
 															<div className="py-4 px-5 min-w-[160px]">
 																<div className="flex flex-col gap-2.5">
 																	{link.children?.map((child, childIndex) => (
@@ -243,7 +243,7 @@ export function HeaderBlock({ block }: HeaderBlockProps) {
 							})}
 
 							{/* Mobile CTA */}
-							<li className="mt-3 pt-3 border-t border-[rgba(183,183,214,0.3)]">
+							<li className="mt-3 pt-3 border-t border-brand-footer-border">
 								<Button
 									href={block.ctaLink || "#"}
 									variant="solid"

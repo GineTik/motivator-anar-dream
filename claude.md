@@ -153,3 +153,19 @@ features/
 - Expose minimal public API
 - Keep Shared layer minimal
 - Group by function, not by type
+
+---
+
+## Post-Style-Change Checklist
+
+After any changes to component styles (Tailwind classes, colors, gradients, fonts), **always** run the hardcoded colors audit:
+
+```bash
+pnpm audit:colors --app apps/landing --globals 'apps/landing/app/(frontend)/globals.css'
+```
+
+If fixable issues are found, run with `--fix` to auto-replace hardcoded values with design tokens:
+
+```bash
+pnpm audit:colors --app apps/landing --globals 'apps/landing/app/(frontend)/globals.css' --fix
+```

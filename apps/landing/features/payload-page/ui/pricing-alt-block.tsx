@@ -94,7 +94,7 @@ export function PricingAltBlock({ block }: PricingAltBlockProps) {
 							{/* Tab Menu */}
 							<div
 								ref={toggleRef}
-								className={`rounded-xl bg-white border-2 border-[rgba(235,237,255,0.6)] flex justify-center items-center p-1 overflow-hidden ${fadeClass(isToggleVisible)}`}
+								className={`rounded-xl bg-white border-2 border-brand-testimonial-border flex justify-center items-center p-1 overflow-hidden ${fadeClass(isToggleVisible)}`}
 							>
 								<button
 									onClick={() => setIsYearly(false)}

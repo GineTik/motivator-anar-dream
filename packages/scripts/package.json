@@ -1,0 +1,9 @@
+{
+	"name": "@motivator/scripts",
+	"version": "1.0.0",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"audit-colors": "node audit-colors.mjs"
+	}
+}

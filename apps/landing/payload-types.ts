@@ -216,6 +216,7 @@ export interface Page {
     | BlogBlock
     | FooterBlock
     | PartnershipBlock
+    | GalleryBlock
   )[];
   seo?: {
     title?: string | null;
@@ -648,6 +649,28 @@ export interface PartnershipBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "GalleryBlock".
+ */
+export interface GalleryBlock {
+  badge: {
+    icon?: (number | null) | Media;
+    text: string;
+  };
+  heading: string;
+  subtitle: string;
+  images?:
+    | {
+        image: number | Media;
+        alt?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'gallery';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -831,6 +854,7 @@ export interface PagesSelect<T extends boolean = true> {
         blog?: T | BlogBlockSelect<T>;
         footer?: T | FooterBlockSelect<T>;
         partnership?: T | PartnershipBlockSelect<T>;
+        gallery?: T | GalleryBlockSelect<T>;
       };
   seo?:
     | T
@@ -1213,6 +1237,29 @@ export interface PartnershipBlockSelect<T extends boolean = true> {
       };
   buttonText?: T;
   buttonLink?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "GalleryBlock_select".
+ */
+export interface GalleryBlockSelect<T extends boolean = true> {
+  badge?:
+    | T
+    | {
+        icon?: T;
+        text?: T;
+      };
+  heading?: T;
+  subtitle?: T;
+  images?:
+    | T
+    | {
+        image?: T;
+        alt?: T;
+        id?: T;
+      };
   id?: T;
   blockName?: T;
 }

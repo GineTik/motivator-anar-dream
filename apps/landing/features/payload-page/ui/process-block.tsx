@@ -42,7 +42,7 @@ export function ProcessBlock({ block }: ProcessBlockProps) {
 						>
 							<div className="relative z-[1] flex gap-2 bg-white rounded-full justify-center items-center px-[14.82px] py-[3.33px] pl-[3.71px]">
 								<div className="rounded-full w-auto md:w-10 lg:w-[50.63px] p-[0.82px] relative shadow-[0_4.12px_6.26px_rgba(97,83,238,0.1)]">
-									<div className="relative z-[1] bg-white bg-gradient-to-b from-[rgba(196,68,222,0)] to-[rgba(89,75,236,0.17)] rounded-full flex justify-center items-center w-8 h-6 md:w-10 md:h-8 lg:w-[50px] lg:h-[33px]">
+									<div className="relative z-[1] bg-white bg-gradient-to-b from-brand-feature-icon-gradient-from to-brand-badge-gradient-to rounded-full flex justify-center items-center w-8 h-6 md:w-10 md:h-8 lg:w-[50px] lg:h-[33px]">
 										{badgeIconUrl ? (
 											<img
 												src={badgeIconUrl}
@@ -51,18 +51,18 @@ export function ProcessBlock({ block }: ProcessBlockProps) {
 												className="relative z-[2] w-auto h-auto md:w-[15px] lg:w-auto drop-shadow-[0_4.53px_7px_rgba(97,83,238,0.31)]"
 											/>
 										) : (
-											<div className="text-xl font-bold text-[#594bec]">!</div>
+											<div className="text-xl font-bold text-brand-gradient-to">!</div>
 										)}
 									</div>
-									<div className="opacity-[0.14] bg-gradient-to-b from-[rgba(77,0,255,0)] to-[rgba(46,0,153,0.14)] rounded-full absolute inset-0"></div>
+									<div className="opacity-[0.14] bg-gradient-to-b from-brand-badge-outline-from to-brand-badge-outline-to rounded-full absolute inset-0"></div>
 								</div>
 								<div className="flex">
-									<div className="text-[#250a63] tracking-[-0.03em] text-sm leading-[22px] md:text-base md:leading-6">
+									<div className="text-brand-primary tracking-[-0.03em] text-sm leading-[22px] md:text-base md:leading-6">
 										{block.badge?.text}
 									</div>
 								</div>
 							</div>
-							<div className="opacity-[0.14] bg-gradient-to-b from-[rgba(77,0,255,0.34)] to-[#2e0099] rounded-full absolute inset-0"></div>
+							<div className="opacity-[0.14] bg-gradient-to-b from-brand-badge-border-from to-brand-badge-border-to rounded-full absolute inset-0"></div>
 						</div>
 
 						{/* Heading and Subtitle */}
@@ -71,12 +71,12 @@ export function ProcessBlock({ block }: ProcessBlockProps) {
 							style={{ transitionDelay: "100ms" }}
 						>
 							<div>
-								<h2 className="text-[#250a63] tracking-[-0.02em] mt-0 mb-0 text-4xl md:text-5xl lg:text-[52px] font-medium leading-[44px] md:leading-[56px] lg:leading-[60px] text-center">
+								<h2 className="text-brand-primary tracking-[-0.02em] mt-0 mb-0 text-4xl md:text-5xl lg:text-[52px] font-medium leading-[44px] md:leading-[56px] lg:leading-[60px] text-center">
 									{block.heading}
 								</h2>
 							</div>
 							<div>
-								<div className="text-[#250a63b3] mb-0 text-base leading-6 text-center">
+								<div className="text-brand-testimonial-tagline mb-0 text-base leading-6 text-center">
 									{block.subtitle}
 								</div>
 							</div>
@@ -132,21 +132,21 @@ export function ProcessBlock({ block }: ProcessBlockProps) {
 																/>
 															)}
 														</div>
-														<div className="opacity-[0.17] bg-gradient-to-b from-[rgba(196,68,222,0)] to-[rgba(89,75,236,0.6)] rounded-full absolute inset-0"></div>
+														<div className="opacity-[0.17] bg-gradient-to-b from-brand-feature-icon-gradient-from to-[rgba(89,75,236,0.6)] rounded-full absolute inset-0"></div>
 													</div>
-													<div className="bg-gradient-to-b from-[rgba(77,0,255,0)] to-[rgba(46,0,153,0.14)] absolute inset-0"></div>
+													<div className="bg-gradient-to-b from-brand-badge-outline-from to-brand-badge-outline-to absolute inset-0"></div>
 												</div>
-												<div className="relative z-[1] text-[#250a63] tracking-[-0.01em] text-sm leading-[22px] md:text-base md:leading-6 font-medium">
+												<div className="relative z-[1] text-brand-primary tracking-[-0.01em] text-sm leading-[22px] md:text-base md:leading-6 font-medium">
 													{tab.title}
 												</div>
 												<div
-													className="bg-gradient-to-b from-[rgba(196,68,222,0)] to-[rgba(89,75,236,0.17)] absolute inset-0 transition-opacity duration-300"
+													className="bg-gradient-to-b from-brand-feature-icon-gradient-from to-brand-badge-gradient-to absolute inset-0 transition-opacity duration-300"
 													style={{
 														opacity: isActive ? 1 : 0,
 													}}
 												></div>
 											</div>
-											<div className="opacity-[0.14] bg-gradient-to-b from-[rgba(77,0,255,0.34)] to-[#2e0099] absolute inset-0"></div>
+											<div className="opacity-[0.14] bg-gradient-to-b from-brand-badge-border-from to-brand-badge-border-to absolute inset-0"></div>
 										</button>
 									);
 								})}
@@ -166,19 +166,19 @@ export function ProcessBlock({ block }: ProcessBlockProps) {
 										<div className="flex flex-col justify-center items-start w-1/2 max-w-1/2">
 											<div className="rounded-full p-[0.82px] relative overflow-hidden shadow-[2.88px_25.11px_19.72px_rgba(93,72,236,0.04)]">
 												<div className="relative z-[1] bg-white rounded-full px-4 py-[5px] md:px-5 md:py-[6px] lg:px-[22px] lg:py-2">
-													<div className="text-[#250a63] tracking-[-0.03em] text-base leading-6">
+													<div className="text-brand-primary tracking-[-0.03em] text-base leading-6">
 														{currentTab.badge}
 													</div>
 												</div>
-												<div className="opacity-[0.14] bg-gradient-to-b from-[rgba(77,0,255,0.34)] to-[#2e0099] absolute inset-0"></div>
+												<div className="opacity-[0.14] bg-gradient-to-b from-brand-badge-border-from to-brand-badge-border-to absolute inset-0"></div>
 											</div>
 											<div className="w-full mt-[14px] md:mt-4 lg:mt-5">
 												<div className="max-w-full max-md:max-w-[357px]">
-													<h3 className="text-[#250a63] tracking-[-0.02em] mt-0 mb-0 text-2xl md:text-[32px] lg:text-[42px] font-medium leading-8 md:leading-10 lg:leading-[50px]">
+													<h3 className="text-brand-primary tracking-[-0.02em] mt-0 mb-0 text-2xl md:text-[32px] lg:text-[42px] font-medium leading-8 md:leading-10 lg:leading-[50px]">
 														{currentTab.heading}
 													</h3>
 												</div>
-												<div className="text-[#250a63b3] mt-2 md:mt-4 lg:mt-5 mb-0 text-base leading-6">
+												<div className="text-brand-testimonial-tagline mt-2 md:mt-4 lg:mt-5 mb-0 text-base leading-6">
 													{currentTab.description}
 												</div>
 											</div>
@@ -193,7 +193,7 @@ export function ProcessBlock({ block }: ProcessBlockProps) {
 										</div>
 
 										{/* Right Content - Image */}
-										<div className="w-full md:w-1/2 lg:w-[443px] h-auto md:h-[380px] lg:h-[395px] rounded-xl backdrop-blur-[25.96px] bg-[rgba(235,237,255,0.6)] p-[3px] md:p-[3px] lg:p-[3.25px] overflow-hidden">
+										<div className="w-full md:w-1/2 lg:w-[443px] h-auto md:h-[380px] lg:h-[395px] rounded-xl backdrop-blur-[25.96px] bg-brand-testimonial-border p-[3px] md:p-[3px] lg:p-[3.25px] overflow-hidden">
 											<div
 												className="border-[1.62px] border-white rounded-[10px] bg-cover bg-center bg-no-repeat flex justify-center items-center w-full h-full overflow-hidden shadow-[0_9.74px_64.91px_-8.11px_rgba(176,184,210,0.24)] p-6 md:p-8 lg:p-5"
 												style={{
@@ -210,7 +210,7 @@ export function ProcessBlock({ block }: ProcessBlockProps) {
 														className="w-full max-w-full md:max-w-full lg:max-w-[391px]"
 													/>
 												) : (
-													<div className="flex justify-center items-center w-full h-full text-[#250a63b3] text-center">
+													<div className="flex justify-center items-center w-full h-full text-brand-testimonial-tagline text-center">
 														Visual representation
 													</div>
 												)}
