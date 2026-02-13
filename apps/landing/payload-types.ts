@@ -215,6 +215,7 @@ export interface Page {
     | CtaBlock
     | BlogBlock
     | FooterBlock
+    | PartnershipBlock
   )[];
   seo?: {
     title?: string | null;
@@ -622,6 +623,31 @@ export interface FooterBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PartnershipBlock".
+ */
+export interface PartnershipBlock {
+  badge: {
+    icon?: (number | null) | Media;
+    text: string;
+  };
+  heading: string;
+  subtitle?: string | null;
+  checklistItems: {
+    text: string;
+    /**
+     * Highlight this item with brand accent color
+     */
+    highlighted?: boolean | null;
+    id?: string | null;
+  }[];
+  buttonText: string;
+  buttonLink?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'partnership';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -804,6 +830,7 @@ export interface PagesSelect<T extends boolean = true> {
         cta?: T | CtaBlockSelect<T>;
         blog?: T | BlogBlockSelect<T>;
         footer?: T | FooterBlockSelect<T>;
+        partnership?: T | PartnershipBlockSelect<T>;
       };
   seo?:
     | T
@@ -1161,6 +1188,31 @@ export interface FooterBlockSelect<T extends boolean = true> {
         label?: T;
         id?: T;
       };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PartnershipBlock_select".
+ */
+export interface PartnershipBlockSelect<T extends boolean = true> {
+  badge?:
+    | T
+    | {
+        icon?: T;
+        text?: T;
+      };
+  heading?: T;
+  subtitle?: T;
+  checklistItems?:
+    | T
+    | {
+        text?: T;
+        highlighted?: T;
+        id?: T;
+      };
+  buttonText?: T;
+  buttonLink?: T;
   id?: T;
   blockName?: T;
 }

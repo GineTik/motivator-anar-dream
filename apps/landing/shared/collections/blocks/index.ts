@@ -10,3 +10,4 @@ export { CtaBlock } from "./cta-block";
 export { HeaderBlock } from "./header-block";
 export { FooterBlock } from "./footer-block";
 export { BlogBlock } from "./blog-block";
+export { PartnershipBlock } from "./partnership-block";

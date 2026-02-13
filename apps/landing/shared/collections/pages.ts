@@ -11,6 +11,7 @@ import { CtaBlock } from "./blocks/cta-block";
 import { HeaderBlock } from "./blocks/header-block";
 import { FooterBlock } from "./blocks/footer-block";
 import { BlogBlock } from "./blocks/blog-block";
+import { PartnershipBlock } from "./blocks/partnership-block";
 
 export const Pages: CollectionConfig = {
     slug: "pages",
@@ -66,6 +67,7 @@ export const Pages: CollectionConfig = {
                 CtaBlock,
                 BlogBlock,
                 FooterBlock,
+                PartnershipBlock,
             ],
             required: true,
             minRows: 1,

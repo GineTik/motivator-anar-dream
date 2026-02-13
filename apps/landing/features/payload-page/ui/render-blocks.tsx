@@ -11,6 +11,7 @@ import { FaqBlock } from "./faq-block";
 import { CtaBlock } from "./cta-block";
 import { BlogBlock } from "./blog-block";
 import { FooterBlock } from "./footer-block";
+import { PartnershipBlock } from "./partnership-block";
 
 interface RenderBlocksProps {
 	blocks: Page["blocks"];
@@ -81,6 +82,13 @@ export function RenderBlocks({ blocks }: RenderBlocksProps) {
 					case "footer":
 						return (
 							<FooterBlock key={`${block.blockType}-${index}`} block={block} />
+						);
+					case "partnership":
+						return (
+							<PartnershipBlock
+								key={`${block.blockType}-${index}`}
+								block={block}
+							/>
 						);
 					default:
 						return null;
