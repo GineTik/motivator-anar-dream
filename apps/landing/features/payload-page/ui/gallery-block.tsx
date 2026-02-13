@@ -26,8 +26,8 @@ export function GalleryBlock({ block }: GalleryBlockProps) {
 	const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
 	const [lightboxOpen, setLightboxOpen] = useState(false);
+	const [lightboxVisible, setLightboxVisible] = useState(false);
 	const [activeIndex, setActiveIndex] = useState(0);
-	const sliderRef = useRef<HTMLDivElement>(null);
 
 	const images: GalleryImage[] = (block.images || [])
 		.map((item) => {
@@ -61,32 +61,48 @@ export function GalleryBlock({ block }: GalleryBlockProps) {
 		};
 	}, [images.length]);
 
+	const FALLBACK_BG =
+		"https://cdn.prod.website-files.com/6828ea881872740b3f4a766c/682f0e4c4ee9e7987f606b8a_Process%2002%20Bg.avif";
+
+	const fallbackImages: GalleryImage[] = Array.from({ length: 6 }, (_, i) => ({
+		url: "",
+		alt: `Visual representation ${i + 1}`,
+	}));
+
+	const displayImages = images.length > 0 ? images : fallbackImages;
+	const isFallback = images.length === 0;
+
+	const prevIndex =
+		activeIndex > 0 ? activeIndex - 1 : displayImages.length - 1;
+	const nextIndex =
+		activeIndex < displayImages.length - 1 ? activeIndex + 1 : 0;
+
 	const openLightbox = useCallback((index: number) => {
 		setActiveIndex(index);
 		setLightboxOpen(true);
 		document.body.style.overflow = "hidden";
+		requestAnimationFrame(() => {
+			requestAnimationFrame(() => {
+				setLightboxVisible(true);
+			});
+		});
 	}, []);
 
 	const closeLightbox = useCallback(() => {
-		setLightboxOpen(false);
-		document.body.style.overflow = "";
+		setLightboxVisible(false);
+		setTimeout(() => {
+			setLightboxOpen(false);
+			document.body.style.overflow = "";
+		}, 300);
 	}, []);
 
-	const goTo = useCallback(
-		(index: number) => {
-			if (index < 0 || index >= images.length) return;
-			setActiveIndex(index);
-		},
-		[images.length],
-	);
-
 	const goNext = useCallback(() => {
-		goTo(activeIndex < images.length - 1 ? activeIndex + 1 : 0);
-	}, [activeIndex, images.length, goTo]);
+		setActiveIndex((prev) => (prev < displayImages.length - 1 ? prev + 1 : 0));
+	}, [displayImages.length]);
 
 	const goPrev = useCallback(() => {
-		goTo(activeIndex > 0 ? activeIndex - 1 : images.length - 1);
-	}, [activeIndex, images.length, goTo]);
+		setActiveIndex((prev) => (prev > 0 ? prev - 1 : displayImages.length - 1));
+	}, [displayImages.length]);
 
 	useEffect(() => {
 		if (!lightboxOpen) return;
@@ -100,30 +116,6 @@ export function GalleryBlock({ block }: GalleryBlockProps) {
 		window.addEventListener("keydown", handleKeyDown);
 		return () => window.removeEventListener("keydown", handleKeyDown);
 	}, [lightboxOpen, closeLightbox, goNext, goPrev]);
-
-	useEffect(() => {
-		if (!lightboxOpen || !sliderRef.current) return;
-		const container = sliderRef.current;
-		const activeEl = container.children[activeIndex] as HTMLElement;
-		if (!activeEl) return;
-
-		const scrollLeft =
-			activeEl.offsetLeft -
-			container.clientWidth / 2 +
-			activeEl.clientWidth / 2;
-		container.scrollTo({ left: scrollLeft, behavior: "smooth" });
-	}, [activeIndex, lightboxOpen]);
-
-	const FALLBACK_BG =
-		"https://cdn.prod.website-files.com/6828ea881872740b3f4a766c/682f0e4c4ee9e7987f606b8a_Process%2002%20Bg.avif";
-
-	const fallbackImages: GalleryImage[] = Array.from({ length: 6 }, (_, i) => ({
-		url: "",
-		alt: `Visual representation ${i + 1}`,
-	}));
-
-	const displayImages = images.length > 0 ? images : fallbackImages;
-	const isFallback = images.length === 0;
 
 	return (
 		<>
@@ -250,19 +242,34 @@ export function GalleryBlock({ block }: GalleryBlockProps) {
 			{/* Lightbox */}
 			{lightboxOpen && (
 				<div
-					className="fixed inset-0 z-50 flex items-center justify-center"
+					className={`
+						fixed inset-0 z-50 flex items-center justify-center
+						transition-opacity duration-300
+						${lightboxVisible ? "opacity-100" : "opacity-0"}
+					`}
 					onClick={closeLightbox}
 				>
 					{/* Backdrop */}
-					<div className="absolute inset-0 bg-brand-primary/80 backdrop-blur-md animate-[fadeIn_200ms_ease-out]" />
+					<div
+						className={`
+							absolute inset-0 bg-brand-primary/80 backdrop-blur-md
+							transition-opacity duration-300
+							${lightboxVisible ? "opacity-100" : "opacity-0"}
+						`}
+					/>
 
 					{/* Close button */}
 					<button
 						onClick={closeLightbox}
-						className="absolute top-6 right-6 z-[60] w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 transition-colors duration-200 flex items-center justify-center"
+						className={`
+							absolute top-6 right-6 z-[60] w-11 h-11 rounded-full bg-white/10 hover:bg-white/20
+							transition-all duration-300
+							${lightboxVisible ? "opacity-100 scale-100" : "opacity-0 scale-75"}
+						`}
+						style={{ transitionDelay: "100ms" }}
 					>
 						<svg
-							className="w-6 h-6 text-white"
+							className="w-6 h-6 text-white m-auto"
 							fill="none"
 							stroke="currentColor"
 							viewBox="0 0 24 24"
@@ -282,7 +289,12 @@ export function GalleryBlock({ block }: GalleryBlockProps) {
 							e.stopPropagation();
 							goPrev();
 						}}
-						className="absolute left-4 z-[60] w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 transition-colors duration-200 flex items-center justify-center max-sm:left-2"
+						className={`
+							absolute left-4 z-[60] w-11 h-11 rounded-full bg-white/10 hover:bg-white/20
+							transition-all duration-300 flex items-center justify-center max-sm:left-2
+							${lightboxVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-4"}
+						`}
+						style={{ transitionDelay: "150ms" }}
 					>
 						<svg
 							className="w-6 h-6 text-white"
@@ -303,7 +315,12 @@ export function GalleryBlock({ block }: GalleryBlockProps) {
 							e.stopPropagation();
 							goNext();
 						}}
-						className="absolute right-4 z-[60] w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 transition-colors duration-200 flex items-center justify-center max-sm:right-2"
+						className={`
+							absolute right-4 z-[60] w-11 h-11 rounded-full bg-white/10 hover:bg-white/20
+							transition-all duration-300 flex items-center justify-center max-sm:right-2
+							${lightboxVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-4"}
+						`}
+						style={{ transitionDelay: "150ms" }}
 					>
 						<svg
 							className="w-6 h-6 text-white"
@@ -320,63 +337,92 @@ export function GalleryBlock({ block }: GalleryBlockProps) {
 						</svg>
 					</button>
 
-					{/* Slider */}
+					{/* 3-slide carousel: prev peek | active | next peek */}
 					<div
-						ref={sliderRef}
-						className="relative z-[55] flex items-center gap-6 overflow-x-auto px-[20vw] py-10 w-full h-full scrollbar-hide max-sm:gap-4 max-sm:px-[10vw]"
-						style={{
-							scrollSnapType: "x mandatory",
-							scrollbarWidth: "none",
-							msOverflowStyle: "none",
-						}}
+						className={`
+							relative z-[55] flex items-center justify-center gap-5 w-full max-w-[1100px] mx-auto px-16
+							transition-all duration-500 max-sm:gap-3 max-sm:px-10
+							${lightboxVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"}
+						`}
+						style={{ transitionDelay: "50ms" }}
 						onClick={(e) => e.stopPropagation()}
 					>
-						{displayImages.map((image, index) => {
-							const isActive = index === activeIndex;
-
-							return (
+						{/* Previous image peek */}
+						<div
+							className="flex-shrink-0 w-[12%] max-sm:w-[10%] cursor-pointer rounded-xl overflow-hidden opacity-50 hover:opacity-70 transition-all duration-500"
+							onClick={goPrev}
+						>
+							{isFallback ? (
 								<div
-									key={index}
-									className={`
-										flex-shrink-0 rounded-2xl overflow-hidden transition-all duration-500 cursor-pointer
-										${
-											isActive
-												? "w-[60vw] max-w-[800px] max-sm:w-[80vw] opacity-100 scale-100 shadow-2xl"
-												: "w-[15vw] max-w-[200px] max-sm:w-[20vw] opacity-60 scale-95 hover:opacity-80"
-										}
-									`}
-									style={{ scrollSnapAlign: "center" }}
-									onClick={() => goTo(index)}
+									className="w-full aspect-[3/4] bg-cover bg-center flex items-center justify-center"
+									style={{ backgroundImage: `url('${FALLBACK_BG}')` }}
 								>
-									{isFallback ? (
-										<div
-											className={`
-												w-full bg-cover bg-center transition-all duration-500 flex items-center justify-center
-												${isActive ? "h-[60vh] max-sm:h-[50vh]" : "h-[40vh]"}
-											`}
-											style={{ backgroundImage: `url('${FALLBACK_BG}')` }}
-										>
-											<div className="text-brand-testimonial-tagline font-[family-name:var(--font-inter-tight)] text-lg font-medium text-center">
-												Visual representation
-											</div>
-										</div>
-									) : (
-										<img
-											src={image.url}
-											alt={image.alt}
-											className={`
-												w-full object-cover transition-all duration-500
-												${isActive ? "max-h-[75vh]" : "max-h-[50vh]"}
-											`}
-										/>
-									)}
+									<div className="text-brand-testimonial-tagline font-[family-name:var(--font-inter-tight)] text-xs font-medium text-center">
+										Visual representation
+									</div>
 								</div>
-							);
-						})}
+							) : (
+								<img
+									src={displayImages[prevIndex].url}
+									alt={displayImages[prevIndex].alt}
+									className="w-full object-cover aspect-[3/4]"
+								/>
+							)}
+						</div>
+
+						{/* Active image */}
+						<div className="flex-1 min-w-0 max-w-[70%] max-sm:max-w-[75%] rounded-2xl overflow-hidden shadow-2xl transition-all duration-500">
+							{isFallback ? (
+								<div
+									className="w-full aspect-[4/3] bg-cover bg-center flex items-center justify-center"
+									style={{ backgroundImage: `url('${FALLBACK_BG}')` }}
+								>
+									<div className="text-brand-testimonial-tagline font-[family-name:var(--font-inter-tight)] text-lg font-medium text-center">
+										Visual representation
+									</div>
+								</div>
+							) : (
+								<img
+									src={displayImages[activeIndex].url}
+									alt={displayImages[activeIndex].alt}
+									className="w-full max-h-[80vh] object-contain"
+								/>
+							)}
+						</div>
+
+						{/* Next image peek */}
+						<div
+							className="flex-shrink-0 w-[12%] max-sm:w-[10%] cursor-pointer rounded-xl overflow-hidden opacity-50 hover:opacity-70 transition-all duration-500"
+							onClick={goNext}
+						>
+							{isFallback ? (
+								<div
+									className="w-full aspect-[3/4] bg-cover bg-center flex items-center justify-center"
+									style={{ backgroundImage: `url('${FALLBACK_BG}')` }}
+								>
+									<div className="text-brand-testimonial-tagline font-[family-name:var(--font-inter-tight)] text-xs font-medium text-center">
+										Visual representation
+									</div>
+								</div>
+							) : (
+								<img
+									src={displayImages[nextIndex].url}
+									alt={displayImages[nextIndex].alt}
+									className="w-full object-cover aspect-[3/4]"
+								/>
+							)}
+						</div>
 					</div>
 
 					{/* Image counter */}
-					<div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-[60] text-white/70 text-sm font-[family-name:var(--font-inter-tight)]">
+					<div
+						className={`
+							absolute bottom-6 left-1/2 -translate-x-1/2 z-[60] text-white/70 text-sm font-[family-name:var(--font-inter-tight)]
+							transition-all duration-300
+							${lightboxVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}
+						`}
+						style={{ transitionDelay: "200ms" }}
+					>
 						{activeIndex + 1} / {displayImages.length}
 					</div>
 				</div>
