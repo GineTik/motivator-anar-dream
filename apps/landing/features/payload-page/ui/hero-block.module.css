@@ -97,6 +97,8 @@
     filter: drop-shadow(0 4.53px 7px rgba(97, 83, 238, 0.31));
     width: auto;
     height: auto;
+    max-width: 24px;
+    max-height: 24px;
 }
 
 .iconFallback {
@@ -290,11 +292,11 @@
     }
 
     .heroWrap {
-        padding-top: 80px;
+        padding-top: 100px;
     }
 
     .heroPersonWrap {
-        max-height: 400px;
+        height: 400px;
     }
 
     .heroPerson {
@@ -348,11 +350,11 @@
     }
 
     .heroWrap {
-        padding-top: 72px;
+        padding-top: 92px;
     }
 
     .heroPersonWrap {
-        max-height: 350px;
+        height: 350px;
     }
 
     .heroPerson {
@@ -415,11 +417,11 @@
     }
 
     .heroWrap {
-        padding-top: 60px;
+        padding-top: 130px;
     }
 
     .heroPersonWrap {
-        max-height: 300px;
+        height: 300px;
     }
 
     .heroPerson {
