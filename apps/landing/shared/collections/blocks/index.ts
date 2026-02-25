@@ -12,3 +12,4 @@ export { FooterBlock } from "./footer-block";
 export { BlogBlock } from "./blog-block";
 export { PartnershipBlock } from "./partnership-block";
 export { GalleryBlock } from "./gallery-block";
+export { ContactUsBlock } from "./contact-us-block";

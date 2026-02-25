@@ -144,4 +144,13 @@
     --color-brand-footer-subscribe-placeholder: rgba(57, 30, 121, 0.6);
     --color-brand-footer-subscribe-border: rgba(77, 0, 255, 0.14);
     --color-brand-accent: #7b87fe;
+
+    /* Contact block colors */
+    --color-brand-contact-card-bg: rgba(255, 255, 255, 0.85);
+    --color-brand-contact-card-border: rgba(235, 237, 255, 0.6);
+    --color-brand-contact-item-bg: rgba(255, 255, 255, 0.9);
+    --color-brand-contact-item-border: rgba(235, 237, 255, 0.5);
+    --color-brand-contact-icon-bg: rgba(89, 75, 236, 0.08);
+    --color-brand-contact-input-border: rgba(235, 237, 255, 0.8);
+    --color-brand-contact-input-placeholder: rgba(37, 10, 99, 0.4);
 }

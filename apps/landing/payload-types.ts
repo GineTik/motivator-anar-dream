@@ -217,6 +217,7 @@ export interface Page {
     | FooterBlock
     | PartnershipBlock
     | GalleryBlock
+    | ContactUsBlock
   )[];
   seo?: {
     title?: string | null;
@@ -671,6 +672,47 @@ export interface GalleryBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ContactUsBlock".
+ */
+export interface ContactUsBlock {
+  badge: {
+    icon?: (number | null) | Media;
+    text: string;
+  };
+  heading: string;
+  subtitle: string;
+  cardHeading: string;
+  cardDescription: string;
+  contactItems?:
+    | {
+        type: 'email' | 'telegram' | 'phone';
+        value: string;
+        id?: string | null;
+      }[]
+    | null;
+  formFields: {
+    nameLabel: string;
+    namePlaceholder: string;
+    emailLabel: string;
+    emailPlaceholder: string;
+    phoneLabel: string;
+    phonePlaceholder: string;
+    companyLabel: string;
+    companyPlaceholder: string;
+    messageLabel: string;
+    messagePlaceholder: string;
+  };
+  buttonText: string;
+  /**
+   * Background image for the section (recommended: soft gradient or nature image)
+   */
+  backgroundImage?: (number | null) | Media;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'contactUs';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -855,6 +897,7 @@ export interface PagesSelect<T extends boolean = true> {
         footer?: T | FooterBlockSelect<T>;
         partnership?: T | PartnershipBlockSelect<T>;
         gallery?: T | GalleryBlockSelect<T>;
+        contactUs?: T | ContactUsBlockSelect<T>;
       };
   seo?:
     | T
@@ -1260,6 +1303,47 @@ export interface GalleryBlockSelect<T extends boolean = true> {
         alt?: T;
         id?: T;
       };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ContactUsBlock_select".
+ */
+export interface ContactUsBlockSelect<T extends boolean = true> {
+  badge?:
+    | T
+    | {
+        icon?: T;
+        text?: T;
+      };
+  heading?: T;
+  subtitle?: T;
+  cardHeading?: T;
+  cardDescription?: T;
+  contactItems?:
+    | T
+    | {
+        type?: T;
+        value?: T;
+        id?: T;
+      };
+  formFields?:
+    | T
+    | {
+        nameLabel?: T;
+        namePlaceholder?: T;
+        emailLabel?: T;
+        emailPlaceholder?: T;
+        phoneLabel?: T;
+        phonePlaceholder?: T;
+        companyLabel?: T;
+        companyPlaceholder?: T;
+        messageLabel?: T;
+        messagePlaceholder?: T;
+      };
+  buttonText?: T;
+  backgroundImage?: T;
   id?: T;
   blockName?: T;
 }

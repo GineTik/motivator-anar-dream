@@ -13,6 +13,7 @@ import { FooterBlock } from "./blocks/footer-block";
 import { BlogBlock } from "./blocks/blog-block";
 import { PartnershipBlock } from "./blocks/partnership-block";
 import { GalleryBlock } from "./blocks/gallery-block";
+import { ContactUsBlock } from "./blocks/contact-us-block";
 
 export const Pages: CollectionConfig = {
     slug: "pages",
@@ -70,6 +71,7 @@ export const Pages: CollectionConfig = {
                 FooterBlock,
                 PartnershipBlock,
                 GalleryBlock,
+                ContactUsBlock,
             ],
             required: true,
             minRows: 1,
