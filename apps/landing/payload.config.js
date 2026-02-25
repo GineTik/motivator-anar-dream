@@ -5,6 +5,7 @@ import { s3Storage } from "@payloadcms/storage-s3";
 import path from "path";
 import { fileURLToPath } from "url";
 import { Media, Pages } from "./shared/collections";
+import { Header } from "./shared/collections/globals";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -26,6 +27,7 @@ export default buildConfig({
         Media,
         Pages,
     ],
+    globals: [Header],
     editor: lexicalEditor({}),
     secret:
         process.env.PAYLOAD_SECRET || "your-secret-key-change-in-production",

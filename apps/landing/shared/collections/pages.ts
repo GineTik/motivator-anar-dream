@@ -8,7 +8,6 @@ import { IntegrationBlock } from "./blocks/integration-block";
 import { TestimonialBlock } from "./blocks/testimonial-block";
 import { FaqBlock } from "./blocks/faq-block";
 import { CtaBlock } from "./blocks/cta-block";
-import { HeaderBlock } from "./blocks/header-block";
 import { FooterBlock } from "./blocks/footer-block";
 import { BlogBlock } from "./blocks/blog-block";
 import { PartnershipBlock } from "./blocks/partnership-block";
@@ -58,7 +57,6 @@ export const Pages: CollectionConfig = {
             type: "blocks",
             blocks: [
                 HeroBlock,
-                HeaderBlock,
                 ProcessBlock,
                 PricingBlock,
                 PricingAltBlock,

@@ -1,6 +1,5 @@
 import type { Page } from "@/payload-types";
 import { HeroBlock } from "./hero-block";
-import { HeaderBlock } from "./header-block";
 import { ProcessBlock } from "./process-block";
 import { PricingBlock } from "./pricing-block";
 import { PricingAltBlock } from "./pricing-alt-block";
@@ -31,10 +30,6 @@ export function RenderBlocks({ blocks }: RenderBlocksProps) {
 					case "hero":
 						return (
 							<HeroBlock key={`${block.blockType}-${index}`} block={block} />
-						);
-					case "header":
-						return (
-							<HeaderBlock key={`${block.blockType}-${index}`} block={block} />
 						);
 					case "process":
 						return (

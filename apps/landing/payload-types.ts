@@ -89,8 +89,12 @@ export interface Config {
     defaultIDType: number;
   };
   fallbackLocale: ('false' | 'none' | 'null') | false | null | ('en' | 'uk' | 'ru') | ('en' | 'uk' | 'ru')[];
-  globals: {};
-  globalsSelect: {};
+  globals: {
+    header: Header;
+  };
+  globalsSelect: {
+    header: HeaderSelect<false> | HeaderSelect<true>;
+  };
   locale: 'en' | 'uk' | 'ru';
   user: User;
   jobs: {
@@ -204,7 +208,6 @@ export interface Page {
   slug: string;
   blocks: (
     | HeroBlock
-    | HeaderBlock
     | ProcessBlock
     | PricingBlock
     | PricingAltBlock
@@ -252,39 +255,6 @@ export interface HeroBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'hero';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "HeaderBlock".
- */
-export interface HeaderBlock {
-  /**
-   * Site logo for the navbar
-   */
-  logo?: (number | null) | Media;
-  navLinks?:
-    | {
-        label: string;
-        href: string;
-        children?:
-          | {
-              label: string;
-              href: string;
-              id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-      }[]
-    | null;
-  ctaText: string;
-  ctaLink?: string | null;
-  /**
-   * Arrow icon for the CTA button
-   */
-  ctaArrowIcon?: (number | null) | Media;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'header';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -884,7 +854,6 @@ export interface PagesSelect<T extends boolean = true> {
     | T
     | {
         hero?: T | HeroBlockSelect<T>;
-        header?: T | HeaderBlockSelect<T>;
         process?: T | ProcessBlockSelect<T>;
         pricing?: T | PricingBlockSelect<T>;
         pricingAlt?: T | PricingAltBlockSelect<T>;
@@ -932,32 +901,6 @@ export interface HeroBlockSelect<T extends boolean = true> {
         buttonText?: T;
       };
   personImage?: T;
-  id?: T;
-  blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "HeaderBlock_select".
- */
-export interface HeaderBlockSelect<T extends boolean = true> {
-  logo?: T;
-  navLinks?:
-    | T
-    | {
-        label?: T;
-        href?: T;
-        children?:
-          | T
-          | {
-              label?: T;
-              href?: T;
-              id?: T;
-            };
-        id?: T;
-      };
-  ctaText?: T;
-  ctaLink?: T;
-  ctaArrowIcon?: T;
   id?: T;
   blockName?: T;
 }
@@ -1386,6 +1329,66 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
   batch?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "header".
+ */
+export interface Header {
+  id: number;
+  /**
+   * Site logo for the navbar
+   */
+  logo?: (number | null) | Media;
+  navLinks?:
+    | {
+        label: string;
+        href: string;
+        children?:
+          | {
+              label: string;
+              href: string;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
+  ctaText: string;
+  ctaLink?: string | null;
+  /**
+   * Arrow icon for the CTA button
+   */
+  ctaArrowIcon?: (number | null) | Media;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "header_select".
+ */
+export interface HeaderSelect<T extends boolean = true> {
+  logo?: T;
+  navLinks?:
+    | T
+    | {
+        label?: T;
+        href?: T;
+        children?:
+          | T
+          | {
+              label?: T;
+              href?: T;
+              id?: T;
+            };
+        id?: T;
+      };
+  ctaText?: T;
+  ctaLink?: T;
+  ctaArrowIcon?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

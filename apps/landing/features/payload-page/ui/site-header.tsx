@@ -1,22 +1,22 @@
 "use client";
 
-import type { HeaderBlock as HeaderBlockType } from "@/payload-types";
+import type { Header } from "@/payload-types";
 import { useState, useRef, useEffect } from "react";
 import { Button } from "@/shared/ui/button";
 
-interface HeaderBlockProps {
-	block: HeaderBlockType;
+interface SiteHeaderProps {
+	data: Header;
 }
 
-export function HeaderBlock({ block }: HeaderBlockProps) {
+export function SiteHeader({ data }: SiteHeaderProps) {
 	const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 	const [openDropdown, setOpenDropdown] = useState<number | null>(null);
 	const dropdownTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
 	const logoUrl =
-		typeof block.logo === "object" && block.logo?.url ? block.logo.url : null;
+		typeof data.logo === "object" && data.logo?.url ? data.logo.url : null;
 
-	const navLinks = block.navLinks || [];
+	const navLinks = data.navLinks || [];
 
 	useEffect(() => {
 		return () => {
@@ -145,12 +145,12 @@ export function HeaderBlock({ block }: HeaderBlockProps) {
 					<div className="flex items-center gap-4">
 						{/* CTA Button — Desktop */}
 						<Button
-							href={block.ctaLink || "#"}
+							href={data.ctaLink || "#"}
 							variant="solid"
 							size="sm"
 							className="hidden lg:inline-flex text-[15px] xl:px-7 xl:py-3"
 						>
-							{block.ctaText}
+							{data.ctaText}
 						</Button>
 
 						{/* Mobile Menu Button */}
@@ -245,12 +245,12 @@ export function HeaderBlock({ block }: HeaderBlockProps) {
 							{/* Mobile CTA */}
 							<li className="mt-3 pt-3 border-t border-brand-footer-border">
 								<Button
-									href={block.ctaLink || "#"}
+									href={data.ctaLink || "#"}
 									variant="solid"
 									size="sm"
 									className="w-full text-center text-[15px]"
 								>
-									{block.ctaText}
+									{data.ctaText}
 								</Button>
 							</li>
 						</ul>
