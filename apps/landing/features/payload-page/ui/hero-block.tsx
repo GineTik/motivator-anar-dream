@@ -83,23 +83,16 @@ export function HeroBlock({ block }: HeroBlockProps) {
 								style={{ transitionDelay: "300ms" }}
 							>
 								<div className={styles.heroFormWrap}>
-									<div className={styles.subscribeFormBlock}>
-										<form className={styles.subscribeForm}>
-											<div className={styles.subscribeFormGroup}>
-												<input
-													className={styles.subscribeInputField}
-													maxLength={256}
-													name="email"
-													placeholder={block.ctaForm?.inputPlaceholder}
-													type="email"
-													required
-												/>
-												<Button type="submit" variant="gradient" size="lg">
-													{block.ctaForm?.buttonText}
-												</Button>
-											</div>
-										</form>
-									</div>
+									<Button
+										href={block.ctaButton?.href || "#"}
+										variant="gradient"
+										size="lg"
+										{...(block.ctaButton?.openInNewTab
+											? { target: "_blank", rel: "noopener noreferrer" }
+											: {})}
+									>
+										{block.ctaButton?.text}
+									</Button>
 								</div>
 							</div>
 						</div>

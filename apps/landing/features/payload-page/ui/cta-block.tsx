@@ -79,21 +79,19 @@ export function CtaBlock({ block }: CtaBlockProps) {
 
 					{/* Email Form */}
 					<div
-						className={`w-[95%] sm:w-[85%] md:w-[472px] max-w-full mt-7 sm:mt-8 md:mt-10 ${fadeClass(isVisible)}`}
+						className={`mt-7 sm:mt-8 md:mt-10 ${fadeClass(isVisible)}`}
 						style={{ transitionDelay: "200ms" }}
 					>
-						<form className="mb-0">
-							<div className="flex gap-1 sm:gap-1.5 md:gap-2 justify-center">
-								<input
-									type="email"
-									placeholder={block.emailPlaceholder || "Enter Email"}
-									className="border border-white bg-white text-brand-primary rounded-full h-[57px] max-md:h-[52px] mb-0 pl-4 sm:pl-[25px] font-[family-name:var(--font-inter-tight)] text-base font-medium leading-6 w-full focus:border-brand-purple-light focus:outline-none placeholder:text-brand-footer-subscribe-placeholder placeholder:tracking-[-0.01em] placeholder:font-[family-name:var(--font-inter-tight)] placeholder:text-base placeholder:font-medium placeholder:leading-6"
-								/>
-								<Button type="submit" variant="gradient" size="lg">
-									{block.buttonText}
-								</Button>
-							</div>
-						</form>
+						<Button
+							href={block.ctaButton?.href || "#"}
+							variant="gradient"
+							size="lg"
+							{...(block.ctaButton?.openInNewTab
+								? { target: "_blank", rel: "noopener noreferrer" }
+								: {})}
+						>
+							{block.ctaButton?.text}
+						</Button>
 					</div>
 				</div>
 			</div>

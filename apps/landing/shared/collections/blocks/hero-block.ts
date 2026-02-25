@@ -39,22 +39,29 @@ export const HeroBlock: Block = {
                 "Connect with yourself, unlock your potential, and create your reality through love, clarity, and strength",
         },
         {
-            name: "ctaForm",
+            name: "ctaButton",
             type: "group",
             fields: [
                 {
-                    name: "inputPlaceholder",
-                    type: "text",
-                    required: true,
-                    localized: true,
-                    defaultValue: "Enter Email",
-                },
-                {
-                    name: "buttonText",
+                    name: "text",
                     type: "text",
                     required: true,
                     localized: true,
                     defaultValue: "Start Your Journey",
+                },
+                {
+                    name: "href",
+                    type: "text",
+                    required: true,
+                    defaultValue: "#",
+                    admin: {
+                        description: "URL or anchor link (e.g. /contact, #pricing, https://...)",
+                    },
+                },
+                {
+                    name: "openInNewTab",
+                    type: "checkbox",
+                    defaultValue: false,
                 },
             ],
         },

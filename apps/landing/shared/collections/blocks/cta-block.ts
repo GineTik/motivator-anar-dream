@@ -40,18 +40,31 @@ export const CtaBlock: Block = {
 				"Experience deep transformation with guided spiritual practices. Release what no longer serves you, reconnect with your authentic self, and begin creating your reality from a place of inner clarity.",
 		},
 		{
-			name: "emailPlaceholder",
-			type: "text",
-			required: false,
-			localized: true,
-			defaultValue: "Enter Email",
-		},
-		{
-			name: "buttonText",
-			type: "text",
-			required: true,
-			localized: true,
-			defaultValue: "Begin Your Journey",
+			name: "ctaButton",
+			type: "group",
+			fields: [
+				{
+					name: "text",
+					type: "text",
+					required: true,
+					localized: true,
+					defaultValue: "Begin Your Journey",
+				},
+				{
+					name: "href",
+					type: "text",
+					required: true,
+					defaultValue: "#",
+					admin: {
+						description: "URL or anchor link (e.g. /contact, #pricing, https://...)",
+					},
+				},
+				{
+					name: "openInNewTab",
+					type: "checkbox",
+					defaultValue: false,
+				},
+			],
 		},
 	],
 };

@@ -244,9 +244,13 @@ export interface HeroBlock {
   };
   heading: string;
   subtitle: string;
-  ctaForm: {
-    inputPlaceholder: string;
-    buttonText: string;
+  ctaButton: {
+    text: string;
+    /**
+     * URL or anchor link (e.g. /contact, #pricing, https://...)
+     */
+    href: string;
+    openInNewTab?: boolean | null;
   };
   /**
    * Image of a person with transparent background, cropped above waist
@@ -510,8 +514,14 @@ export interface CtaBlock {
   };
   heading: string;
   subtitle: string;
-  emailPlaceholder?: string | null;
-  buttonText: string;
+  ctaButton: {
+    text: string;
+    /**
+     * URL or anchor link (e.g. /contact, #pricing, https://...)
+     */
+    href: string;
+    openInNewTab?: boolean | null;
+  };
   id?: string | null;
   blockName?: string | null;
   blockType: 'cta';
@@ -894,11 +904,12 @@ export interface HeroBlockSelect<T extends boolean = true> {
       };
   heading?: T;
   subtitle?: T;
-  ctaForm?:
+  ctaButton?:
     | T
     | {
-        inputPlaceholder?: T;
-        buttonText?: T;
+        text?: T;
+        href?: T;
+        openInNewTab?: T;
       };
   personImage?: T;
   id?: T;
@@ -1124,8 +1135,13 @@ export interface CtaBlockSelect<T extends boolean = true> {
       };
   heading?: T;
   subtitle?: T;
-  emailPlaceholder?: T;
-  buttonText?: T;
+  ctaButton?:
+    | T
+    | {
+        text?: T;
+        href?: T;
+        openInNewTab?: T;
+      };
   id?: T;
   blockName?: T;
 }
