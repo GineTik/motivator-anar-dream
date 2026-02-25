@@ -2,6 +2,7 @@ import { buildConfig } from "payload";
 import { postgresAdapter } from "@payloadcms/db-postgres";
 import { lexicalEditor } from "@payloadcms/richtext-lexical";
 import { s3Storage } from "@payloadcms/storage-s3";
+import sharp from "sharp";
 import path from "path";
 import { fileURLToPath } from "url";
 import { Media, Pages } from "./shared/collections";
@@ -11,6 +12,7 @@ const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
 
 export default buildConfig({
+    sharp,
     admin: {
         user: "users",
     },
@@ -47,6 +49,7 @@ export default buildConfig({
             },
             bucket: process.env.S3_BUCKET || "",
             config: {
+                forcePathStyle: true,
                 endpoint: process.env.S3_ENDPOINT || "",
                 region: process.env.S3_REGION || "us-east-1",
                 credentials: {
