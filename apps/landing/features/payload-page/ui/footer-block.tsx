@@ -87,23 +87,14 @@ export function FooterBlock({ block }: FooterBlockProps) {
 								</div>
 							</div>
 						</div>
-						<div className="w-full md:w-auto md:max-w-[384px] md:ml-auto">
-							<form className="mb-0">
-								<div className="flex gap-0">
-									<input
-										type="email"
-										placeholder={block.newsletter?.placeholder || "Enter Email"}
-										className="border border-brand-footer-subscribe-border bg-white text-brand-primary rounded-full h-[50px] mb-0 pl-4 sm:pl-[25px] font-[family-name:var(--font-inter-tight)] text-base font-medium leading-6 w-full focus:border-brand-purple-light focus:outline-none placeholder:text-brand-footer-subscribe-placeholder placeholder:tracking-[-0.01em] placeholder:font-[family-name:var(--font-inter-tight)] placeholder:text-base placeholder:font-medium placeholder:leading-6"
-									/>
-									<Button
-										type="submit"
-										variant="secondary"
-										className="h-[50px] px-5 sm:px-[30px]"
-									>
-										{block.newsletter?.buttonText}
-									</Button>
-								</div>
-							</form>
+						<div className="w-full md:w-auto md:ml-auto">
+							<Button
+								href={block.newsletter?.buttonHref || "#"}
+								variant="secondary"
+								className="h-[50px] px-5 sm:px-[30px]"
+							>
+								{block.newsletter?.buttonText}
+							</Button>
 						</div>
 					</div>
 

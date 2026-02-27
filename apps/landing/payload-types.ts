@@ -584,8 +584,8 @@ export interface FooterBlock {
   newsletter: {
     heading: string;
     subtitle?: string | null;
-    placeholder?: string | null;
     buttonText: string;
+    buttonHref?: string | null;
   };
   copyright?: string | null;
   socialLinks?:
@@ -1202,8 +1202,8 @@ export interface FooterBlockSelect<T extends boolean = true> {
     | {
         heading?: T;
         subtitle?: T;
-        placeholder?: T;
         buttonText?: T;
+        buttonHref?: T;
       };
   copyright?: T;
   socialLinks?:

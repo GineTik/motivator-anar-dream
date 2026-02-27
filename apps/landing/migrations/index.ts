@@ -11,6 +11,7 @@ import * as migration_20260213_220434_add_gallery_block from './20260213_220434_
 import * as migration_20260225_090230_add_contact_us_block from './20260225_090230_add_contact_us_block';
 import * as migration_20260225_093130_move_header_globally from './20260225_093130_move_header_globally';
 import * as migration_20260225_132615_remove_email_inputs from './20260225_132615_remove_email_inputs';
+import * as migration_20260227_101043_add_button_href from './20260227_101043_add_button_href';
 
 export const migrations = [
   {
@@ -76,6 +77,11 @@ export const migrations = [
   {
     up: migration_20260225_132615_remove_email_inputs.up,
     down: migration_20260225_132615_remove_email_inputs.down,
-    name: '20260225_132615_remove_email_inputs'
+    name: '20260225_132615_remove_email_inputs',
+  },
+  {
+    up: migration_20260227_101043_add_button_href.up,
+    down: migration_20260227_101043_add_button_href.down,
+    name: '20260227_101043_add_button_href'
   },
 ];
