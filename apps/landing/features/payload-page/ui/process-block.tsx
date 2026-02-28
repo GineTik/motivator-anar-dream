@@ -163,7 +163,7 @@ export function ProcessBlock({ block }: ProcessBlockProps) {
 										style={{ transitionDelay: "100ms" }}
 									>
 										{/* Left Content */}
-										<div className="flex flex-col justify-center items-center md:items-start w-full md:w-1/2 md:max-w-1/2">
+										<div className="flex flex-col justify-center max-md:items-center items-start w-full md:w-1/2 md:max-w-1/2">
 											<div className="rounded-full p-[0.82px] relative overflow-hidden shadow-[2.88px_25.11px_19.72px_rgba(93,72,236,0.04)]">
 												<div className="relative z-[1] bg-white rounded-full px-4 py-[5px] md:px-5 md:py-[6px] lg:px-[22px] lg:py-2">
 													<div className="text-brand-primary tracking-[-0.03em] text-base leading-6">
@@ -174,11 +174,11 @@ export function ProcessBlock({ block }: ProcessBlockProps) {
 											</div>
 											<div className="w-full mt-[14px] md:mt-4 lg:mt-5">
 												<div className="max-w-full">
-													<h3 className="text-brand-primary tracking-[-0.02em] mt-0 mb-0 text-2xl md:text-[32px] lg:text-[42px] font-medium leading-8 md:leading-10 lg:leading-[50px] text-center md:text-left">
+													<h3 className="text-brand-primary tracking-[-0.02em] mt-0 mb-0 text-2xl md:text-[32px] lg:text-[42px] font-medium leading-8 md:leading-10 lg:leading-[50px] max-md:text-center">
 														{currentTab.heading}
 													</h3>
 												</div>
-												<div className="text-brand-testimonial-tagline mt-2 md:mt-4 lg:mt-5 mb-0 text-base leading-6 text-center md:text-left">
+												<div className="text-brand-testimonial-tagline mt-2 md:mt-4 lg:mt-5 mb-0 text-base leading-6 max-md:text-center">
 													{currentTab.description}
 												</div>
 											</div>
