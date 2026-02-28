@@ -231,6 +231,8 @@
     justify-content: center;
     height: 100%;
     position: relative;
+    box-sizing: border-box;
+    padding-bottom: 20px;
 }
 
 .heroPerson {
@@ -238,7 +240,7 @@
     height: 100%;
     object-fit: contain;
     object-position: bottom;
-    max-height: calc(100vh - 115px);
+    max-height: calc(100vh - 115px - 120px);
 }
 
 .personFallback {
@@ -297,6 +299,7 @@
 
     .heroPersonWrap {
         height: 400px;
+        padding-bottom: 0;
     }
 
     .heroPerson {
@@ -355,6 +358,7 @@
 
     .heroPersonWrap {
         height: 350px;
+        padding-bottom: 0;
     }
 
     .heroPerson {
@@ -422,6 +426,7 @@
 
     .heroPersonWrap {
         height: 300px;
+        padding-bottom: 0;
     }
 
     .heroPerson {
