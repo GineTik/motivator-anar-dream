@@ -18,6 +18,9 @@ export const HeaderBlock: Block = {
             type: "array",
             minRows: 1,
             maxRows: 8,
+            admin: {
+                initCollapsed: true,
+            },
             defaultValue: [
                 { label: "About", href: "/about" },
                 { label: "Practices", href: "/practices" },
@@ -41,6 +44,9 @@ export const HeaderBlock: Block = {
                     name: "children",
                     type: "array",
                     required: false,
+                    admin: {
+                        initCollapsed: true,
+                    },
                     fields: [
                         {
                             name: "label",

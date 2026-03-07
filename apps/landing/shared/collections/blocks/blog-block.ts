@@ -56,6 +56,9 @@ export const BlogBlock: Block = {
 			label: "Статті",
 			minRows: 1,
 			maxRows: 6,
+			admin: {
+				initCollapsed: true,
+			},
 			defaultValue: [
 				{
 					title: "The Power of Daily Meditation Practice",

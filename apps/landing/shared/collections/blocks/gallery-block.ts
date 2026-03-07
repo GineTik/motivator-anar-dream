@@ -56,6 +56,9 @@ export const GalleryBlock: Block = {
 			label: "Зображення",
 			minRows: 1,
 			maxRows: 20,
+			admin: {
+				initCollapsed: true,
+			},
 			fields: [
 				{
 					name: "image",

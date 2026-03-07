@@ -103,6 +103,9 @@ export const PricingBlock: Block = {
                     type: "array",
                     label: "Переваги",
                     minRows: 1,
+                    admin: {
+                        initCollapsed: true,
+                    },
                     fields: [
                         {
                             name: "text",
@@ -143,6 +146,7 @@ export const PricingBlock: Block = {
             label: "Відгуки",
             minRows: 1,
             admin: {
+                initCollapsed: true,
                 description:
                     "Відгуки прокручуються автоматично (рекомендується мінімум 4 для плавної анімації)",
             },

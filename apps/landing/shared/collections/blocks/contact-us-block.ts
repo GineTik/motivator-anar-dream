@@ -73,6 +73,9 @@ export const ContactUsBlock: Block = {
 			label: "Контактна інформація",
 			minRows: 1,
 			maxRows: 6,
+			admin: {
+				initCollapsed: true,
+			},
 			defaultValue: [
 				{
 					type: "email",

@@ -27,6 +27,7 @@ export const FooterBlock: Block = {
 			minRows: 1,
 			maxRows: 4,
 			admin: {
+				initCollapsed: true,
 				description:
 					"Колонки з посиланнями в нижній частині сайту",
 			},
@@ -73,6 +74,9 @@ export const FooterBlock: Block = {
 					label: "Посилання",
 					minRows: 1,
 					maxRows: 8,
+					admin: {
+						initCollapsed: true,
+					},
 					fields: [
 						{
 							name: "label",
@@ -133,6 +137,7 @@ export const FooterBlock: Block = {
 			label: "Соціальні мережі",
 			maxRows: 6,
 			admin: {
+				initCollapsed: true,
 				description:
 					"Посилання на соціальні мережі (іконки внизу сторінки)",
 			},

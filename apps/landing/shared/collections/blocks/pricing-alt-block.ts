@@ -64,6 +64,9 @@ export const PricingAltBlock: Block = {
 			label: "Тарифні плани",
 			minRows: 1,
 			maxRows: 4,
+			admin: {
+				initCollapsed: true,
+			},
 			defaultValue: [
 				{
 					name: "Seeker Path",
@@ -182,6 +185,9 @@ export const PricingAltBlock: Block = {
 					label: "Переваги",
 					minRows: 1,
 					maxRows: 10,
+					admin: {
+						initCollapsed: true,
+					},
 					fields: [
 						{
 							name: "text",

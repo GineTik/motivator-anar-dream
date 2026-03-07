@@ -83,6 +83,7 @@ export const Pages: CollectionConfig = {
             required: true,
             minRows: 1,
             admin: {
+                initCollapsed: true,
                 description:
                     "Додавайте та впорядковуйте блоки контенту на сторінці",
             },

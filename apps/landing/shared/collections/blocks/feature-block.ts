@@ -56,6 +56,9 @@ export const FeatureBlock: Block = {
             label: "Можливості",
             minRows: 3,
             maxRows: 5,
+            admin: {
+                initCollapsed: true,
+            },
             defaultValue: [
                 {
                     heading: "Guided Meditations",

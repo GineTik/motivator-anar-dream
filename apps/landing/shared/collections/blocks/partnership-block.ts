@@ -56,6 +56,9 @@ export const PartnershipBlock: Block = {
             label: "Пункти списку",
             required: true,
             minRows: 1,
+            admin: {
+                initCollapsed: true,
+            },
             fields: [
                 {
                     name: "text",

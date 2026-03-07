@@ -56,6 +56,9 @@ export const FaqBlock: Block = {
             label: "Питання",
             minRows: 3,
             maxRows: 10,
+            admin: {
+                initCollapsed: true,
+            },
             defaultValue: [
                 {
                     question:

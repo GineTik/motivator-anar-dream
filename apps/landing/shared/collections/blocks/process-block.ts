@@ -58,6 +58,7 @@ export const ProcessBlock: Block = {
             minRows: 1,
             maxRows: 4,
             admin: {
+                initCollapsed: true,
                 description:
                     "Кроки процесу які відвідувач може перемикати",
             },

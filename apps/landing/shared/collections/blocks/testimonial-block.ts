@@ -56,6 +56,9 @@ export const TestimonialBlock: Block = {
             label: "Відгуки",
             minRows: 3,
             maxRows: 7,
+            admin: {
+                initCollapsed: true,
+            },
             defaultValue: [
                 {
                     quote: "This path of inner awakening changed everything for me. I found peace I had been searching for my entire life.",

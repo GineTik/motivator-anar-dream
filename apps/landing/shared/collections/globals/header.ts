@@ -26,6 +26,7 @@ export const Header: GlobalConfig = {
 			minRows: 1,
 			maxRows: 8,
 			admin: {
+				initCollapsed: true,
 				description:
 					"Пункти меню у верхній частині сайту (від 1 до 8)",
 			},
@@ -54,6 +55,7 @@ export const Header: GlobalConfig = {
 					label: "Підпункти меню",
 					required: false,
 					admin: {
+						initCollapsed: true,
 						description:
 							"Випадаючий список під цим пунктом (необовʼязково)",
 					},
