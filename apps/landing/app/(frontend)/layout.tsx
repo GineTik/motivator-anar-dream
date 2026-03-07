@@ -18,7 +18,7 @@ export default async function RootLayout({
 	const headerData = await payload.findGlobal({ slug: "header" });
 
 	return (
-		<html lang="uk">
+		<html lang="uk" className="scroll-smooth">
 			<body>
 				<SiteHeader data={headerData} />
 				{children}

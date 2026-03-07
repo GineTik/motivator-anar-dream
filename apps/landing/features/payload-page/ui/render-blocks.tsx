@@ -18,6 +18,45 @@ interface RenderBlocksProps {
 	blocks: Page["blocks"];
 }
 
+function toKebabCase(str: string): string {
+	return str.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase();
+}
+
+function renderBlock(block: NonNullable<Page["blocks"]>[number]) {
+	switch (block.blockType) {
+		case "hero":
+			return <HeroBlock block={block} />;
+		case "process":
+			return <ProcessBlock block={block} />;
+		case "pricing":
+			return <PricingBlock block={block} />;
+		case "pricingAlt":
+			return <PricingAltBlock block={block} />;
+		case "feature":
+			return <FeatureBlock block={block} />;
+		case "integration":
+			return <IntegrationBlock block={block} />;
+		case "testimonial":
+			return <TestimonialBlock block={block} />;
+		case "faq":
+			return <FaqBlock block={block} />;
+		case "cta":
+			return <CtaBlock block={block} />;
+		case "blog":
+			return <BlogBlock block={block} />;
+		case "footer":
+			return <FooterBlock block={block} />;
+		case "partnership":
+			return <PartnershipBlock block={block} />;
+		case "gallery":
+			return <GalleryBlock block={block} />;
+		case "contactUs":
+			return <ContactUsBlock block={block} />;
+		default:
+			return null;
+	}
+}
+
 export function RenderBlocks({ blocks }: RenderBlocksProps) {
 	if (!blocks || blocks.length === 0) {
 		return null;
@@ -26,81 +65,16 @@ export function RenderBlocks({ blocks }: RenderBlocksProps) {
 	return (
 		<>
 			{blocks.map((block, index) => {
-				switch (block.blockType) {
-					case "hero":
-						return (
-							<HeroBlock key={`${block.blockType}-${index}`} block={block} />
-						);
-					case "process":
-						return (
-							<ProcessBlock key={`${block.blockType}-${index}`} block={block} />
-						);
-					case "pricing":
-						return (
-							<PricingBlock key={`${block.blockType}-${index}`} block={block} />
-						);
-					case "pricingAlt":
-						return (
-							<PricingAltBlock
-								key={`${block.blockType}-${index}`}
-								block={block}
-							/>
-						);
-					case "feature":
-						return (
-							<FeatureBlock key={`${block.blockType}-${index}`} block={block} />
-						);
-					case "integration":
-						return (
-							<IntegrationBlock
-								key={`${block.blockType}-${index}`}
-								block={block}
-							/>
-						);
-					case "testimonial":
-						return (
-							<TestimonialBlock
-								key={`${block.blockType}-${index}`}
-								block={block}
-							/>
-						);
-					case "faq":
-						return (
-							<FaqBlock key={`${block.blockType}-${index}`} block={block} />
-						);
-					case "cta":
-						return (
-							<CtaBlock key={`${block.blockType}-${index}`} block={block} />
-						);
-					case "blog":
-						return (
-							<BlogBlock key={`${block.blockType}-${index}`} block={block} />
-						);
-					case "footer":
-						return (
-							<FooterBlock key={`${block.blockType}-${index}`} block={block} />
-						);
-					case "partnership":
-						return (
-							<PartnershipBlock
-								key={`${block.blockType}-${index}`}
-								block={block}
-							/>
-						);
-					case "gallery":
-						return (
-							<GalleryBlock key={`${block.blockType}-${index}`} block={block} />
-						);
-					case "contactUs":
-						return (
-							<ContactUsBlock
-								key={`${block.blockType}-${index}`}
-								block={block}
-							/>
-						);
-					default:
-						return null;
-				}
+				const content = renderBlock(block);
+				if (!content) return null;
+
+				const sectionId = toKebabCase(block.blockType);
+
+				return (
+					<div key={`${block.blockType}-${index}`} id={sectionId}>
+						{content}
+					</div>
+				);
 			})}
 		</>
 	);
