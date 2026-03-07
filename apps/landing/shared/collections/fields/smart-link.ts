@@ -20,36 +20,44 @@ const SECTION_OPTIONS = [
 export function smartLinkFields(): Field[] {
 	return [
 		{
-			name: "linkType",
-			type: "select",
-			defaultValue: "custom",
-			options: [
-				{ label: "Custom URL", value: "custom" },
-				{ label: "Section", value: "section" },
+			type: "row",
+			fields: [
+				{
+					name: "linkType",
+					type: "select",
+					defaultValue: "custom",
+					options: [
+						{ label: "Custom URL", value: "custom" },
+						{ label: "Section", value: "section" },
+					],
+					admin: {
+						width: "30%",
+						description: "Link type",
+					},
+				},
+				{
+					name: "url",
+					type: "text",
+					admin: {
+						width: "70%",
+						condition: (_data, siblingData) =>
+							!siblingData?.linkType || siblingData.linkType === "custom",
+						placeholder: "https://example.com",
+						description: "Any URL: absolute, relative, or anchor",
+					},
+				},
+				{
+					name: "section",
+					type: "select",
+					options: SECTION_OPTIONS,
+					admin: {
+						width: "70%",
+						condition: (_data, siblingData) =>
+							siblingData?.linkType === "section",
+						description: "Select a section to scroll to",
+					},
+				},
 			],
-			admin: {
-				description: "Choose link type: custom URL or scroll to section",
-			},
-		},
-		{
-			name: "url",
-			type: "text",
-			admin: {
-				condition: (_data, siblingData) =>
-					!siblingData?.linkType || siblingData.linkType === "custom",
-				placeholder: "https://example.com",
-				description: "Any URL: absolute, relative, or anchor",
-			},
-		},
-		{
-			name: "section",
-			type: "select",
-			options: SECTION_OPTIONS,
-			admin: {
-				condition: (_data, siblingData) =>
-					siblingData?.linkType === "section",
-				description: "Select a section to scroll to",
-			},
 		},
 	];
 }

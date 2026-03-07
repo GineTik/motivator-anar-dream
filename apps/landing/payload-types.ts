@@ -247,7 +247,7 @@ export interface HeroBlock {
   ctaButton: {
     text: string;
     /**
-     * Choose link type: custom URL or scroll to section
+     * Link type
      */
     linkType?: ('custom' | 'section') | null;
     /**
@@ -312,7 +312,7 @@ export interface ProcessBlock {
         description: string;
         buttonText: string;
         /**
-         * Choose link type: custom URL or scroll to section
+         * Link type
          */
         linkType?: ('custom' | 'section') | null;
         /**
@@ -570,7 +570,7 @@ export interface CtaBlock {
   ctaButton: {
     text: string;
     /**
-     * Choose link type: custom URL or scroll to section
+     * Link type
      */
     linkType?: ('custom' | 'section') | null;
     /**
@@ -653,7 +653,7 @@ export interface FooterBlock {
           | {
               label: string;
               /**
-               * Choose link type: custom URL or scroll to section
+               * Link type
                */
               linkType?: ('custom' | 'section') | null;
               /**
@@ -692,7 +692,7 @@ export interface FooterBlock {
     subtitle?: string | null;
     buttonText: string;
     /**
-     * Choose link type: custom URL or scroll to section
+     * Link type
      */
     linkType?: ('custom' | 'section') | null;
     /**
@@ -1504,7 +1504,7 @@ export interface Header {
     | {
         label: string;
         /**
-         * Choose link type: custom URL or scroll to section
+         * Link type
          */
         linkType?: ('custom' | 'section') | null;
         /**
@@ -1536,7 +1536,7 @@ export interface Header {
           | {
               label: string;
               /**
-               * Choose link type: custom URL or scroll to section
+               * Link type
                */
               linkType?: ('custom' | 'section') | null;
               /**
@@ -1572,7 +1572,7 @@ export interface Header {
     | null;
   ctaText: string;
   /**
-   * Choose link type: custom URL or scroll to section
+   * Link type
    */
   linkType?: ('custom' | 'section') | null;
   /**
