@@ -3,7 +3,7 @@ import { smartLinkFields } from "../fields/smart-link";
 
 export const Header: GlobalConfig = {
 	slug: "header",
-	label: "Header",
+	label: "Шапка сайту",
 	access: {
 		read: () => true,
 	},
@@ -11,17 +11,24 @@ export const Header: GlobalConfig = {
 		{
 			name: "logo",
 			type: "upload",
+			label: "Логотип",
 			relationTo: "media",
 			required: false,
 			admin: {
-				description: "Site logo for the navbar",
+				description:
+					"Логотип який відображається у верхній частині сайту",
 			},
 		},
 		{
 			name: "navLinks",
 			type: "array",
+			label: "Посилання навігації",
 			minRows: 1,
 			maxRows: 8,
+			admin: {
+				description:
+					"Пункти меню у верхній частині сайту (від 1 до 8)",
+			},
 			defaultValue: [
 				{ label: "About", linkType: "custom", url: "/about" },
 				{ label: "Practices", linkType: "custom", url: "/practices" },
@@ -33,20 +40,33 @@ export const Header: GlobalConfig = {
 				{
 					name: "label",
 					type: "text",
+					label: "Назва пункту",
 					required: true,
 					localized: true,
+					admin: {
+						description: "Текст який бачить відвідувач",
+					},
 				},
 				...smartLinkFields(),
 				{
 					name: "children",
 					type: "array",
+					label: "Підпункти меню",
 					required: false,
+					admin: {
+						description:
+							"Випадаючий список під цим пунктом (необовʼязково)",
+					},
 					fields: [
 						{
 							name: "label",
 							type: "text",
+							label: "Назва пункту",
 							required: true,
 							localized: true,
+							admin: {
+								description: "Текст який бачить відвідувач",
+							},
 						},
 						...smartLinkFields(),
 					],
@@ -56,18 +76,24 @@ export const Header: GlobalConfig = {
 		{
 			name: "ctaText",
 			type: "text",
+			label: "Текст кнопки",
 			required: true,
 			localized: true,
 			defaultValue: "Begin Your Journey",
+			admin: {
+				description: "Текст на головній кнопці у шапці",
+			},
 		},
 		...smartLinkFields(),
 		{
 			name: "ctaArrowIcon",
 			type: "upload",
+			label: "Іконка стрілки",
 			relationTo: "media",
 			required: false,
 			admin: {
-				description: "Arrow icon for the CTA button",
+				description:
+					"Іконка стрілки біля тексту кнопки (необовʼязково)",
 			},
 		},
 	],

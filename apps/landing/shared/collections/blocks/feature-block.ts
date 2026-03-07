@@ -3,29 +3,40 @@ import type { Block } from "payload";
 export const FeatureBlock: Block = {
     slug: "feature",
     interfaceName: "FeatureBlock",
+    labels: {
+        singular: "Можливості",
+        plural: "Можливості",
+    },
     fields: [
         {
             name: "badge",
             type: "group",
+            label: "Бейдж",
             fields: [
                 {
                     name: "icon",
                     type: "upload",
+                    label: "Іконка бейджу",
                     relationTo: "media",
                     required: false,
                 },
                 {
                     name: "text",
                     type: "text",
+                    label: "Текст бейджу",
                     required: true,
                     localized: true,
                     defaultValue: "Inner Tools",
+                    admin: {
+                        description: "Короткий текст над заголовком секції",
+                    },
                 },
             ],
         },
         {
             name: "heading",
             type: "text",
+            label: "Заголовок",
             required: true,
             localized: true,
             defaultValue: "Tools for Conscious Transformation",
@@ -33,6 +44,7 @@ export const FeatureBlock: Block = {
         {
             name: "subtitle",
             type: "textarea",
+            label: "Підзаголовок",
             required: true,
             localized: true,
             defaultValue:
@@ -41,6 +53,7 @@ export const FeatureBlock: Block = {
         {
             name: "features",
             type: "array",
+            label: "Можливості",
             minRows: 3,
             maxRows: 5,
             defaultValue: [
@@ -79,51 +92,56 @@ export const FeatureBlock: Block = {
                 {
                     name: "icon",
                     type: "upload",
+                    label: "Іконка",
                     relationTo: "media",
                     required: false,
                     admin: {
-                        description: "Feature icon",
+                        description: "Іконка для цієї можливості",
                     },
                 },
                 {
                     name: "heading",
                     type: "text",
+                    label: "Заголовок",
                     required: true,
                     localized: true,
                 },
                 {
                     name: "description",
                     type: "textarea",
+                    label: "Опис",
                     required: true,
                     localized: true,
                 },
                 {
                     name: "image",
                     type: "upload",
+                    label: "Зображення",
                     relationTo: "media",
                     required: false,
                     admin: {
-                        description: "Visual illustration for this feature",
+                        description: "Ілюстрація для цієї можливості",
                     },
                 },
                 {
                     name: "layoutType",
                     type: "select",
+                    label: "Розмір картки",
                     required: true,
                     defaultValue: "large",
                     options: [
                         {
-                            label: "Large (spans 6 columns)",
+                            label: "Велика (половина ширини)",
                             value: "large",
                         },
                         {
-                            label: "Small (spans 4 columns)",
+                            label: "Мала (третина ширини)",
                             value: "small",
                         },
                     ],
                     admin: {
                         description:
-                            "Large cards span 6 columns (half width), small cards span 4 columns (third width) on desktop",
+                            "Великі картки займають половину ширини, малі — третину",
                     },
                 },
             ],

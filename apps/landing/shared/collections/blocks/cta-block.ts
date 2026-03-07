@@ -4,29 +4,40 @@ import { smartLinkFields } from "../fields/smart-link";
 export const CtaBlock: Block = {
 	slug: "cta",
 	interfaceName: "CtaBlock",
+	labels: {
+		singular: "Заклик до дії",
+		plural: "Заклики до дії",
+	},
 	fields: [
 		{
 			name: "badge",
 			type: "group",
+			label: "Бейдж",
 			fields: [
 				{
 					name: "icon",
 					type: "upload",
+					label: "Іконка бейджу",
 					relationTo: "media",
 					required: false,
 				},
 				{
 					name: "text",
 					type: "text",
+					label: "Текст бейджу",
 					required: true,
 					localized: true,
 					defaultValue: "Trusted by seekers around the world",
+					admin: {
+						description: "Короткий текст над заголовком секції",
+					},
 				},
 			],
 		},
 		{
 			name: "heading",
 			type: "text",
+			label: "Заголовок",
 			required: true,
 			localized: true,
 			defaultValue:
@@ -35,6 +46,7 @@ export const CtaBlock: Block = {
 		{
 			name: "subtitle",
 			type: "textarea",
+			label: "Підзаголовок",
 			required: true,
 			localized: true,
 			defaultValue:
@@ -43,10 +55,12 @@ export const CtaBlock: Block = {
 		{
 			name: "ctaButton",
 			type: "group",
+			label: "Кнопка дії",
 			fields: [
 				{
 					name: "text",
 					type: "text",
+					label: "Текст кнопки",
 					required: true,
 					localized: true,
 					defaultValue: "Begin Your Journey",
@@ -55,7 +69,12 @@ export const CtaBlock: Block = {
 				{
 					name: "openInNewTab",
 					type: "checkbox",
+					label: "Відкрити в новій вкладці",
 					defaultValue: false,
+					admin: {
+						description:
+							"Якщо увімкнено — посилання відкриється в новій вкладці браузера",
+					},
 				},
 			],
 		},

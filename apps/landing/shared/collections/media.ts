@@ -3,6 +3,10 @@ import { sanitizeFilename } from "../lib/sanitize-filename";
 
 export const Media: CollectionConfig = {
     slug: "media",
+    labels: {
+        singular: "Медіа",
+        plural: "Медіа",
+    },
     access: {
         read: () => true,
     },
@@ -65,8 +69,13 @@ export const Media: CollectionConfig = {
         {
             name: "alt",
             type: "text",
+            label: "Альтернативний текст",
             required: true,
             localized: true,
+            admin: {
+                description:
+                    "Короткий опис зображення для людей з вадами зору та пошукових систем",
+            },
         },
         {
             name: "filesize",

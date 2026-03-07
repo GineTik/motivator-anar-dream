@@ -3,29 +3,40 @@ import type { Block } from "payload";
 export const ContactUsBlock: Block = {
 	slug: "contactUs",
 	interfaceName: "ContactUsBlock",
+	labels: {
+		singular: "Контакти",
+		plural: "Контакти",
+	},
 	fields: [
 		{
 			name: "badge",
 			type: "group",
+			label: "Бейдж",
 			fields: [
 				{
 					name: "icon",
 					type: "upload",
+					label: "Іконка бейджу",
 					relationTo: "media",
 					required: false,
 				},
 				{
 					name: "text",
 					type: "text",
+					label: "Текст бейджу",
 					required: true,
 					localized: true,
 					defaultValue: "Reach out to us",
+					admin: {
+						description: "Короткий текст над заголовком секції",
+					},
 				},
 			],
 		},
 		{
 			name: "heading",
 			type: "text",
+			label: "Заголовок",
 			required: true,
 			localized: true,
 			defaultValue: "Connect with our spiritual guides",
@@ -33,6 +44,7 @@ export const ContactUsBlock: Block = {
 		{
 			name: "subtitle",
 			type: "textarea",
+			label: "Підзаголовок",
 			required: true,
 			localized: true,
 			defaultValue:
@@ -41,6 +53,7 @@ export const ContactUsBlock: Block = {
 		{
 			name: "cardHeading",
 			type: "text",
+			label: "Заголовок картки",
 			required: true,
 			localized: true,
 			defaultValue: "Contact Us",
@@ -48,6 +61,7 @@ export const ContactUsBlock: Block = {
 		{
 			name: "cardDescription",
 			type: "textarea",
+			label: "Опис картки",
 			required: true,
 			localized: true,
 			defaultValue:
@@ -56,6 +70,7 @@ export const ContactUsBlock: Block = {
 		{
 			name: "contactItems",
 			type: "array",
+			label: "Контактна інформація",
 			minRows: 1,
 			maxRows: 6,
 			defaultValue: [
@@ -76,16 +91,18 @@ export const ContactUsBlock: Block = {
 				{
 					name: "type",
 					type: "select",
+					label: "Тип контакту",
 					required: true,
 					options: [
-						{ label: "Email", value: "email" },
-						{ label: "Telegram", value: "telegram" },
-						{ label: "Phone", value: "phone" },
+						{ label: "Електронна пошта", value: "email" },
+						{ label: "Телеграм", value: "telegram" },
+						{ label: "Телефон", value: "phone" },
 					],
 				},
 				{
 					name: "value",
 					type: "text",
+					label: "Значення",
 					required: true,
 					localized: true,
 				},
@@ -94,10 +111,15 @@ export const ContactUsBlock: Block = {
 		{
 			name: "formFields",
 			type: "group",
+			label: "Поля форми",
+			admin: {
+				description: "Тексти для полів контактної форми",
+			},
 			fields: [
 				{
 					name: "nameLabel",
 					type: "text",
+					label: "Підпис поля «Імʼя»",
 					required: true,
 					localized: true,
 					defaultValue: "Name",
@@ -105,6 +127,7 @@ export const ContactUsBlock: Block = {
 				{
 					name: "namePlaceholder",
 					type: "text",
+					label: "Плейсхолдер поля «Імʼя»",
 					required: true,
 					localized: true,
 					defaultValue: "Enter your Name",
@@ -112,6 +135,7 @@ export const ContactUsBlock: Block = {
 				{
 					name: "emailLabel",
 					type: "text",
+					label: "Підпис поля «Email»",
 					required: true,
 					localized: true,
 					defaultValue: "Email",
@@ -119,6 +143,7 @@ export const ContactUsBlock: Block = {
 				{
 					name: "emailPlaceholder",
 					type: "text",
+					label: "Плейсхолдер поля «Email»",
 					required: true,
 					localized: true,
 					defaultValue: "Enter your email",
@@ -126,6 +151,7 @@ export const ContactUsBlock: Block = {
 				{
 					name: "phoneLabel",
 					type: "text",
+					label: "Підпис поля «Телефон»",
 					required: true,
 					localized: true,
 					defaultValue: "Phone",
@@ -133,6 +159,7 @@ export const ContactUsBlock: Block = {
 				{
 					name: "phonePlaceholder",
 					type: "text",
+					label: "Плейсхолдер поля «Телефон»",
 					required: true,
 					localized: true,
 					defaultValue: "(+123)",
@@ -140,6 +167,7 @@ export const ContactUsBlock: Block = {
 				{
 					name: "companyLabel",
 					type: "text",
+					label: "Підпис поля «Компанія»",
 					required: true,
 					localized: true,
 					defaultValue: "Company Name",
@@ -147,6 +175,7 @@ export const ContactUsBlock: Block = {
 				{
 					name: "companyPlaceholder",
 					type: "text",
+					label: "Плейсхолдер поля «Компанія»",
 					required: true,
 					localized: true,
 					defaultValue: "Enter your company name",
@@ -154,6 +183,7 @@ export const ContactUsBlock: Block = {
 				{
 					name: "messageLabel",
 					type: "text",
+					label: "Підпис поля «Повідомлення»",
 					required: true,
 					localized: true,
 					defaultValue:
@@ -162,6 +192,7 @@ export const ContactUsBlock: Block = {
 				{
 					name: "messagePlaceholder",
 					type: "text",
+					label: "Плейсхолдер поля «Повідомлення»",
 					required: true,
 					localized: true,
 					defaultValue: "Message here",
@@ -171,6 +202,7 @@ export const ContactUsBlock: Block = {
 		{
 			name: "buttonText",
 			type: "text",
+			label: "Текст кнопки",
 			required: true,
 			localized: true,
 			defaultValue: "Submit now",
@@ -178,10 +210,12 @@ export const ContactUsBlock: Block = {
 		{
 			name: "backgroundImage",
 			type: "upload",
+			label: "Фонове зображення",
 			relationTo: "media",
 			required: false,
 			admin: {
-				description: "Background image for the section (recommended: soft gradient or nature image)",
+				description:
+					"Фонове зображення для секції (рекомендовано: мʼякий градієнт або фото природи)",
 			},
 		},
 	],

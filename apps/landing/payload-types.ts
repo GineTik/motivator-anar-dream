@@ -151,6 +151,9 @@ export interface User {
  */
 export interface Media {
   id: number;
+  /**
+   * Короткий опис зображення для людей з вадами зору та пошукових систем
+   */
   alt: string;
   updatedAt: string;
   createdAt: string;
@@ -205,7 +208,13 @@ export interface Media {
 export interface Page {
   id: number;
   title: string;
+  /**
+   * Унікальна адреса сторінки в URL (автоматично форматується)
+   */
   slug: string;
+  /**
+   * Додавайте та впорядковуйте блоки контенту на сторінці
+   */
   blocks: (
     | HeroBlock
     | ProcessBlock
@@ -222,7 +231,13 @@ export interface Page {
     | GalleryBlock
     | ContactUsBlock
   )[];
+  /**
+   * Налаштування для пошукових систем (Google, тощо)
+   */
   seo?: {
+    /**
+     * Заголовок сторінки для пошукових систем
+     */
     title?: string | null;
     description?: string | null;
     keywords?: string | null;
@@ -240,22 +255,31 @@ export interface Page {
 export interface HeroBlock {
   badge: {
     icon?: (number | null) | Media;
+    /**
+     * Короткий текст над заголовком секції
+     */
     text: string;
   };
+  /**
+   * Головний заголовок секції
+   */
   heading: string;
+  /**
+   * Короткий опис під заголовком
+   */
   subtitle: string;
   ctaButton: {
     text: string;
     /**
-     * Link type
+     * Оберіть тип: власне посилання або перехід до секції на сторінці
      */
     linkType?: ('custom' | 'section') | null;
     /**
-     * Any URL: absolute, relative, or anchor
+     * Введіть адресу сторінки, наприклад: https://example.com або /contact
      */
     url?: string | null;
     /**
-     * Select a section to scroll to
+     * Оберіть секцію, до якої буде прокручуватися сторінка
      */
     section?:
       | (
@@ -275,10 +299,13 @@ export interface HeroBlock {
           | 'contact-us'
         )
       | null;
+    /**
+     * Якщо увімкнено — посилання відкриється в новій вкладці браузера
+     */
     openInNewTab?: boolean | null;
   };
   /**
-   * Image of a person with transparent background, cropped above waist
+   * Фото людини з прозорим фоном, обрізане вище пояса
    */
   personImage?: (number | null) | Media;
   id?: string | null;
@@ -292,35 +319,44 @@ export interface HeroBlock {
 export interface ProcessBlock {
   badge: {
     icon?: (number | null) | Media;
+    /**
+     * Короткий текст над заголовком секції
+     */
     text: string;
   };
   heading: string;
   subtitle: string;
+  /**
+   * Кроки процесу які відвідувач може перемикати
+   */
   tabs?:
     | {
         /**
-         * Icon for the tab (16x16 recommended)
+         * Невелика іконка (рекомендовано 16×16)
          */
         icon?: (number | null) | Media;
         /**
-         * Icon for active state (16x16 recommended)
+         * Іконка для активного стану (рекомендовано 16×16)
          */
         iconActive?: (number | null) | Media;
         title: string;
+        /**
+         * Наприклад: Крок 1, Крок 2
+         */
         badge: string;
         heading: string;
         description: string;
         buttonText: string;
         /**
-         * Link type
+         * Оберіть тип: власне посилання або перехід до секції на сторінці
          */
         linkType?: ('custom' | 'section') | null;
         /**
-         * Any URL: absolute, relative, or anchor
+         * Введіть адресу сторінки, наприклад: https://example.com або /contact
          */
         url?: string | null;
         /**
-         * Select a section to scroll to
+         * Оберіть секцію, до якої буде прокручуватися сторінка
          */
         section?:
           | (
@@ -341,7 +377,7 @@ export interface ProcessBlock {
             )
           | null;
         /**
-         * Visual representation for this tab
+         * Ілюстрація для цієї вкладки
          */
         image?: (number | null) | Media;
         id?: string | null;
@@ -358,13 +394,16 @@ export interface ProcessBlock {
 export interface PricingBlock {
   badge: {
     icon?: (number | null) | Media;
+    /**
+     * Короткий текст над заголовком секції
+     */
     text: string;
   };
   heading: string;
   subtitle: string;
   plan: {
     /**
-     * Plan icon image
+     * Іконка для тарифного плану
      */
     icon?: (number | null) | Media;
     name: string;
@@ -381,7 +420,7 @@ export interface PricingBlock {
     buttonLink?: string | null;
   };
   /**
-   * Testimonials will auto-scroll in columns (minimum 4 recommended for smooth animation)
+   * Відгуки прокручуються автоматично (рекомендується мінімум 4 для плавної анімації)
    */
   testimonials?:
     | {
@@ -403,6 +442,9 @@ export interface PricingBlock {
 export interface PricingAltBlock {
   badge: {
     icon?: (number | null) | Media;
+    /**
+     * Короткий текст над заголовком секції
+     */
     text: string;
   };
   heading: string;
@@ -420,7 +462,7 @@ export interface PricingAltBlock {
         buttonText: string;
         buttonLink?: string | null;
         /**
-         * Highlight this plan with gradient background
+         * Виділити цей план градієнтним фоном
          */
         highlighted?: boolean | null;
         features?:
@@ -443,6 +485,9 @@ export interface PricingAltBlock {
 export interface FeatureBlock {
   badge: {
     icon?: (number | null) | Media;
+    /**
+     * Короткий текст над заголовком секції
+     */
     text: string;
   };
   heading: string;
@@ -450,17 +495,17 @@ export interface FeatureBlock {
   features?:
     | {
         /**
-         * Feature icon
+         * Іконка для цієї можливості
          */
         icon?: (number | null) | Media;
         heading: string;
         description: string;
         /**
-         * Visual illustration for this feature
+         * Ілюстрація для цієї можливості
          */
         image?: (number | null) | Media;
         /**
-         * Large cards span 6 columns (half width), small cards span 4 columns (third width) on desktop
+         * Великі картки займають половину ширини, малі — третину
          */
         layoutType: 'large' | 'small';
         id?: string | null;
@@ -477,11 +522,14 @@ export interface FeatureBlock {
 export interface IntegrationBlock {
   badge: {
     icon?: (number | null) | Media;
+    /**
+     * Короткий текст над заголовком секції
+     */
     text: string;
   };
   heading: string;
   /**
-   * Main integration visualization image
+   * Зображення для візуалізації інтеграцій
    */
   mainImage?: (number | null) | Media;
   description: string;
@@ -498,6 +546,9 @@ export interface IntegrationBlock {
 export interface TestimonialBlock {
   badge: {
     icon?: (number | null) | Media;
+    /**
+     * Короткий текст над заголовком секції
+     */
     text: string;
   };
   heading: string;
@@ -505,22 +556,22 @@ export interface TestimonialBlock {
   testimonials?:
     | {
         /**
-         * Optional logo for this testimonial
+         * Логотип для цього відгуку (необовʼязково)
          */
         logo?: (number | null) | Media;
         quote: string;
         authorName: string;
         authorRole: string;
         /**
-         * Author avatar image (48x48 recommended)
+         * Аватар автора (рекомендовано 48×48)
          */
         authorImage?: (number | null) | Media;
         /**
-         * Card style - highlighted cards use purple background with white text
+         * Виділені картки мають фіолетовий фон та білий текст
          */
         cardStyle: 'normal' | 'highlighted';
         /**
-         * Grid span - double height cards span 2 rows (desktop only)
+         * Подвійні картки займають 2 рядки (тільки на десктопі)
          */
         gridSpan: 'single' | 'double';
         id?: string | null;
@@ -537,6 +588,9 @@ export interface TestimonialBlock {
 export interface FaqBlock {
   badge: {
     icon?: (number | null) | Media;
+    /**
+     * Короткий текст над заголовком секції
+     */
     text: string;
   };
   heading: string;
@@ -544,7 +598,7 @@ export interface FaqBlock {
   questions?:
     | {
         /**
-         * Icon for this FAQ item (optional)
+         * Іконка для цього питання (необовʼязково)
          */
         icon?: (number | null) | Media;
         question: string;
@@ -563,6 +617,9 @@ export interface FaqBlock {
 export interface CtaBlock {
   badge: {
     icon?: (number | null) | Media;
+    /**
+     * Короткий текст над заголовком секції
+     */
     text: string;
   };
   heading: string;
@@ -570,15 +627,15 @@ export interface CtaBlock {
   ctaButton: {
     text: string;
     /**
-     * Link type
+     * Оберіть тип: власне посилання або перехід до секції на сторінці
      */
     linkType?: ('custom' | 'section') | null;
     /**
-     * Any URL: absolute, relative, or anchor
+     * Введіть адресу сторінки, наприклад: https://example.com або /contact
      */
     url?: string | null;
     /**
-     * Select a section to scroll to
+     * Оберіть секцію, до якої буде прокручуватися сторінка
      */
     section?:
       | (
@@ -598,6 +655,9 @@ export interface CtaBlock {
           | 'contact-us'
         )
       | null;
+    /**
+     * Якщо увімкнено — посилання відкриється в новій вкладці браузера
+     */
     openInNewTab?: boolean | null;
   };
   id?: string | null;
@@ -611,6 +671,9 @@ export interface CtaBlock {
 export interface BlogBlock {
   badge: {
     icon?: (number | null) | Media;
+    /**
+     * Короткий текст над заголовком секції
+     */
     text: string;
   };
   heading: string;
@@ -618,7 +681,7 @@ export interface BlogBlock {
   posts?:
     | {
         /**
-         * Blog post thumbnail image
+         * Мініатюра статті
          */
         image?: (number | null) | Media;
         title: string;
@@ -643,9 +706,12 @@ export interface BlogBlock {
  */
 export interface FooterBlock {
   /**
-   * Footer logo (light version recommended)
+   * Логотип у нижній частині сайту (рекомендується світла версія)
    */
   logo?: (number | null) | Media;
+  /**
+   * Колонки з посиланнями в нижній частині сайту
+   */
   menuGroups?:
     | {
         title: string;
@@ -653,15 +719,15 @@ export interface FooterBlock {
           | {
               label: string;
               /**
-               * Link type
+               * Оберіть тип: власне посилання або перехід до секції на сторінці
                */
               linkType?: ('custom' | 'section') | null;
               /**
-               * Any URL: absolute, relative, or anchor
+               * Введіть адресу сторінки, наприклад: https://example.com або /contact
                */
               url?: string | null;
               /**
-               * Select a section to scroll to
+               * Оберіть секцію, до якої буде прокручуватися сторінка
                */
               section?:
                 | (
@@ -692,15 +758,15 @@ export interface FooterBlock {
     subtitle?: string | null;
     buttonText: string;
     /**
-     * Link type
+     * Оберіть тип: власне посилання або перехід до секції на сторінці
      */
     linkType?: ('custom' | 'section') | null;
     /**
-     * Any URL: absolute, relative, or anchor
+     * Введіть адресу сторінки, наприклад: https://example.com або /contact
      */
     url?: string | null;
     /**
-     * Select a section to scroll to
+     * Оберіть секцію, до якої буде прокручуватися сторінка
      */
     section?:
       | (
@@ -722,12 +788,15 @@ export interface FooterBlock {
       | null;
   };
   copyright?: string | null;
+  /**
+   * Посилання на соціальні мережі (іконки внизу сторінки)
+   */
   socialLinks?:
     | {
         icon?: (number | null) | Media;
         href: string;
         /**
-         * Accessible label (e.g. 'Twitter', 'Instagram')
+         * Наприклад: Instagram, Telegram, Facebook
          */
         label?: string | null;
         id?: string | null;
@@ -744,6 +813,9 @@ export interface FooterBlock {
 export interface PartnershipBlock {
   badge: {
     icon?: (number | null) | Media;
+    /**
+     * Короткий текст над заголовком секції
+     */
     text: string;
   };
   heading: string;
@@ -751,7 +823,7 @@ export interface PartnershipBlock {
   checklistItems: {
     text: string;
     /**
-     * Highlight this item with brand accent color
+     * Виділити цей пункт акцентним кольором
      */
     highlighted?: boolean | null;
     id?: string | null;
@@ -769,6 +841,9 @@ export interface PartnershipBlock {
 export interface GalleryBlock {
   badge: {
     icon?: (number | null) | Media;
+    /**
+     * Короткий текст над заголовком секції
+     */
     text: string;
   };
   heading: string;
@@ -776,6 +851,9 @@ export interface GalleryBlock {
   images?:
     | {
         image: number | Media;
+        /**
+         * Короткий опис для людей з вадами зору
+         */
         alt?: string | null;
         id?: string | null;
       }[]
@@ -791,6 +869,9 @@ export interface GalleryBlock {
 export interface ContactUsBlock {
   badge: {
     icon?: (number | null) | Media;
+    /**
+     * Короткий текст над заголовком секції
+     */
     text: string;
   };
   heading: string;
@@ -804,6 +885,9 @@ export interface ContactUsBlock {
         id?: string | null;
       }[]
     | null;
+  /**
+   * Тексти для полів контактної форми
+   */
   formFields: {
     nameLabel: string;
     namePlaceholder: string;
@@ -818,7 +902,7 @@ export interface ContactUsBlock {
   };
   buttonText: string;
   /**
-   * Background image for the section (recommended: soft gradient or nature image)
+   * Фонове зображення для секції (рекомендовано: мʼякий градієнт або фото природи)
    */
   backgroundImage?: (number | null) | Media;
   id?: string | null;
@@ -1497,22 +1581,28 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
 export interface Header {
   id: number;
   /**
-   * Site logo for the navbar
+   * Логотип який відображається у верхній частині сайту
    */
   logo?: (number | null) | Media;
+  /**
+   * Пункти меню у верхній частині сайту (від 1 до 8)
+   */
   navLinks?:
     | {
+        /**
+         * Текст який бачить відвідувач
+         */
         label: string;
         /**
-         * Link type
+         * Оберіть тип: власне посилання або перехід до секції на сторінці
          */
         linkType?: ('custom' | 'section') | null;
         /**
-         * Any URL: absolute, relative, or anchor
+         * Введіть адресу сторінки, наприклад: https://example.com або /contact
          */
         url?: string | null;
         /**
-         * Select a section to scroll to
+         * Оберіть секцію, до якої буде прокручуватися сторінка
          */
         section?:
           | (
@@ -1532,19 +1622,25 @@ export interface Header {
               | 'contact-us'
             )
           | null;
+        /**
+         * Випадаючий список під цим пунктом (необовʼязково)
+         */
         children?:
           | {
+              /**
+               * Текст який бачить відвідувач
+               */
               label: string;
               /**
-               * Link type
+               * Оберіть тип: власне посилання або перехід до секції на сторінці
                */
               linkType?: ('custom' | 'section') | null;
               /**
-               * Any URL: absolute, relative, or anchor
+               * Введіть адресу сторінки, наприклад: https://example.com або /contact
                */
               url?: string | null;
               /**
-               * Select a section to scroll to
+               * Оберіть секцію, до якої буде прокручуватися сторінка
                */
               section?:
                 | (
@@ -1570,17 +1666,20 @@ export interface Header {
         id?: string | null;
       }[]
     | null;
+  /**
+   * Текст на головній кнопці у шапці
+   */
   ctaText: string;
   /**
-   * Link type
+   * Оберіть тип: власне посилання або перехід до секції на сторінці
    */
   linkType?: ('custom' | 'section') | null;
   /**
-   * Any URL: absolute, relative, or anchor
+   * Введіть адресу сторінки, наприклад: https://example.com або /contact
    */
   url?: string | null;
   /**
-   * Select a section to scroll to
+   * Оберіть секцію, до якої буде прокручуватися сторінка
    */
   section?:
     | (
@@ -1601,7 +1700,7 @@ export interface Header {
       )
     | null;
   /**
-   * Arrow icon for the CTA button
+   * Іконка стрілки біля тексту кнопки (необовʼязково)
    */
   ctaArrowIcon?: (number | null) | Media;
   updatedAt?: string | null;

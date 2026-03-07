@@ -3,29 +3,40 @@ import type { Block } from "payload";
 export const PricingAltBlock: Block = {
 	slug: "pricingAlt",
 	interfaceName: "PricingAltBlock",
+	labels: {
+		singular: "Ціни (альтернативний)",
+		plural: "Ціни (альтернативні)",
+	},
 	fields: [
 		{
 			name: "badge",
 			type: "group",
+			label: "Бейдж",
 			fields: [
 				{
 					name: "icon",
 					type: "upload",
+					label: "Іконка бейджу",
 					relationTo: "media",
 					required: false,
 				},
 				{
 					name: "text",
 					type: "text",
+					label: "Текст бейджу",
 					required: true,
 					localized: true,
 					defaultValue: "Your Investment",
+					admin: {
+						description: "Короткий текст над заголовком секції",
+					},
 				},
 			],
 		},
 		{
 			name: "heading",
 			type: "text",
+			label: "Заголовок",
 			required: true,
 			localized: true,
 			defaultValue: "Simple, transparent pricing",
@@ -33,6 +44,7 @@ export const PricingAltBlock: Block = {
 		{
 			name: "subtitle",
 			type: "textarea",
+			label: "Підзаголовок",
 			required: true,
 			localized: true,
 			defaultValue:
@@ -41,6 +53,7 @@ export const PricingAltBlock: Block = {
 		{
 			name: "discountLabel",
 			type: "text",
+			label: "Текст знижки",
 			required: false,
 			localized: true,
 			defaultValue: "Save 15%",
@@ -48,6 +61,7 @@ export const PricingAltBlock: Block = {
 		{
 			name: "plans",
 			type: "array",
+			label: "Тарифні плани",
 			minRows: 1,
 			maxRows: 4,
 			defaultValue: [
@@ -90,36 +104,42 @@ export const PricingAltBlock: Block = {
 				{
 					name: "name",
 					type: "text",
+					label: "Назва",
 					required: true,
 					localized: true,
 				},
 				{
 					name: "badgeIcon",
 					type: "upload",
+					label: "Іконка бейджу",
 					relationTo: "media",
 					required: false,
 				},
 				{
 					name: "badgeText",
 					type: "text",
+					label: "Текст бейджу",
 					required: false,
 					localized: true,
 				},
 				{
 					name: "monthlyPrice",
 					type: "text",
+					label: "Ціна за місяць",
 					required: true,
 					localized: true,
 				},
 				{
 					name: "yearlyPrice",
 					type: "text",
+					label: "Ціна за рік",
 					required: false,
 					localized: true,
 				},
 				{
 					name: "period",
 					type: "text",
+					label: "Період (місяць)",
 					required: false,
 					localized: true,
 					defaultValue: "/monthly",
@@ -127,6 +147,7 @@ export const PricingAltBlock: Block = {
 				{
 					name: "yearlyPeriod",
 					type: "text",
+					label: "Період (рік)",
 					required: false,
 					localized: true,
 					defaultValue: "/yearly",
@@ -134,6 +155,7 @@ export const PricingAltBlock: Block = {
 				{
 					name: "buttonText",
 					type: "text",
+					label: "Текст кнопки",
 					required: true,
 					localized: true,
 					defaultValue: "Begin Now",
@@ -141,26 +163,30 @@ export const PricingAltBlock: Block = {
 				{
 					name: "buttonLink",
 					type: "text",
+					label: "Посилання кнопки",
 					required: false,
 				},
 				{
 					name: "highlighted",
 					type: "checkbox",
+					label: "Виділений план",
 					defaultValue: false,
 					admin: {
 						description:
-							"Highlight this plan with gradient background",
+							"Виділити цей план градієнтним фоном",
 					},
 				},
 				{
 					name: "features",
 					type: "array",
+					label: "Переваги",
 					minRows: 1,
 					maxRows: 10,
 					fields: [
 						{
 							name: "text",
 							type: "text",
+							label: "Текст переваги",
 							required: true,
 							localized: true,
 						},

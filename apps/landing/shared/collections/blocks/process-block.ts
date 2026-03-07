@@ -4,29 +4,40 @@ import { smartLinkFields } from "../fields/smart-link";
 export const ProcessBlock: Block = {
     slug: "process",
     interfaceName: "ProcessBlock",
+    labels: {
+        singular: "Процес (кроки)",
+        plural: "Процеси (кроки)",
+    },
     fields: [
         {
             name: "badge",
             type: "group",
+            label: "Бейдж",
             fields: [
                 {
                     name: "icon",
                     type: "upload",
+                    label: "Іконка бейджу",
                     relationTo: "media",
                     required: false,
                 },
                 {
                     name: "text",
                     type: "text",
+                    label: "Текст бейджу",
                     required: true,
                     localized: true,
                     defaultValue: "What you will find here",
+                    admin: {
+                        description: "Короткий текст над заголовком секції",
+                    },
                 },
             ],
         },
         {
             name: "heading",
             type: "text",
+            label: "Заголовок",
             required: true,
             localized: true,
             defaultValue: "Your path to transformation",
@@ -34,6 +45,7 @@ export const ProcessBlock: Block = {
         {
             name: "subtitle",
             type: "textarea",
+            label: "Підзаголовок",
             required: true,
             localized: true,
             defaultValue:
@@ -42,8 +54,13 @@ export const ProcessBlock: Block = {
         {
             name: "tabs",
             type: "array",
+            label: "Вкладки",
             minRows: 1,
             maxRows: 4,
+            admin: {
+                description:
+                    "Кроки процесу які відвідувач може перемикати",
+            },
             defaultValue: [
                 {
                     title: "Awareness",
@@ -74,49 +91,59 @@ export const ProcessBlock: Block = {
                 {
                     name: "icon",
                     type: "upload",
+                    label: "Іконка вкладки",
                     relationTo: "media",
                     required: false,
                     admin: {
-                        description: "Icon for the tab (16x16 recommended)",
+                        description: "Невелика іконка (рекомендовано 16×16)",
                     },
                 },
                 {
                     name: "iconActive",
                     type: "upload",
+                    label: "Іконка активної вкладки",
                     relationTo: "media",
                     required: false,
                     admin: {
                         description:
-                            "Icon for active state (16x16 recommended)",
+                            "Іконка для активного стану (рекомендовано 16×16)",
                     },
                 },
                 {
                     name: "title",
                     type: "text",
+                    label: "Назва вкладки",
                     required: true,
                     localized: true,
                 },
                 {
                     name: "badge",
                     type: "text",
+                    label: "Бейдж вкладки",
                     required: true,
                     localized: true,
+                    admin: {
+                        description: "Наприклад: Крок 1, Крок 2",
+                    },
                 },
                 {
                     name: "heading",
                     type: "text",
+                    label: "Заголовок",
                     required: true,
                     localized: true,
                 },
                 {
                     name: "description",
                     type: "textarea",
+                    label: "Опис",
                     required: true,
                     localized: true,
                 },
                 {
                     name: "buttonText",
                     type: "text",
+                    label: "Текст кнопки",
                     required: true,
                     localized: true,
                     defaultValue: "Learn More",
@@ -125,10 +152,11 @@ export const ProcessBlock: Block = {
                 {
                     name: "image",
                     type: "upload",
+                    label: "Зображення",
                     relationTo: "media",
                     required: false,
                     admin: {
-                        description: "Visual representation for this tab",
+                        description: "Ілюстрація для цієї вкладки",
                     },
                 },
             ],

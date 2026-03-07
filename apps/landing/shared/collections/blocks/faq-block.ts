@@ -3,29 +3,40 @@ import type { Block } from "payload";
 export const FaqBlock: Block = {
     slug: "faq",
     interfaceName: "FaqBlock",
+    labels: {
+        singular: "Питання та відповіді",
+        plural: "Питання та відповіді",
+    },
     fields: [
         {
             name: "badge",
             type: "group",
+            label: "Бейдж",
             fields: [
                 {
                     name: "icon",
                     type: "upload",
+                    label: "Іконка бейджу",
                     relationTo: "media",
                     required: false,
                 },
                 {
                     name: "text",
                     type: "text",
+                    label: "Текст бейджу",
                     required: true,
                     localized: true,
                     defaultValue: "Your Questions",
+                    admin: {
+                        description: "Короткий текст над заголовком секції",
+                    },
                 },
             ],
         },
         {
             name: "heading",
             type: "text",
+            label: "Заголовок",
             required: true,
             localized: true,
             defaultValue: "Guidance for your journey",
@@ -33,6 +44,7 @@ export const FaqBlock: Block = {
         {
             name: "subtitle",
             type: "textarea",
+            label: "Підзаголовок",
             required: true,
             localized: true,
             defaultValue:
@@ -41,6 +53,7 @@ export const FaqBlock: Block = {
         {
             name: "questions",
             type: "array",
+            label: "Питання",
             minRows: 3,
             maxRows: 10,
             defaultValue: [
@@ -68,21 +81,25 @@ export const FaqBlock: Block = {
                 {
                     name: "icon",
                     type: "upload",
+                    label: "Іконка",
                     relationTo: "media",
                     required: false,
                     admin: {
-                        description: "Icon for this FAQ item (optional)",
+                        description:
+                            "Іконка для цього питання (необовʼязково)",
                     },
                 },
                 {
                     name: "question",
                     type: "text",
+                    label: "Питання",
                     required: true,
                     localized: true,
                 },
                 {
                     name: "answer",
                     type: "textarea",
+                    label: "Відповідь",
                     required: true,
                     localized: true,
                 },

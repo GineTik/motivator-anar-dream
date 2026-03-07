@@ -4,21 +4,32 @@ import { smartLinkFields } from "../fields/smart-link";
 export const FooterBlock: Block = {
 	slug: "footer",
 	interfaceName: "FooterBlock",
+	labels: {
+		singular: "Футер (підвал сайту)",
+		plural: "Футери",
+	},
 	fields: [
 		{
 			name: "logo",
 			type: "upload",
+			label: "Логотип",
 			relationTo: "media",
 			required: false,
 			admin: {
-				description: "Footer logo (light version recommended)",
+				description:
+					"Логотип у нижній частині сайту (рекомендується світла версія)",
 			},
 		},
 		{
 			name: "menuGroups",
 			type: "array",
+			label: "Групи меню",
 			minRows: 1,
 			maxRows: 4,
+			admin: {
+				description:
+					"Колонки з посиланнями в нижній частині сайту",
+			},
 			defaultValue: [
 				{
 					title: "Explore",
@@ -52,18 +63,21 @@ export const FooterBlock: Block = {
 				{
 					name: "title",
 					type: "text",
+					label: "Назва групи",
 					required: true,
 					localized: true,
 				},
 				{
 					name: "links",
 					type: "array",
+					label: "Посилання",
 					minRows: 1,
 					maxRows: 8,
 					fields: [
 						{
 							name: "label",
 							type: "text",
+							label: "Назва посилання",
 							required: true,
 							localized: true,
 						},
@@ -75,10 +89,12 @@ export const FooterBlock: Block = {
 		{
 			name: "newsletter",
 			type: "group",
+			label: "Розсилка",
 			fields: [
 				{
 					name: "heading",
 					type: "text",
+					label: "Заголовок",
 					required: true,
 					localized: true,
 					defaultValue: "Stay connected with your inner journey",
@@ -86,6 +102,7 @@ export const FooterBlock: Block = {
 				{
 					name: "subtitle",
 					type: "text",
+					label: "Підзаголовок",
 					required: false,
 					localized: true,
 					defaultValue:
@@ -94,6 +111,7 @@ export const FooterBlock: Block = {
 				{
 					name: "buttonText",
 					type: "text",
+					label: "Текст кнопки",
 					required: true,
 					localized: true,
 					defaultValue: "Subscribe",
@@ -104,6 +122,7 @@ export const FooterBlock: Block = {
 		{
 			name: "copyright",
 			type: "text",
+			label: "Авторське право",
 			required: false,
 			localized: true,
 			defaultValue: "All rights reserved, Anara Dreams",
@@ -111,25 +130,34 @@ export const FooterBlock: Block = {
 		{
 			name: "socialLinks",
 			type: "array",
+			label: "Соціальні мережі",
 			maxRows: 6,
+			admin: {
+				description:
+					"Посилання на соціальні мережі (іконки внизу сторінки)",
+			},
 			fields: [
 				{
 					name: "icon",
 					type: "upload",
+					label: "Іконка",
 					relationTo: "media",
 					required: false,
 				},
 				{
 					name: "href",
 					type: "text",
+					label: "Посилання",
 					required: true,
 				},
 				{
 					name: "label",
 					type: "text",
+					label: "Назва мережі",
 					required: false,
 					admin: {
-						description: "Accessible label (e.g. 'Twitter', 'Instagram')",
+						description:
+							"Наприклад: Instagram, Telegram, Facebook",
 					},
 				},
 			],

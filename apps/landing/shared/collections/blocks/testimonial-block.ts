@@ -3,29 +3,40 @@ import type { Block } from "payload";
 export const TestimonialBlock: Block = {
     slug: "testimonial",
     interfaceName: "TestimonialBlock",
+    labels: {
+        singular: "Відгуки",
+        plural: "Відгуки",
+    },
     fields: [
         {
             name: "badge",
             type: "group",
+            label: "Бейдж",
             fields: [
                 {
                     name: "icon",
                     type: "upload",
+                    label: "Іконка бейджу",
                     relationTo: "media",
                     required: false,
                 },
                 {
                     name: "text",
                     type: "text",
+                    label: "Текст бейджу",
                     required: true,
                     localized: true,
                     defaultValue: "Stories of Transformation",
+                    admin: {
+                        description: "Короткий текст над заголовком секції",
+                    },
                 },
             ],
         },
         {
             name: "heading",
             type: "text",
+            label: "Заголовок",
             required: true,
             localized: true,
             defaultValue: "Journeys that inspire awakening",
@@ -33,6 +44,7 @@ export const TestimonialBlock: Block = {
         {
             name: "subtitle",
             type: "textarea",
+            label: "Підзаголовок",
             required: true,
             localized: true,
             defaultValue:
@@ -41,6 +53,7 @@ export const TestimonialBlock: Block = {
         {
             name: "testimonials",
             type: "array",
+            label: "Відгуки",
             minRows: 3,
             maxRows: 7,
             defaultValue: [
@@ -84,77 +97,86 @@ export const TestimonialBlock: Block = {
                 {
                     name: "logo",
                     type: "upload",
+                    label: "Логотип",
                     relationTo: "media",
                     required: false,
                     admin: {
-                        description: "Optional logo for this testimonial",
+                        description:
+                            "Логотип для цього відгуку (необовʼязково)",
                     },
                 },
                 {
                     name: "quote",
                     type: "textarea",
+                    label: "Цитата",
                     required: true,
                     localized: true,
                 },
                 {
                     name: "authorName",
                     type: "text",
+                    label: "Імʼя автора",
                     required: true,
                     localized: true,
                 },
                 {
                     name: "authorRole",
                     type: "text",
+                    label: "Роль/посада автора",
                     required: true,
                     localized: true,
                 },
                 {
                     name: "authorImage",
                     type: "upload",
+                    label: "Фото автора",
                     relationTo: "media",
                     required: false,
                     admin: {
-                        description: "Author avatar image (48x48 recommended)",
+                        description:
+                            "Аватар автора (рекомендовано 48×48)",
                     },
                 },
                 {
                     name: "cardStyle",
                     type: "select",
+                    label: "Стиль картки",
                     required: true,
                     defaultValue: "normal",
                     options: [
                         {
-                            label: "Normal (white background)",
+                            label: "Звичайний (білий фон)",
                             value: "normal",
                         },
                         {
-                            label: "Highlighted (purple background)",
+                            label: "Виділений (фіолетовий фон)",
                             value: "highlighted",
                         },
                     ],
                     admin: {
                         description:
-                            "Card style - highlighted cards use purple background with white text",
+                            "Виділені картки мають фіолетовий фон та білий текст",
                     },
                 },
                 {
                     name: "gridSpan",
                     type: "select",
+                    label: "Розмір у сітці",
                     required: true,
                     defaultValue: "single",
                     options: [
                         {
-                            label: "Single (1 column)",
+                            label: "Звичайний (1 колонка)",
                             value: "single",
                         },
                         {
-                            label: "Double (2 rows tall)",
+                            label: "Подвійний (2 рядки)",
                             value: "double",
                         },
                     ],
                     admin: {
                         description:
-                            "Grid span - double height cards span 2 rows (desktop only)",
+                            "Подвійні картки займають 2 рядки (тільки на десктопі)",
                     },
                 },
             ],

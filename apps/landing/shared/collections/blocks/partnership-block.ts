@@ -3,29 +3,40 @@ import type { Block } from "payload";
 export const PartnershipBlock: Block = {
     slug: "partnership",
     interfaceName: "PartnershipBlock",
+    labels: {
+        singular: "Партнерство",
+        plural: "Партнерства",
+    },
     fields: [
         {
             name: "badge",
             type: "group",
+            label: "Бейдж",
             fields: [
                 {
                     name: "icon",
                     type: "upload",
+                    label: "Іконка бейджу",
                     relationTo: "media",
                     required: false,
                 },
                 {
                     name: "text",
                     type: "text",
+                    label: "Текст бейджу",
                     required: true,
                     localized: true,
                     defaultValue: "Quietly. Consciously. Authentically",
+                    admin: {
+                        description: "Короткий текст над заголовком секції",
+                    },
                 },
             ],
         },
         {
             name: "heading",
             type: "text",
+            label: "Заголовок",
             required: true,
             localized: true,
             defaultValue: "What if you don't have to sell?",
@@ -33,6 +44,7 @@ export const PartnershipBlock: Block = {
         {
             name: "subtitle",
             type: "textarea",
+            label: "Підзаголовок",
             required: false,
             localized: true,
             defaultValue:
@@ -41,22 +53,25 @@ export const PartnershipBlock: Block = {
         {
             name: "checklistItems",
             type: "array",
+            label: "Пункти списку",
             required: true,
             minRows: 1,
             fields: [
                 {
                     name: "text",
                     type: "text",
+                    label: "Текст пункту",
                     required: true,
                     localized: true,
                 },
                 {
                     name: "highlighted",
                     type: "checkbox",
+                    label: "Виділити",
                     defaultValue: false,
                     admin: {
                         description:
-                            "Highlight this item with brand accent color",
+                            "Виділити цей пункт акцентним кольором",
                     },
                 },
             ],
@@ -83,6 +98,7 @@ export const PartnershipBlock: Block = {
         {
             name: "buttonText",
             type: "text",
+            label: "Текст кнопки",
             required: true,
             localized: true,
             defaultValue: "Become a Partner",
@@ -90,6 +106,7 @@ export const PartnershipBlock: Block = {
         {
             name: "buttonLink",
             type: "text",
+            label: "Посилання кнопки",
             required: false,
             defaultValue: "#",
         },

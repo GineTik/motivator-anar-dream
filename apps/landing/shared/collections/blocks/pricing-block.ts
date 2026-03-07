@@ -3,29 +3,40 @@ import type { Block } from "payload";
 export const PricingBlock: Block = {
     slug: "pricing",
     interfaceName: "PricingBlock",
+    labels: {
+        singular: "Ціни",
+        plural: "Ціни",
+    },
     fields: [
         {
             name: "badge",
             type: "group",
+            label: "Бейдж",
             fields: [
                 {
                     name: "icon",
                     type: "upload",
+                    label: "Іконка бейджу",
                     relationTo: "media",
                     required: false,
                 },
                 {
                     name: "text",
                     type: "text",
+                    label: "Текст бейджу",
                     required: true,
                     localized: true,
                     defaultValue: "Investment in yourself",
+                    admin: {
+                        description: "Короткий текст над заголовком секції",
+                    },
                 },
             ],
         },
         {
             name: "heading",
             type: "text",
+            label: "Заголовок",
             required: true,
             localized: true,
             defaultValue: "Your path to transformation",
@@ -33,6 +44,7 @@ export const PricingBlock: Block = {
         {
             name: "subtitle",
             type: "textarea",
+            label: "Підзаголовок",
             required: true,
             localized: true,
             defaultValue:
@@ -41,19 +53,22 @@ export const PricingBlock: Block = {
         {
             name: "plan",
             type: "group",
+            label: "Тарифний план",
             fields: [
                 {
                     name: "icon",
                     type: "upload",
+                    label: "Іконка плану",
                     relationTo: "media",
                     required: false,
                     admin: {
-                        description: "Plan icon image",
+                        description: "Іконка для тарифного плану",
                     },
                 },
                 {
                     name: "name",
                     type: "text",
+                    label: "Назва плану",
                     required: true,
                     localized: true,
                     defaultValue: "Personal Mentorship",
@@ -61,6 +76,7 @@ export const PricingBlock: Block = {
                 {
                     name: "description",
                     type: "textarea",
+                    label: "Опис плану",
                     required: true,
                     localized: true,
                     defaultValue:
@@ -69,6 +85,7 @@ export const PricingBlock: Block = {
                 {
                     name: "price",
                     type: "text",
+                    label: "Ціна",
                     required: true,
                     localized: true,
                     defaultValue: "$380",
@@ -76,6 +93,7 @@ export const PricingBlock: Block = {
                 {
                     name: "period",
                     type: "text",
+                    label: "Період",
                     required: true,
                     localized: true,
                     defaultValue: "/month",
@@ -83,11 +101,13 @@ export const PricingBlock: Block = {
                 {
                     name: "features",
                     type: "array",
+                    label: "Переваги",
                     minRows: 1,
                     fields: [
                         {
                             name: "text",
                             type: "text",
+                            label: "Текст переваги",
                             required: true,
                             localized: true,
                         },
@@ -103,6 +123,7 @@ export const PricingBlock: Block = {
                 {
                     name: "buttonText",
                     type: "text",
+                    label: "Текст кнопки",
                     required: true,
                     localized: true,
                     defaultValue: "Begin your journey",
@@ -110,6 +131,7 @@ export const PricingBlock: Block = {
                 {
                     name: "buttonLink",
                     type: "text",
+                    label: "Посилання кнопки",
                     required: false,
                     defaultValue: "#",
                 },
@@ -118,33 +140,38 @@ export const PricingBlock: Block = {
         {
             name: "testimonials",
             type: "array",
+            label: "Відгуки",
             minRows: 1,
             admin: {
                 description:
-                    "Testimonials will auto-scroll in columns (minimum 4 recommended for smooth animation)",
+                    "Відгуки прокручуються автоматично (рекомендується мінімум 4 для плавної анімації)",
             },
             fields: [
                 {
                     name: "quote",
                     type: "textarea",
+                    label: "Цитата",
                     required: true,
                     localized: true,
                 },
                 {
                     name: "authorName",
                     type: "text",
+                    label: "Імʼя автора",
                     required: true,
                     localized: true,
                 },
                 {
                     name: "authorRole",
                     type: "text",
+                    label: "Роль автора",
                     required: true,
                     localized: true,
                 },
                 {
                     name: "authorImage",
                     type: "upload",
+                    label: "Фото автора",
                     relationTo: "media",
                     required: false,
                 },

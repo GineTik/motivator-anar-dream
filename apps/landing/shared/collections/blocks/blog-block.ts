@@ -3,29 +3,40 @@ import type { Block } from "payload";
 export const BlogBlock: Block = {
 	slug: "blog",
 	interfaceName: "BlogBlock",
+	labels: {
+		singular: "Блог",
+		plural: "Блоги",
+	},
 	fields: [
 		{
 			name: "badge",
 			type: "group",
+			label: "Бейдж",
 			fields: [
 				{
 					name: "icon",
 					type: "upload",
+					label: "Іконка бейджу",
 					relationTo: "media",
 					required: false,
 				},
 				{
 					name: "text",
 					type: "text",
+					label: "Текст бейджу",
 					required: true,
 					localized: true,
 					defaultValue: "Insights",
+					admin: {
+						description: "Короткий текст над заголовком секції",
+					},
 				},
 			],
 		},
 		{
 			name: "heading",
 			type: "text",
+			label: "Заголовок",
 			required: true,
 			localized: true,
 			defaultValue: "Wisdom for your path",
@@ -33,6 +44,7 @@ export const BlogBlock: Block = {
 		{
 			name: "subtitle",
 			type: "textarea",
+			label: "Підзаголовок",
 			required: true,
 			localized: true,
 			defaultValue:
@@ -41,6 +53,7 @@ export const BlogBlock: Block = {
 		{
 			name: "posts",
 			type: "array",
+			label: "Статті",
 			minRows: 1,
 			maxRows: 6,
 			defaultValue: [
@@ -59,27 +72,31 @@ export const BlogBlock: Block = {
 				{
 					name: "image",
 					type: "upload",
+					label: "Зображення",
 					relationTo: "media",
 					required: false,
 					admin: {
-						description: "Blog post thumbnail image",
+						description: "Мініатюра статті",
 					},
 				},
 				{
 					name: "title",
 					type: "text",
+					label: "Заголовок",
 					required: true,
 					localized: true,
 				},
 				{
 					name: "description",
 					type: "textarea",
+					label: "Опис",
 					required: false,
 					localized: true,
 				},
 				{
 					name: "href",
 					type: "text",
+					label: "Посилання на статтю",
 					required: false,
 				},
 			],
@@ -87,10 +104,12 @@ export const BlogBlock: Block = {
 		{
 			name: "explore",
 			type: "group",
+			label: "Блок «Дивитися більше»",
 			fields: [
 				{
 					name: "heading",
 					type: "text",
+					label: "Заголовок",
 					required: true,
 					localized: true,
 					defaultValue: "Explore more insights",
@@ -98,6 +117,7 @@ export const BlogBlock: Block = {
 				{
 					name: "subtitle",
 					type: "textarea",
+					label: "Підзаголовок",
 					required: false,
 					localized: true,
 					defaultValue:
@@ -106,6 +126,7 @@ export const BlogBlock: Block = {
 				{
 					name: "buttonText",
 					type: "text",
+					label: "Текст кнопки",
 					required: true,
 					localized: true,
 					defaultValue: "Read All Articles",
@@ -113,6 +134,7 @@ export const BlogBlock: Block = {
 				{
 					name: "buttonLink",
 					type: "text",
+					label: "Посилання кнопки",
 					required: false,
 					defaultValue: "/blog",
 				},
