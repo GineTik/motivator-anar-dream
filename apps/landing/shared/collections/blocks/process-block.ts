@@ -1,4 +1,5 @@
 import type { Block } from "payload";
+import { smartLinkFields } from "../fields/smart-link";
 
 export const ProcessBlock: Block = {
     slug: "process",
@@ -120,11 +121,7 @@ export const ProcessBlock: Block = {
                     localized: true,
                     defaultValue: "Learn More",
                 },
-                {
-                    name: "buttonLink",
-                    type: "text",
-                    required: false,
-                },
+                ...smartLinkFields(),
                 {
                     name: "image",
                     type: "upload",

@@ -3,6 +3,7 @@
 import type { CtaBlock as CtaBlockType } from "@/payload-types";
 import { useScrollAnimation, fadeClass } from "../lib/use-scroll-animation";
 import { Button } from "@/shared/ui/button";
+import { resolveHref } from "../lib/resolve-href";
 
 interface CtaBlockProps {
 	block: CtaBlockType;
@@ -83,7 +84,7 @@ export function CtaBlock({ block }: CtaBlockProps) {
 						style={{ transitionDelay: "200ms" }}
 					>
 						<Button
-							href={block.ctaButton?.href || "#"}
+							href={resolveHref(block.ctaButton ?? {})}
 							variant="gradient"
 							size="lg"
 							{...(block.ctaButton?.openInNewTab

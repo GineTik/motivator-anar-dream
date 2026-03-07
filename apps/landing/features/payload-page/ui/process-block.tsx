@@ -4,6 +4,7 @@ import type { ProcessBlock as ProcessBlockType } from "@/payload-types";
 import { useState } from "react";
 import { useScrollAnimation, fadeClass } from "../lib/use-scroll-animation";
 import { Button } from "@/shared/ui/button";
+import { resolveHref } from "../lib/resolve-href";
 
 interface ProcessBlockProps {
 	block: ProcessBlockType;
@@ -184,7 +185,7 @@ export function ProcessBlock({ block }: ProcessBlockProps) {
 											</div>
 											<div className="mt-6 md:mt-6 lg:mt-[30px]">
 												<Button
-													href={currentTab.buttonLink || "#"}
+													href={resolveHref(currentTab)}
 													variant="gradient"
 												>
 													{currentTab.buttonText}

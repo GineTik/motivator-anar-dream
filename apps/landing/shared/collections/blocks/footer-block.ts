@@ -1,4 +1,5 @@
 import type { Block } from "payload";
+import { smartLinkFields } from "../fields/smart-link";
 
 export const FooterBlock: Block = {
 	slug: "footer",
@@ -22,28 +23,28 @@ export const FooterBlock: Block = {
 				{
 					title: "Explore",
 					links: [
-						{ label: "Home", href: "/" },
-						{ label: "About Us", href: "/about" },
-						{ label: "Practices", href: "/practices" },
-						{ label: "Pricing", href: "/pricing" },
-						{ label: "Blog", href: "/blog" },
-						{ label: "Contact", href: "/contact" },
+						{ label: "Home", linkType: "custom", url: "/" },
+						{ label: "About Us", linkType: "custom", url: "/about" },
+						{ label: "Practices", linkType: "custom", url: "/practices" },
+						{ label: "Pricing", linkType: "custom", url: "/pricing" },
+						{ label: "Blog", linkType: "custom", url: "/blog" },
+						{ label: "Contact", linkType: "custom", url: "/contact" },
 					],
 				},
 				{
 					title: "Resources",
 					links: [
-						{ label: "Guided Meditations", href: "/meditations" },
-						{ label: "Breathwork Sessions", href: "/breathwork" },
-						{ label: "Community", href: "/community" },
+						{ label: "Guided Meditations", linkType: "custom", url: "/meditations" },
+						{ label: "Breathwork Sessions", linkType: "custom", url: "/breathwork" },
+						{ label: "Community", linkType: "custom", url: "/community" },
 					],
 				},
 				{
 					title: "Support",
 					links: [
-						{ label: "FAQ", href: "/faq" },
-						{ label: "Privacy Policy", href: "/privacy" },
-						{ label: "Terms of Service", href: "/terms" },
+						{ label: "FAQ", linkType: "custom", url: "/faq" },
+						{ label: "Privacy Policy", linkType: "custom", url: "/privacy" },
+						{ label: "Terms of Service", linkType: "custom", url: "/terms" },
 					],
 				},
 			],
@@ -66,11 +67,7 @@ export const FooterBlock: Block = {
 							required: true,
 							localized: true,
 						},
-						{
-							name: "href",
-							type: "text",
-							required: true,
-						},
+						...smartLinkFields(),
 					],
 				},
 			],
@@ -101,12 +98,7 @@ export const FooterBlock: Block = {
 					localized: true,
 					defaultValue: "Subscribe",
 				},
-				{
-					name: "buttonHref",
-					type: "text",
-					required: false,
-					defaultValue: "#",
-				},
+				...smartLinkFields(),
 			],
 		},
 		{

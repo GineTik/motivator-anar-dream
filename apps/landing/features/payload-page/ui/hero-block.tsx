@@ -3,6 +3,7 @@
 import type { HeroBlock as HeroBlockType } from "@/payload-types";
 import { Button } from "@/shared/ui/button";
 import { useScrollAnimation, fadeInUp } from "../lib/use-scroll-animation";
+import { resolveHref } from "../lib/resolve-href";
 import styles from "./hero-block.module.css";
 
 interface HeroBlockProps {
@@ -84,7 +85,7 @@ export function HeroBlock({ block }: HeroBlockProps) {
 							>
 								<div className={styles.heroFormWrap}>
 									<Button
-										href={block.ctaButton?.href || "#"}
+										href={resolveHref(block.ctaButton ?? {})}
 										variant="gradient"
 										size="lg"
 										{...(block.ctaButton?.openInNewTab

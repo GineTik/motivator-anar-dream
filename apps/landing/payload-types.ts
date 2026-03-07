@@ -247,9 +247,34 @@ export interface HeroBlock {
   ctaButton: {
     text: string;
     /**
-     * URL or anchor link (e.g. /contact, #pricing, https://...)
+     * Choose link type: custom URL or scroll to section
      */
-    href: string;
+    linkType?: ('custom' | 'section') | null;
+    /**
+     * Any URL: absolute, relative, or anchor
+     */
+    url?: string | null;
+    /**
+     * Select a section to scroll to
+     */
+    section?:
+      | (
+          | 'hero'
+          | 'process'
+          | 'pricing'
+          | 'pricing-alt'
+          | 'feature'
+          | 'integration'
+          | 'testimonial'
+          | 'faq'
+          | 'cta'
+          | 'blog'
+          | 'footer'
+          | 'partnership'
+          | 'gallery'
+          | 'contact-us'
+        )
+      | null;
     openInNewTab?: boolean | null;
   };
   /**
@@ -286,7 +311,35 @@ export interface ProcessBlock {
         heading: string;
         description: string;
         buttonText: string;
-        buttonLink?: string | null;
+        /**
+         * Choose link type: custom URL or scroll to section
+         */
+        linkType?: ('custom' | 'section') | null;
+        /**
+         * Any URL: absolute, relative, or anchor
+         */
+        url?: string | null;
+        /**
+         * Select a section to scroll to
+         */
+        section?:
+          | (
+              | 'hero'
+              | 'process'
+              | 'pricing'
+              | 'pricing-alt'
+              | 'feature'
+              | 'integration'
+              | 'testimonial'
+              | 'faq'
+              | 'cta'
+              | 'blog'
+              | 'footer'
+              | 'partnership'
+              | 'gallery'
+              | 'contact-us'
+            )
+          | null;
         /**
          * Visual representation for this tab
          */
@@ -517,9 +570,34 @@ export interface CtaBlock {
   ctaButton: {
     text: string;
     /**
-     * URL or anchor link (e.g. /contact, #pricing, https://...)
+     * Choose link type: custom URL or scroll to section
      */
-    href: string;
+    linkType?: ('custom' | 'section') | null;
+    /**
+     * Any URL: absolute, relative, or anchor
+     */
+    url?: string | null;
+    /**
+     * Select a section to scroll to
+     */
+    section?:
+      | (
+          | 'hero'
+          | 'process'
+          | 'pricing'
+          | 'pricing-alt'
+          | 'feature'
+          | 'integration'
+          | 'testimonial'
+          | 'faq'
+          | 'cta'
+          | 'blog'
+          | 'footer'
+          | 'partnership'
+          | 'gallery'
+          | 'contact-us'
+        )
+      | null;
     openInNewTab?: boolean | null;
   };
   id?: string | null;
@@ -574,7 +652,35 @@ export interface FooterBlock {
         links?:
           | {
               label: string;
-              href: string;
+              /**
+               * Choose link type: custom URL or scroll to section
+               */
+              linkType?: ('custom' | 'section') | null;
+              /**
+               * Any URL: absolute, relative, or anchor
+               */
+              url?: string | null;
+              /**
+               * Select a section to scroll to
+               */
+              section?:
+                | (
+                    | 'hero'
+                    | 'process'
+                    | 'pricing'
+                    | 'pricing-alt'
+                    | 'feature'
+                    | 'integration'
+                    | 'testimonial'
+                    | 'faq'
+                    | 'cta'
+                    | 'blog'
+                    | 'footer'
+                    | 'partnership'
+                    | 'gallery'
+                    | 'contact-us'
+                  )
+                | null;
               id?: string | null;
             }[]
           | null;
@@ -585,7 +691,35 @@ export interface FooterBlock {
     heading: string;
     subtitle?: string | null;
     buttonText: string;
-    buttonHref?: string | null;
+    /**
+     * Choose link type: custom URL or scroll to section
+     */
+    linkType?: ('custom' | 'section') | null;
+    /**
+     * Any URL: absolute, relative, or anchor
+     */
+    url?: string | null;
+    /**
+     * Select a section to scroll to
+     */
+    section?:
+      | (
+          | 'hero'
+          | 'process'
+          | 'pricing'
+          | 'pricing-alt'
+          | 'feature'
+          | 'integration'
+          | 'testimonial'
+          | 'faq'
+          | 'cta'
+          | 'blog'
+          | 'footer'
+          | 'partnership'
+          | 'gallery'
+          | 'contact-us'
+        )
+      | null;
   };
   copyright?: string | null;
   socialLinks?:
@@ -908,7 +1042,9 @@ export interface HeroBlockSelect<T extends boolean = true> {
     | T
     | {
         text?: T;
-        href?: T;
+        linkType?: T;
+        url?: T;
+        section?: T;
         openInNewTab?: T;
       };
   personImage?: T;
@@ -938,7 +1074,9 @@ export interface ProcessBlockSelect<T extends boolean = true> {
         heading?: T;
         description?: T;
         buttonText?: T;
-        buttonLink?: T;
+        linkType?: T;
+        url?: T;
+        section?: T;
         image?: T;
         id?: T;
       };
@@ -1139,7 +1277,9 @@ export interface CtaBlockSelect<T extends boolean = true> {
     | T
     | {
         text?: T;
-        href?: T;
+        linkType?: T;
+        url?: T;
+        section?: T;
         openInNewTab?: T;
       };
   id?: T;
@@ -1192,7 +1332,9 @@ export interface FooterBlockSelect<T extends boolean = true> {
           | T
           | {
               label?: T;
-              href?: T;
+              linkType?: T;
+              url?: T;
+              section?: T;
               id?: T;
             };
         id?: T;
@@ -1203,7 +1345,9 @@ export interface FooterBlockSelect<T extends boolean = true> {
         heading?: T;
         subtitle?: T;
         buttonText?: T;
-        buttonHref?: T;
+        linkType?: T;
+        url?: T;
+        section?: T;
       };
   copyright?: T;
   socialLinks?:
@@ -1359,11 +1503,67 @@ export interface Header {
   navLinks?:
     | {
         label: string;
-        href: string;
+        /**
+         * Choose link type: custom URL or scroll to section
+         */
+        linkType?: ('custom' | 'section') | null;
+        /**
+         * Any URL: absolute, relative, or anchor
+         */
+        url?: string | null;
+        /**
+         * Select a section to scroll to
+         */
+        section?:
+          | (
+              | 'hero'
+              | 'process'
+              | 'pricing'
+              | 'pricing-alt'
+              | 'feature'
+              | 'integration'
+              | 'testimonial'
+              | 'faq'
+              | 'cta'
+              | 'blog'
+              | 'footer'
+              | 'partnership'
+              | 'gallery'
+              | 'contact-us'
+            )
+          | null;
         children?:
           | {
               label: string;
-              href: string;
+              /**
+               * Choose link type: custom URL or scroll to section
+               */
+              linkType?: ('custom' | 'section') | null;
+              /**
+               * Any URL: absolute, relative, or anchor
+               */
+              url?: string | null;
+              /**
+               * Select a section to scroll to
+               */
+              section?:
+                | (
+                    | 'hero'
+                    | 'process'
+                    | 'pricing'
+                    | 'pricing-alt'
+                    | 'feature'
+                    | 'integration'
+                    | 'testimonial'
+                    | 'faq'
+                    | 'cta'
+                    | 'blog'
+                    | 'footer'
+                    | 'partnership'
+                    | 'gallery'
+                    | 'contact-us'
+                  )
+                | null;
               id?: string | null;
             }[]
           | null;
@@ -1371,7 +1571,35 @@ export interface Header {
       }[]
     | null;
   ctaText: string;
-  ctaLink?: string | null;
+  /**
+   * Choose link type: custom URL or scroll to section
+   */
+  linkType?: ('custom' | 'section') | null;
+  /**
+   * Any URL: absolute, relative, or anchor
+   */
+  url?: string | null;
+  /**
+   * Select a section to scroll to
+   */
+  section?:
+    | (
+        | 'hero'
+        | 'process'
+        | 'pricing'
+        | 'pricing-alt'
+        | 'feature'
+        | 'integration'
+        | 'testimonial'
+        | 'faq'
+        | 'cta'
+        | 'blog'
+        | 'footer'
+        | 'partnership'
+        | 'gallery'
+        | 'contact-us'
+      )
+    | null;
   /**
    * Arrow icon for the CTA button
    */
@@ -1389,18 +1617,24 @@ export interface HeaderSelect<T extends boolean = true> {
     | T
     | {
         label?: T;
-        href?: T;
+        linkType?: T;
+        url?: T;
+        section?: T;
         children?:
           | T
           | {
               label?: T;
-              href?: T;
+              linkType?: T;
+              url?: T;
+              section?: T;
               id?: T;
             };
         id?: T;
       };
   ctaText?: T;
-  ctaLink?: T;
+  linkType?: T;
+  url?: T;
+  section?: T;
   ctaArrowIcon?: T;
   updatedAt?: T;
   createdAt?: T;

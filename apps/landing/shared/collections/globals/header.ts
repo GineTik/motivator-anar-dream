@@ -1,4 +1,5 @@
 import type { GlobalConfig } from "payload";
+import { smartLinkFields } from "../fields/smart-link";
 
 export const Header: GlobalConfig = {
 	slug: "header",
@@ -22,11 +23,11 @@ export const Header: GlobalConfig = {
 			minRows: 1,
 			maxRows: 8,
 			defaultValue: [
-				{ label: "About", href: "/about" },
-				{ label: "Practices", href: "/practices" },
-				{ label: "Pricing", href: "/pricing" },
-				{ label: "Blog", href: "/blog" },
-				{ label: "Contact", href: "/contact" },
+				{ label: "About", linkType: "custom", url: "/about" },
+				{ label: "Practices", linkType: "custom", url: "/practices" },
+				{ label: "Pricing", linkType: "custom", url: "/pricing" },
+				{ label: "Blog", linkType: "custom", url: "/blog" },
+				{ label: "Contact", linkType: "custom", url: "/contact" },
 			],
 			fields: [
 				{
@@ -35,11 +36,7 @@ export const Header: GlobalConfig = {
 					required: true,
 					localized: true,
 				},
-				{
-					name: "href",
-					type: "text",
-					required: true,
-				},
+				...smartLinkFields(),
 				{
 					name: "children",
 					type: "array",
@@ -51,11 +48,7 @@ export const Header: GlobalConfig = {
 							required: true,
 							localized: true,
 						},
-						{
-							name: "href",
-							type: "text",
-							required: true,
-						},
+						...smartLinkFields(),
 					],
 				},
 			],
@@ -67,12 +60,7 @@ export const Header: GlobalConfig = {
 			localized: true,
 			defaultValue: "Begin Your Journey",
 		},
-		{
-			name: "ctaLink",
-			type: "text",
-			required: false,
-			defaultValue: "#",
-		},
+		...smartLinkFields(),
 		{
 			name: "ctaArrowIcon",
 			type: "upload",

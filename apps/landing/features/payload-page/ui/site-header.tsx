@@ -3,6 +3,7 @@
 import type { Header } from "@/payload-types";
 import { useState, useRef, useEffect } from "react";
 import { Button } from "@/shared/ui/button";
+import { resolveHref } from "../lib/resolve-href";
 
 interface SiteHeaderProps {
 	data: Header;
@@ -116,7 +117,7 @@ export function SiteHeader({ data }: SiteHeaderProps) {
 																	{link.children?.map((child, childIndex) => (
 																		<a
 																			key={childIndex}
-																			href={child.href}
+																			href={resolveHref(child)}
 																			className="text-brand-primary font-[family-name:var(--font-inter-tight)] text-[15px] font-normal leading-6 no-underline transition-all duration-200 hover:text-brand-purple hover:translate-x-0.5"
 																		>
 																			{child.label}
@@ -129,7 +130,7 @@ export function SiteHeader({ data }: SiteHeaderProps) {
 												)}
 											</div>
 										) : (
-											<a href={link.href} className="no-underline">
+											<a href={resolveHref(link)} className="no-underline">
 												<span className="text-brand-primary font-[family-name:var(--font-inter-tight)] text-[15px] font-medium leading-6 transition-colors duration-200 hover:text-brand-purple">
 													{link.label}
 												</span>
@@ -145,7 +146,7 @@ export function SiteHeader({ data }: SiteHeaderProps) {
 					<div className="flex items-center gap-4">
 						{/* CTA Button — Desktop */}
 						<Button
-							href={data.ctaLink || "#"}
+							href={resolveHref(data)}
 							variant="solid"
 							size="sm"
 							className="hidden lg:inline-flex text-[15px] xl:px-7 xl:py-3"
@@ -221,7 +222,7 @@ export function SiteHeader({ data }: SiteHeaderProps) {
 														{link.children?.map((child, childIndex) => (
 															<a
 																key={childIndex}
-																href={child.href}
+																href={resolveHref(child)}
 																className="text-brand-primary-alpha font-[family-name:var(--font-inter-tight)] text-[15px] font-normal leading-6 no-underline transition-colors duration-200 hover:text-brand-purple"
 															>
 																{child.label}
@@ -232,7 +233,7 @@ export function SiteHeader({ data }: SiteHeaderProps) {
 											</div>
 										) : (
 											<a
-												href={link.href}
+												href={resolveHref(link)}
 												className="text-brand-primary font-[family-name:var(--font-inter-tight)] text-base font-medium leading-7 no-underline transition-colors duration-200 hover:text-brand-purple"
 											>
 												{link.label}
@@ -245,7 +246,7 @@ export function SiteHeader({ data }: SiteHeaderProps) {
 							{/* Mobile CTA */}
 							<li className="mt-3 pt-3 border-t border-brand-footer-border">
 								<Button
-									href={data.ctaLink || "#"}
+									href={resolveHref(data)}
 									variant="solid"
 									size="sm"
 									className="w-full text-center text-[15px]"

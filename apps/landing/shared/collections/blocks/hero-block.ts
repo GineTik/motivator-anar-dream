@@ -1,4 +1,5 @@
 import type { Block } from "payload";
+import { smartLinkFields } from "../fields/smart-link";
 
 export const HeroBlock: Block = {
     slug: "hero",
@@ -49,15 +50,7 @@ export const HeroBlock: Block = {
                     localized: true,
                     defaultValue: "Start Your Journey",
                 },
-                {
-                    name: "href",
-                    type: "text",
-                    required: true,
-                    defaultValue: "#",
-                    admin: {
-                        description: "URL or anchor link (e.g. /contact, #pricing, https://...)",
-                    },
-                },
+                ...smartLinkFields(),
                 {
                     name: "openInNewTab",
                     type: "checkbox",

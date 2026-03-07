@@ -1,4 +1,5 @@
 import type { Block } from "payload";
+import { smartLinkFields } from "../fields/smart-link";
 
 export const CtaBlock: Block = {
 	slug: "cta",
@@ -50,15 +51,7 @@ export const CtaBlock: Block = {
 					localized: true,
 					defaultValue: "Begin Your Journey",
 				},
-				{
-					name: "href",
-					type: "text",
-					required: true,
-					defaultValue: "#",
-					admin: {
-						description: "URL or anchor link (e.g. /contact, #pricing, https://...)",
-					},
-				},
+				...smartLinkFields(),
 				{
 					name: "openInNewTab",
 					type: "checkbox",

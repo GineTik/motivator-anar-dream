@@ -3,6 +3,7 @@
 import type { FooterBlock as FooterBlockType } from "@/payload-types";
 import { useScrollAnimation, fadeClass } from "../lib/use-scroll-animation";
 import { Button } from "@/shared/ui/button";
+import { resolveHref } from "../lib/resolve-href";
 
 interface FooterBlockProps {
 	block: FooterBlockType;
@@ -59,7 +60,7 @@ export function FooterBlock({ block }: FooterBlockProps) {
 											{(group.links || []).map((link, linkIndex) => (
 												<a
 													key={linkIndex}
-													href={link.href}
+													href={resolveHref(link)}
 													className="text-brand-primary font-[family-name:var(--font-inter-tight)] text-base font-normal leading-6 no-underline transition-colors duration-300 hover:text-brand-purple"
 												>
 													{link.label}
@@ -89,7 +90,7 @@ export function FooterBlock({ block }: FooterBlockProps) {
 						</div>
 						<div className="w-full md:w-auto md:ml-auto">
 							<Button
-								href={block.newsletter?.buttonHref || "#"}
+								href={resolveHref(block.newsletter ?? {})}
 								variant="secondary"
 								className="h-[50px] px-5 sm:px-[30px]"
 							>
