@@ -1,0 +1,126 @@
+import { MigrateUpArgs, MigrateDownArgs, sql } from '@payloadcms/db-postgres'
+
+export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
+  await db.execute(sql`
+   UPDATE "pages_blocks_hero" SET "cta_button_url" = '#' WHERE "cta_button_url" IS NULL;
+  UPDATE "pages_blocks_process_tabs" SET "url" = '#' WHERE "url" IS NULL;
+  UPDATE "pages_blocks_cta" SET "cta_button_url" = '#' WHERE "cta_button_url" IS NULL;
+  UPDATE "pages_blocks_footer_menu_groups_links" SET "url" = '#' WHERE "url" IS NULL;
+  UPDATE "pages_blocks_footer" SET "newsletter_url" = '#' WHERE "newsletter_url" IS NULL;
+  UPDATE "header_nav_links_children" SET "url" = '#' WHERE "url" IS NULL;
+  UPDATE "header_nav_links" SET "url" = '#' WHERE "url" IS NULL;
+  UPDATE "header" SET "url" = '#' WHERE "url" IS NULL;
+  UPDATE "_pages_v_blocks_hero" SET "cta_button_url" = '#' WHERE "cta_button_url" IS NULL;
+  UPDATE "_pages_v_blocks_process_tabs" SET "url" = '#' WHERE "url" IS NULL;
+  UPDATE "_pages_v_blocks_cta" SET "cta_button_url" = '#' WHERE "cta_button_url" IS NULL;
+  UPDATE "_pages_v_blocks_footer_menu_groups_links" SET "url" = '#' WHERE "url" IS NULL;
+  UPDATE "_pages_v_blocks_footer" SET "newsletter_url" = '#' WHERE "newsletter_url" IS NULL;
+  ALTER TABLE "pages_blocks_hero" DROP COLUMN "cta_button_link_type";
+  ALTER TABLE "pages_blocks_hero" DROP COLUMN "cta_button_section";
+  ALTER TABLE "pages_blocks_process_tabs" DROP COLUMN "link_type";
+  ALTER TABLE "pages_blocks_process_tabs" DROP COLUMN "section";
+  ALTER TABLE "pages_blocks_cta" DROP COLUMN "cta_button_link_type";
+  ALTER TABLE "pages_blocks_cta" DROP COLUMN "cta_button_section";
+  ALTER TABLE "pages_blocks_footer_menu_groups_links" DROP COLUMN "link_type";
+  ALTER TABLE "pages_blocks_footer_menu_groups_links" DROP COLUMN "section";
+  ALTER TABLE "pages_blocks_footer" DROP COLUMN "newsletter_link_type";
+  ALTER TABLE "pages_blocks_footer" DROP COLUMN "newsletter_section";
+  ALTER TABLE "_pages_v_blocks_hero" DROP COLUMN "cta_button_link_type";
+  ALTER TABLE "_pages_v_blocks_hero" DROP COLUMN "cta_button_section";
+  ALTER TABLE "_pages_v_blocks_process_tabs" DROP COLUMN "link_type";
+  ALTER TABLE "_pages_v_blocks_process_tabs" DROP COLUMN "section";
+  ALTER TABLE "_pages_v_blocks_cta" DROP COLUMN "cta_button_link_type";
+  ALTER TABLE "_pages_v_blocks_cta" DROP COLUMN "cta_button_section";
+  ALTER TABLE "_pages_v_blocks_footer_menu_groups_links" DROP COLUMN "link_type";
+  ALTER TABLE "_pages_v_blocks_footer_menu_groups_links" DROP COLUMN "section";
+  ALTER TABLE "_pages_v_blocks_footer" DROP COLUMN "newsletter_link_type";
+  ALTER TABLE "_pages_v_blocks_footer" DROP COLUMN "newsletter_section";
+  ALTER TABLE "header_nav_links_children" DROP COLUMN "link_type";
+  ALTER TABLE "header_nav_links_children" DROP COLUMN "section";
+  ALTER TABLE "header_nav_links" DROP COLUMN "link_type";
+  ALTER TABLE "header_nav_links" DROP COLUMN "section";
+  ALTER TABLE "header" DROP COLUMN "link_type";
+  ALTER TABLE "header" DROP COLUMN "section";
+  DROP TYPE "public"."enum_pages_blocks_hero_cta_button_link_type";
+  DROP TYPE "public"."enum_pages_blocks_hero_cta_button_section";
+  DROP TYPE "public"."enum_pages_blocks_process_tabs_link_type";
+  DROP TYPE "public"."enum_pages_blocks_process_tabs_section";
+  DROP TYPE "public"."enum_pages_blocks_cta_cta_button_link_type";
+  DROP TYPE "public"."enum_pages_blocks_cta_cta_button_section";
+  DROP TYPE "public"."enum_pages_blocks_footer_menu_groups_links_link_type";
+  DROP TYPE "public"."enum_pages_blocks_footer_menu_groups_links_section";
+  DROP TYPE "public"."enum_pages_blocks_footer_newsletter_link_type";
+  DROP TYPE "public"."enum_pages_blocks_footer_newsletter_section";
+  DROP TYPE "public"."enum__pages_v_blocks_hero_cta_button_link_type";
+  DROP TYPE "public"."enum__pages_v_blocks_hero_cta_button_section";
+  DROP TYPE "public"."enum__pages_v_blocks_process_tabs_link_type";
+  DROP TYPE "public"."enum__pages_v_blocks_process_tabs_section";
+  DROP TYPE "public"."enum__pages_v_blocks_cta_cta_button_link_type";
+  DROP TYPE "public"."enum__pages_v_blocks_cta_cta_button_section";
+  DROP TYPE "public"."enum__pages_v_blocks_footer_menu_groups_links_link_type";
+  DROP TYPE "public"."enum__pages_v_blocks_footer_menu_groups_links_section";
+  DROP TYPE "public"."enum__pages_v_blocks_footer_newsletter_link_type";
+  DROP TYPE "public"."enum__pages_v_blocks_footer_newsletter_section";
+  DROP TYPE "public"."enum_header_nav_links_children_link_type";
+  DROP TYPE "public"."enum_header_nav_links_children_section";
+  DROP TYPE "public"."enum_header_nav_links_link_type";
+  DROP TYPE "public"."enum_header_nav_links_section";
+  DROP TYPE "public"."enum_header_link_type";
+  DROP TYPE "public"."enum_header_section";`)
+}
+
+export async function down({ db, payload, req }: MigrateDownArgs): Promise<void> {
+  await db.execute(sql`
+   CREATE TYPE "public"."enum_pages_blocks_hero_cta_button_link_type" AS ENUM('custom', 'section');
+  CREATE TYPE "public"."enum_pages_blocks_hero_cta_button_section" AS ENUM('hero', 'process', 'pricing', 'pricing-alt', 'feature', 'integration', 'testimonial', 'faq', 'cta', 'blog', 'footer', 'partnership', 'gallery', 'contact-us');
+  CREATE TYPE "public"."enum_pages_blocks_process_tabs_link_type" AS ENUM('custom', 'section');
+  CREATE TYPE "public"."enum_pages_blocks_process_tabs_section" AS ENUM('hero', 'process', 'pricing', 'pricing-alt', 'feature', 'integration', 'testimonial', 'faq', 'cta', 'blog', 'footer', 'partnership', 'gallery', 'contact-us');
+  CREATE TYPE "public"."enum_pages_blocks_cta_cta_button_link_type" AS ENUM('custom', 'section');
+  CREATE TYPE "public"."enum_pages_blocks_cta_cta_button_section" AS ENUM('hero', 'process', 'pricing', 'pricing-alt', 'feature', 'integration', 'testimonial', 'faq', 'cta', 'blog', 'footer', 'partnership', 'gallery', 'contact-us');
+  CREATE TYPE "public"."enum_pages_blocks_footer_menu_groups_links_link_type" AS ENUM('custom', 'section');
+  CREATE TYPE "public"."enum_pages_blocks_footer_menu_groups_links_section" AS ENUM('hero', 'process', 'pricing', 'pricing-alt', 'feature', 'integration', 'testimonial', 'faq', 'cta', 'blog', 'footer', 'partnership', 'gallery', 'contact-us');
+  CREATE TYPE "public"."enum_pages_blocks_footer_newsletter_link_type" AS ENUM('custom', 'section');
+  CREATE TYPE "public"."enum_pages_blocks_footer_newsletter_section" AS ENUM('hero', 'process', 'pricing', 'pricing-alt', 'feature', 'integration', 'testimonial', 'faq', 'cta', 'blog', 'footer', 'partnership', 'gallery', 'contact-us');
+  CREATE TYPE "public"."enum__pages_v_blocks_hero_cta_button_link_type" AS ENUM('custom', 'section');
+  CREATE TYPE "public"."enum__pages_v_blocks_hero_cta_button_section" AS ENUM('hero', 'process', 'pricing', 'pricing-alt', 'feature', 'integration', 'testimonial', 'faq', 'cta', 'blog', 'footer', 'partnership', 'gallery', 'contact-us');
+  CREATE TYPE "public"."enum__pages_v_blocks_process_tabs_link_type" AS ENUM('custom', 'section');
+  CREATE TYPE "public"."enum__pages_v_blocks_process_tabs_section" AS ENUM('hero', 'process', 'pricing', 'pricing-alt', 'feature', 'integration', 'testimonial', 'faq', 'cta', 'blog', 'footer', 'partnership', 'gallery', 'contact-us');
+  CREATE TYPE "public"."enum__pages_v_blocks_cta_cta_button_link_type" AS ENUM('custom', 'section');
+  CREATE TYPE "public"."enum__pages_v_blocks_cta_cta_button_section" AS ENUM('hero', 'process', 'pricing', 'pricing-alt', 'feature', 'integration', 'testimonial', 'faq', 'cta', 'blog', 'footer', 'partnership', 'gallery', 'contact-us');
+  CREATE TYPE "public"."enum__pages_v_blocks_footer_menu_groups_links_link_type" AS ENUM('custom', 'section');
+  CREATE TYPE "public"."enum__pages_v_blocks_footer_menu_groups_links_section" AS ENUM('hero', 'process', 'pricing', 'pricing-alt', 'feature', 'integration', 'testimonial', 'faq', 'cta', 'blog', 'footer', 'partnership', 'gallery', 'contact-us');
+  CREATE TYPE "public"."enum__pages_v_blocks_footer_newsletter_link_type" AS ENUM('custom', 'section');
+  CREATE TYPE "public"."enum__pages_v_blocks_footer_newsletter_section" AS ENUM('hero', 'process', 'pricing', 'pricing-alt', 'feature', 'integration', 'testimonial', 'faq', 'cta', 'blog', 'footer', 'partnership', 'gallery', 'contact-us');
+  CREATE TYPE "public"."enum_header_nav_links_children_link_type" AS ENUM('custom', 'section');
+  CREATE TYPE "public"."enum_header_nav_links_children_section" AS ENUM('hero', 'process', 'pricing', 'pricing-alt', 'feature', 'integration', 'testimonial', 'faq', 'cta', 'blog', 'footer', 'partnership', 'gallery', 'contact-us');
+  CREATE TYPE "public"."enum_header_nav_links_link_type" AS ENUM('custom', 'section');
+  CREATE TYPE "public"."enum_header_nav_links_section" AS ENUM('hero', 'process', 'pricing', 'pricing-alt', 'feature', 'integration', 'testimonial', 'faq', 'cta', 'blog', 'footer', 'partnership', 'gallery', 'contact-us');
+  CREATE TYPE "public"."enum_header_link_type" AS ENUM('custom', 'section');
+  CREATE TYPE "public"."enum_header_section" AS ENUM('hero', 'process', 'pricing', 'pricing-alt', 'feature', 'integration', 'testimonial', 'faq', 'cta', 'blog', 'footer', 'partnership', 'gallery', 'contact-us');
+  ALTER TABLE "pages_blocks_hero" ADD COLUMN "cta_button_link_type" "enum_pages_blocks_hero_cta_button_link_type" DEFAULT 'custom';
+  ALTER TABLE "pages_blocks_hero" ADD COLUMN "cta_button_section" "enum_pages_blocks_hero_cta_button_section";
+  ALTER TABLE "pages_blocks_process_tabs" ADD COLUMN "link_type" "enum_pages_blocks_process_tabs_link_type" DEFAULT 'custom';
+  ALTER TABLE "pages_blocks_process_tabs" ADD COLUMN "section" "enum_pages_blocks_process_tabs_section";
+  ALTER TABLE "pages_blocks_cta" ADD COLUMN "cta_button_link_type" "enum_pages_blocks_cta_cta_button_link_type" DEFAULT 'custom';
+  ALTER TABLE "pages_blocks_cta" ADD COLUMN "cta_button_section" "enum_pages_blocks_cta_cta_button_section";
+  ALTER TABLE "pages_blocks_footer_menu_groups_links" ADD COLUMN "link_type" "enum_pages_blocks_footer_menu_groups_links_link_type" DEFAULT 'custom';
+  ALTER TABLE "pages_blocks_footer_menu_groups_links" ADD COLUMN "section" "enum_pages_blocks_footer_menu_groups_links_section";
+  ALTER TABLE "pages_blocks_footer" ADD COLUMN "newsletter_link_type" "enum_pages_blocks_footer_newsletter_link_type" DEFAULT 'custom';
+  ALTER TABLE "pages_blocks_footer" ADD COLUMN "newsletter_section" "enum_pages_blocks_footer_newsletter_section";
+  ALTER TABLE "_pages_v_blocks_hero" ADD COLUMN "cta_button_link_type" "enum__pages_v_blocks_hero_cta_button_link_type" DEFAULT 'custom';
+  ALTER TABLE "_pages_v_blocks_hero" ADD COLUMN "cta_button_section" "enum__pages_v_blocks_hero_cta_button_section";
+  ALTER TABLE "_pages_v_blocks_process_tabs" ADD COLUMN "link_type" "enum__pages_v_blocks_process_tabs_link_type" DEFAULT 'custom';
+  ALTER TABLE "_pages_v_blocks_process_tabs" ADD COLUMN "section" "enum__pages_v_blocks_process_tabs_section";
+  ALTER TABLE "_pages_v_blocks_cta" ADD COLUMN "cta_button_link_type" "enum__pages_v_blocks_cta_cta_button_link_type" DEFAULT 'custom';
+  ALTER TABLE "_pages_v_blocks_cta" ADD COLUMN "cta_button_section" "enum__pages_v_blocks_cta_cta_button_section";
+  ALTER TABLE "_pages_v_blocks_footer_menu_groups_links" ADD COLUMN "link_type" "enum__pages_v_blocks_footer_menu_groups_links_link_type" DEFAULT 'custom';
+  ALTER TABLE "_pages_v_blocks_footer_menu_groups_links" ADD COLUMN "section" "enum__pages_v_blocks_footer_menu_groups_links_section";
+  ALTER TABLE "_pages_v_blocks_footer" ADD COLUMN "newsletter_link_type" "enum__pages_v_blocks_footer_newsletter_link_type" DEFAULT 'custom';
+  ALTER TABLE "_pages_v_blocks_footer" ADD COLUMN "newsletter_section" "enum__pages_v_blocks_footer_newsletter_section";
+  ALTER TABLE "header_nav_links_children" ADD COLUMN "link_type" "enum_header_nav_links_children_link_type" DEFAULT 'custom';
+  ALTER TABLE "header_nav_links_children" ADD COLUMN "section" "enum_header_nav_links_children_section";
+  ALTER TABLE "header_nav_links" ADD COLUMN "link_type" "enum_header_nav_links_link_type" DEFAULT 'custom';
+  ALTER TABLE "header_nav_links" ADD COLUMN "section" "enum_header_nav_links_section";
+  ALTER TABLE "header" ADD COLUMN "link_type" "enum_header_link_type" DEFAULT 'custom';
+  ALTER TABLE "header" ADD COLUMN "section" "enum_header_section";`)
+}

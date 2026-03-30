@@ -271,34 +271,9 @@ export interface HeroBlock {
   ctaButton: {
     text: string;
     /**
-     * Оберіть тип: власне посилання або перехід до секції на сторінці
-     */
-    linkType?: ('custom' | 'section') | null;
-    /**
-     * Введіть адресу сторінки, наприклад: https://example.com або /contact
+     * Введіть зовнішнє посилання або оберіть сторінку/секцію зі списку
      */
     url?: string | null;
-    /**
-     * Оберіть секцію, до якої буде прокручуватися сторінка
-     */
-    section?:
-      | (
-          | 'hero'
-          | 'process'
-          | 'pricing'
-          | 'pricing-alt'
-          | 'feature'
-          | 'integration'
-          | 'testimonial'
-          | 'faq'
-          | 'cta'
-          | 'blog'
-          | 'footer'
-          | 'partnership'
-          | 'gallery'
-          | 'contact-us'
-        )
-      | null;
     /**
      * Якщо увімкнено — посилання відкриється в новій вкладці браузера
      */
@@ -348,34 +323,9 @@ export interface ProcessBlock {
         description: string;
         buttonText: string;
         /**
-         * Оберіть тип: власне посилання або перехід до секції на сторінці
-         */
-        linkType?: ('custom' | 'section') | null;
-        /**
-         * Введіть адресу сторінки, наприклад: https://example.com або /contact
+         * Введіть зовнішнє посилання або оберіть сторінку/секцію зі списку
          */
         url?: string | null;
-        /**
-         * Оберіть секцію, до якої буде прокручуватися сторінка
-         */
-        section?:
-          | (
-              | 'hero'
-              | 'process'
-              | 'pricing'
-              | 'pricing-alt'
-              | 'feature'
-              | 'integration'
-              | 'testimonial'
-              | 'faq'
-              | 'cta'
-              | 'blog'
-              | 'footer'
-              | 'partnership'
-              | 'gallery'
-              | 'contact-us'
-            )
-          | null;
         /**
          * Ілюстрація для цієї вкладки
          */
@@ -627,34 +577,9 @@ export interface CtaBlock {
   ctaButton: {
     text: string;
     /**
-     * Оберіть тип: власне посилання або перехід до секції на сторінці
-     */
-    linkType?: ('custom' | 'section') | null;
-    /**
-     * Введіть адресу сторінки, наприклад: https://example.com або /contact
+     * Введіть зовнішнє посилання або оберіть сторінку/секцію зі списку
      */
     url?: string | null;
-    /**
-     * Оберіть секцію, до якої буде прокручуватися сторінка
-     */
-    section?:
-      | (
-          | 'hero'
-          | 'process'
-          | 'pricing'
-          | 'pricing-alt'
-          | 'feature'
-          | 'integration'
-          | 'testimonial'
-          | 'faq'
-          | 'cta'
-          | 'blog'
-          | 'footer'
-          | 'partnership'
-          | 'gallery'
-          | 'contact-us'
-        )
-      | null;
     /**
      * Якщо увімкнено — посилання відкриється в новій вкладці браузера
      */
@@ -719,34 +644,9 @@ export interface FooterBlock {
           | {
               label: string;
               /**
-               * Оберіть тип: власне посилання або перехід до секції на сторінці
-               */
-              linkType?: ('custom' | 'section') | null;
-              /**
-               * Введіть адресу сторінки, наприклад: https://example.com або /contact
+               * Введіть зовнішнє посилання або оберіть сторінку/секцію зі списку
                */
               url?: string | null;
-              /**
-               * Оберіть секцію, до якої буде прокручуватися сторінка
-               */
-              section?:
-                | (
-                    | 'hero'
-                    | 'process'
-                    | 'pricing'
-                    | 'pricing-alt'
-                    | 'feature'
-                    | 'integration'
-                    | 'testimonial'
-                    | 'faq'
-                    | 'cta'
-                    | 'blog'
-                    | 'footer'
-                    | 'partnership'
-                    | 'gallery'
-                    | 'contact-us'
-                  )
-                | null;
               id?: string | null;
             }[]
           | null;
@@ -758,34 +658,9 @@ export interface FooterBlock {
     subtitle?: string | null;
     buttonText: string;
     /**
-     * Оберіть тип: власне посилання або перехід до секції на сторінці
-     */
-    linkType?: ('custom' | 'section') | null;
-    /**
-     * Введіть адресу сторінки, наприклад: https://example.com або /contact
+     * Введіть зовнішнє посилання або оберіть сторінку/секцію зі списку
      */
     url?: string | null;
-    /**
-     * Оберіть секцію, до якої буде прокручуватися сторінка
-     */
-    section?:
-      | (
-          | 'hero'
-          | 'process'
-          | 'pricing'
-          | 'pricing-alt'
-          | 'feature'
-          | 'integration'
-          | 'testimonial'
-          | 'faq'
-          | 'cta'
-          | 'blog'
-          | 'footer'
-          | 'partnership'
-          | 'gallery'
-          | 'contact-us'
-        )
-      | null;
   };
   copyright?: string | null;
   /**
@@ -1126,9 +1001,7 @@ export interface HeroBlockSelect<T extends boolean = true> {
     | T
     | {
         text?: T;
-        linkType?: T;
         url?: T;
-        section?: T;
         openInNewTab?: T;
       };
   personImage?: T;
@@ -1158,9 +1031,7 @@ export interface ProcessBlockSelect<T extends boolean = true> {
         heading?: T;
         description?: T;
         buttonText?: T;
-        linkType?: T;
         url?: T;
-        section?: T;
         image?: T;
         id?: T;
       };
@@ -1361,9 +1232,7 @@ export interface CtaBlockSelect<T extends boolean = true> {
     | T
     | {
         text?: T;
-        linkType?: T;
         url?: T;
-        section?: T;
         openInNewTab?: T;
       };
   id?: T;
@@ -1416,9 +1285,7 @@ export interface FooterBlockSelect<T extends boolean = true> {
           | T
           | {
               label?: T;
-              linkType?: T;
               url?: T;
-              section?: T;
               id?: T;
             };
         id?: T;
@@ -1429,9 +1296,7 @@ export interface FooterBlockSelect<T extends boolean = true> {
         heading?: T;
         subtitle?: T;
         buttonText?: T;
-        linkType?: T;
         url?: T;
-        section?: T;
       };
   copyright?: T;
   socialLinks?:
@@ -1594,34 +1459,9 @@ export interface Header {
          */
         label: string;
         /**
-         * Оберіть тип: власне посилання або перехід до секції на сторінці
-         */
-        linkType?: ('custom' | 'section') | null;
-        /**
-         * Введіть адресу сторінки, наприклад: https://example.com або /contact
+         * Введіть зовнішнє посилання або оберіть сторінку/секцію зі списку
          */
         url?: string | null;
-        /**
-         * Оберіть секцію, до якої буде прокручуватися сторінка
-         */
-        section?:
-          | (
-              | 'hero'
-              | 'process'
-              | 'pricing'
-              | 'pricing-alt'
-              | 'feature'
-              | 'integration'
-              | 'testimonial'
-              | 'faq'
-              | 'cta'
-              | 'blog'
-              | 'footer'
-              | 'partnership'
-              | 'gallery'
-              | 'contact-us'
-            )
-          | null;
         /**
          * Випадаючий список під цим пунктом (необовʼязково)
          */
@@ -1632,34 +1472,9 @@ export interface Header {
                */
               label: string;
               /**
-               * Оберіть тип: власне посилання або перехід до секції на сторінці
-               */
-              linkType?: ('custom' | 'section') | null;
-              /**
-               * Введіть адресу сторінки, наприклад: https://example.com або /contact
+               * Введіть зовнішнє посилання або оберіть сторінку/секцію зі списку
                */
               url?: string | null;
-              /**
-               * Оберіть секцію, до якої буде прокручуватися сторінка
-               */
-              section?:
-                | (
-                    | 'hero'
-                    | 'process'
-                    | 'pricing'
-                    | 'pricing-alt'
-                    | 'feature'
-                    | 'integration'
-                    | 'testimonial'
-                    | 'faq'
-                    | 'cta'
-                    | 'blog'
-                    | 'footer'
-                    | 'partnership'
-                    | 'gallery'
-                    | 'contact-us'
-                  )
-                | null;
               id?: string | null;
             }[]
           | null;
@@ -1671,34 +1486,9 @@ export interface Header {
    */
   ctaText: string;
   /**
-   * Оберіть тип: власне посилання або перехід до секції на сторінці
-   */
-  linkType?: ('custom' | 'section') | null;
-  /**
-   * Введіть адресу сторінки, наприклад: https://example.com або /contact
+   * Введіть зовнішнє посилання або оберіть сторінку/секцію зі списку
    */
   url?: string | null;
-  /**
-   * Оберіть секцію, до якої буде прокручуватися сторінка
-   */
-  section?:
-    | (
-        | 'hero'
-        | 'process'
-        | 'pricing'
-        | 'pricing-alt'
-        | 'feature'
-        | 'integration'
-        | 'testimonial'
-        | 'faq'
-        | 'cta'
-        | 'blog'
-        | 'footer'
-        | 'partnership'
-        | 'gallery'
-        | 'contact-us'
-      )
-    | null;
   /**
    * Іконка стрілки біля тексту кнопки (необовʼязково)
    */
@@ -1716,24 +1506,18 @@ export interface HeaderSelect<T extends boolean = true> {
     | T
     | {
         label?: T;
-        linkType?: T;
         url?: T;
-        section?: T;
         children?:
           | T
           | {
               label?: T;
-              linkType?: T;
               url?: T;
-              section?: T;
               id?: T;
             };
         id?: T;
       };
   ctaText?: T;
-  linkType?: T;
   url?: T;
-  section?: T;
   ctaArrowIcon?: T;
   updatedAt?: T;
   createdAt?: T;
