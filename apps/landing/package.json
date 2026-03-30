@@ -13,7 +13,10 @@
         "migrate:status": "payload migrate:status",
         "migrate": "payload migrate",
         "migrate:down": "payload migrate:down",
-        "migrate:refresh": "payload migrate:refresh"
+        "migrate:refresh": "payload migrate:refresh",
+        "test": "vitest run",
+        "test:watch": "vitest",
+        "test:e2e": "playwright test"
     },
     "keywords": [],
     "author": "",
@@ -24,8 +27,10 @@
         "@payloadcms/next": "^3.75.0",
         "@payloadcms/richtext-lexical": "^3.75.0",
         "@payloadcms/storage-s3": "^3.75.0",
+        "@payloadcms/ui": "^3.75.0",
         "@supabase/ssr": "^0.8.0",
         "@supabase/supabase-js": "^2.95.3",
+        "@tanstack/react-query": "^5.95.2",
         "class-variance-authority": "^0.7.1",
         "clsx": "^2.1.1",
         "lucide-react": "^0.563.0",
@@ -38,16 +43,21 @@
     },
     "devDependencies": {
         "@payloadcms/graphql": "^3.75.0",
+        "@playwright/test": "^1.58.2",
         "@tailwindcss/postcss": "^4.1.18",
+        "@testing-library/jest-dom": "^6.9.1",
+        "@testing-library/react": "^16.3.2",
         "@types/node": "^25.2.1",
         "@types/react": "^19.2.13",
         "@types/react-dom": "^19.2.3",
         "autoprefixer": "^10.4.24",
         "eslint": "^10.0.0",
         "eslint-config-next": "^16.1.6",
+        "jsdom": "^29.0.1",
         "postcss": "^8.5.6",
         "sass": "^1.97.3",
         "tailwindcss": "^4.1.18",
-        "typescript": "^5.9.3"
+        "typescript": "^5.9.3",
+        "vitest": "^4.1.2"
     }
 }

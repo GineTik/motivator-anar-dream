@@ -6,6 +6,8 @@ node_modules
 # Testing
 coverage
 *.log
+test-results/
+playwright-report/
 
 # Build outputs
 dist
