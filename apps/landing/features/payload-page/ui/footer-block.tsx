@@ -2,7 +2,9 @@
 
 import type { FooterBlock as FooterBlockType } from "@/payload-types";
 import { useScrollAnimation, fadeClass } from "../lib/use-scroll-animation";
-import { Button } from "@/shared/ui/button";
+import { buttonVariants } from "@/shared/ui/button";
+import { cn } from "@/shared/lib/utils";
+import { SmartLink } from "@/shared/ui/smart-link";
 import { resolveHref } from "../lib/resolve-href";
 
 interface FooterBlockProps {
@@ -58,13 +60,13 @@ export function FooterBlock({ block }: FooterBlockProps) {
 										</h5>
 										<div className="flex flex-col gap-3 sm:gap-3.5 md:gap-4 mt-4 sm:mt-5 md:mt-6">
 											{(group.links || []).map((link, linkIndex) => (
-												<a
+												<SmartLink
 													key={linkIndex}
-													href={resolveHref(link)}
+													href={resolveHref(link?.url)}
 													className="text-brand-primary font-[family-name:var(--font-inter-tight)] text-base font-normal leading-6 no-underline transition-colors duration-300 hover:text-brand-purple"
 												>
 													{link.label}
-												</a>
+												</SmartLink>
 											))}
 										</div>
 									</div>
@@ -89,13 +91,12 @@ export function FooterBlock({ block }: FooterBlockProps) {
 							</div>
 						</div>
 						<div className="w-full md:w-auto md:ml-auto">
-							<Button
-								href={resolveHref(block.newsletter ?? {})}
-								variant="secondary"
-								className="h-[50px] px-5 sm:px-[30px]"
+							<SmartLink
+								href={resolveHref(block.newsletter?.url)}
+								className={cn(buttonVariants({ variant: "secondary" }), "h-[50px] px-5 sm:px-[30px]")}
 							>
 								{block.newsletter?.buttonText}
-							</Button>
+							</SmartLink>
 						</div>
 					</div>
 

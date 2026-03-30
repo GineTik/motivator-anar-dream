@@ -2,7 +2,8 @@
 
 import type { CtaBlock as CtaBlockType } from "@/payload-types";
 import { useScrollAnimation, fadeClass } from "../lib/use-scroll-animation";
-import { Button } from "@/shared/ui/button";
+import { buttonVariants } from "@/shared/ui/button";
+import { SmartLink } from "@/shared/ui/smart-link";
 import { resolveHref } from "../lib/resolve-href";
 
 interface CtaBlockProps {
@@ -83,16 +84,13 @@ export function CtaBlock({ block }: CtaBlockProps) {
 						className={`mt-7 sm:mt-8 md:mt-10 ${fadeClass(isVisible)}`}
 						style={{ transitionDelay: "200ms" }}
 					>
-						<Button
-							href={resolveHref(block.ctaButton ?? {})}
-							variant="gradient"
-							size="lg"
-							{...(block.ctaButton?.openInNewTab
-								? { target: "_blank", rel: "noopener noreferrer" }
-								: {})}
+						<SmartLink
+							href={resolveHref(block.ctaButton?.url)}
+							openInNewTab={block.ctaButton?.openInNewTab ?? false}
+							className={buttonVariants({ variant: "gradient", size: "lg" })}
 						>
 							{block.ctaButton?.text}
-						</Button>
+						</SmartLink>
 					</div>
 				</div>
 			</div>

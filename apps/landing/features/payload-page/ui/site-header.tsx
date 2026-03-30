@@ -2,7 +2,9 @@
 
 import type { Header } from "@/payload-types";
 import { useState, useRef, useEffect } from "react";
-import { Button } from "@/shared/ui/button";
+import { buttonVariants } from "@/shared/ui/button";
+import { cn } from "@/shared/lib/utils";
+import { SmartLink } from "@/shared/ui/smart-link";
 import { resolveHref } from "../lib/resolve-href";
 
 interface SiteHeaderProps {
@@ -115,13 +117,13 @@ export function SiteHeader({ data }: SiteHeaderProps) {
 															<div className="py-4 px-5 min-w-[160px]">
 																<div className="flex flex-col gap-2.5">
 																	{link.children?.map((child, childIndex) => (
-																		<a
+																		<SmartLink
 																			key={childIndex}
-																			href={resolveHref(child)}
+																			href={resolveHref(child?.url)}
 																			className="text-brand-primary font-[family-name:var(--font-inter-tight)] text-[15px] font-normal leading-6 no-underline transition-all duration-200 hover:text-brand-purple hover:translate-x-0.5"
 																		>
 																			{child.label}
-																		</a>
+																		</SmartLink>
 																	))}
 																</div>
 															</div>
@@ -130,11 +132,11 @@ export function SiteHeader({ data }: SiteHeaderProps) {
 												)}
 											</div>
 										) : (
-											<a href={resolveHref(link)} className="no-underline">
+											<SmartLink href={resolveHref(link?.url)} className="no-underline">
 												<span className="text-brand-primary font-[family-name:var(--font-inter-tight)] text-[15px] font-medium leading-6 transition-colors duration-200 hover:text-brand-purple">
 													{link.label}
 												</span>
-											</a>
+											</SmartLink>
 										)}
 									</li>
 								);
@@ -145,14 +147,12 @@ export function SiteHeader({ data }: SiteHeaderProps) {
 					{/* Right — CTA + Mobile Toggle */}
 					<div className="flex items-center gap-4">
 						{/* CTA Button — Desktop */}
-						<Button
-							href={resolveHref(data)}
-							variant="solid"
-							size="sm"
-							className="hidden lg:inline-flex text-[15px] xl:px-7 xl:py-3"
+						<SmartLink
+							href={resolveHref(data?.url)}
+							className={cn(buttonVariants({ variant: "solid", size: "sm" }), "hidden lg:inline-flex text-[15px] xl:px-7 xl:py-3")}
 						>
 							{data.ctaText}
-						</Button>
+						</SmartLink>
 
 						{/* Mobile Menu Button */}
 						<button
@@ -220,24 +220,24 @@ export function SiteHeader({ data }: SiteHeaderProps) {
 												{isOpen && (
 													<div className="mt-2 pl-4 flex flex-col gap-2">
 														{link.children?.map((child, childIndex) => (
-															<a
+															<SmartLink
 																key={childIndex}
-																href={resolveHref(child)}
+																href={resolveHref(child?.url)}
 																className="text-brand-primary-alpha font-[family-name:var(--font-inter-tight)] text-[15px] font-normal leading-6 no-underline transition-colors duration-200 hover:text-brand-purple"
 															>
 																{child.label}
-															</a>
+															</SmartLink>
 														))}
 													</div>
 												)}
 											</div>
 										) : (
-											<a
-												href={resolveHref(link)}
+											<SmartLink
+												href={resolveHref(link?.url)}
 												className="text-brand-primary font-[family-name:var(--font-inter-tight)] text-base font-medium leading-7 no-underline transition-colors duration-200 hover:text-brand-purple"
 											>
 												{link.label}
-											</a>
+											</SmartLink>
 										)}
 									</li>
 								);
@@ -245,14 +245,12 @@ export function SiteHeader({ data }: SiteHeaderProps) {
 
 							{/* Mobile CTA */}
 							<li className="mt-3 pt-3 border-t border-brand-footer-border">
-								<Button
-									href={resolveHref(data)}
-									variant="solid"
-									size="sm"
-									className="w-full text-center text-[15px]"
+								<SmartLink
+									href={resolveHref(data?.url)}
+									className={cn(buttonVariants({ variant: "solid", size: "sm" }), "w-full text-center text-[15px]")}
 								>
 									{data.ctaText}
-								</Button>
+								</SmartLink>
 							</li>
 						</ul>
 					</div>

@@ -1,7 +1,8 @@
 "use client";
 
 import type { HeroBlock as HeroBlockType } from "@/payload-types";
-import { Button } from "@/shared/ui/button";
+import { buttonVariants } from "@/shared/ui/button";
+import { SmartLink } from "@/shared/ui/smart-link";
 import { useScrollAnimation, fadeInUp } from "../lib/use-scroll-animation";
 import { resolveHref } from "../lib/resolve-href";
 import styles from "./hero-block.module.css";
@@ -84,16 +85,13 @@ export function HeroBlock({ block }: HeroBlockProps) {
 								style={{ transitionDelay: "300ms" }}
 							>
 								<div className={styles.heroFormWrap}>
-									<Button
-										href={resolveHref(block.ctaButton ?? {})}
-										variant="gradient"
-										size="lg"
-										{...(block.ctaButton?.openInNewTab
-											? { target: "_blank", rel: "noopener noreferrer" }
-											: {})}
+									<SmartLink
+										href={resolveHref(block.ctaButton?.url)}
+										openInNewTab={block.ctaButton?.openInNewTab ?? false}
+										className={buttonVariants({ variant: "gradient", size: "lg" })}
 									>
 										{block.ctaButton?.text}
-									</Button>
+									</SmartLink>
 								</div>
 							</div>
 						</div>
