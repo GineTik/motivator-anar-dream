@@ -1,5 +1,5 @@
 import type { GlobalConfig } from "payload";
-import { smartLinkFields } from "../fields/smart-link";
+import { smartUrlField } from "../fields/smart-url-field";
 
 export const Header: GlobalConfig = {
 	slug: "header",
@@ -31,11 +31,11 @@ export const Header: GlobalConfig = {
 					"Пункти меню у верхній частині сайту (від 1 до 8)",
 			},
 			defaultValue: [
-				{ label: "About", linkType: "custom", url: "/about" },
-				{ label: "Practices", linkType: "custom", url: "/practices" },
-				{ label: "Pricing", linkType: "custom", url: "/pricing" },
-				{ label: "Blog", linkType: "custom", url: "/blog" },
-				{ label: "Contact", linkType: "custom", url: "/contact" },
+				{ label: "About", url: "/about" },
+				{ label: "Practices", url: "/practices" },
+				{ label: "Pricing", url: "/pricing" },
+				{ label: "Blog", url: "/blog" },
+				{ label: "Contact", url: "/contact" },
 			],
 			fields: [
 				{
@@ -48,7 +48,7 @@ export const Header: GlobalConfig = {
 						description: "Текст який бачить відвідувач",
 					},
 				},
-				...smartLinkFields(),
+				smartUrlField(),
 				{
 					name: "children",
 					type: "array",
@@ -70,7 +70,7 @@ export const Header: GlobalConfig = {
 								description: "Текст який бачить відвідувач",
 							},
 						},
-						...smartLinkFields(),
+						smartUrlField(),
 					],
 				},
 			],
@@ -86,7 +86,7 @@ export const Header: GlobalConfig = {
 				description: "Текст на головній кнопці у шапці",
 			},
 		},
-		...smartLinkFields(),
+		smartUrlField(),
 		{
 			name: "ctaArrowIcon",
 			type: "upload",

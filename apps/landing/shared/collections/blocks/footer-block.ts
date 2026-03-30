@@ -1,5 +1,5 @@
 import type { Block } from "payload";
-import { smartLinkFields } from "../fields/smart-link";
+import { smartUrlField } from "../fields/smart-url-field";
 
 export const FooterBlock: Block = {
 	slug: "footer",
@@ -35,28 +35,28 @@ export const FooterBlock: Block = {
 				{
 					title: "Explore",
 					links: [
-						{ label: "Home", linkType: "custom", url: "/" },
-						{ label: "About Us", linkType: "custom", url: "/about" },
-						{ label: "Practices", linkType: "custom", url: "/practices" },
-						{ label: "Pricing", linkType: "custom", url: "/pricing" },
-						{ label: "Blog", linkType: "custom", url: "/blog" },
-						{ label: "Contact", linkType: "custom", url: "/contact" },
+						{ label: "Home", url: "/" },
+						{ label: "About Us", url: "/about" },
+						{ label: "Practices", url: "/practices" },
+						{ label: "Pricing", url: "/pricing" },
+						{ label: "Blog", url: "/blog" },
+						{ label: "Contact", url: "/contact" },
 					],
 				},
 				{
 					title: "Resources",
 					links: [
-						{ label: "Guided Meditations", linkType: "custom", url: "/meditations" },
-						{ label: "Breathwork Sessions", linkType: "custom", url: "/breathwork" },
-						{ label: "Community", linkType: "custom", url: "/community" },
+						{ label: "Guided Meditations", url: "/meditations" },
+						{ label: "Breathwork Sessions", url: "/breathwork" },
+						{ label: "Community", url: "/community" },
 					],
 				},
 				{
 					title: "Support",
 					links: [
-						{ label: "FAQ", linkType: "custom", url: "/faq" },
-						{ label: "Privacy Policy", linkType: "custom", url: "/privacy" },
-						{ label: "Terms of Service", linkType: "custom", url: "/terms" },
+						{ label: "FAQ", url: "/faq" },
+						{ label: "Privacy Policy", url: "/privacy" },
+						{ label: "Terms of Service", url: "/terms" },
 					],
 				},
 			],
@@ -85,7 +85,7 @@ export const FooterBlock: Block = {
 							required: true,
 							localized: true,
 						},
-						...smartLinkFields(),
+						smartUrlField(),
 					],
 				},
 			],
@@ -120,7 +120,7 @@ export const FooterBlock: Block = {
 					localized: true,
 					defaultValue: "Subscribe",
 				},
-				...smartLinkFields(),
+				smartUrlField(),
 			],
 		},
 		{

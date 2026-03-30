@@ -1,5 +1,5 @@
 import type { Block } from "payload";
-import { smartLinkFields } from "../fields/smart-link";
+import { smartUrlField } from "../fields/smart-url-field";
 
 export const ProcessBlock: Block = {
     slug: "process",
@@ -149,7 +149,7 @@ export const ProcessBlock: Block = {
                     localized: true,
                     defaultValue: "Learn More",
                 },
-                ...smartLinkFields(),
+                smartUrlField(),
                 {
                     name: "image",
                     type: "upload",
