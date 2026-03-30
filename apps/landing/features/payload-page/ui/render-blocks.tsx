@@ -1,4 +1,5 @@
 import type { Page } from "@/payload-types";
+import { toKebabCase } from "@/shared/lib/utils";
 import { HeroBlock } from "./hero-block";
 import { ProcessBlock } from "./process-block";
 import { PricingBlock } from "./pricing-block";
@@ -16,10 +17,6 @@ import { ContactUsBlock } from "./contact-us-block";
 
 interface RenderBlocksProps {
 	blocks: Page["blocks"];
-}
-
-function toKebabCase(str: string): string {
-	return str.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase();
 }
 
 function renderBlock(block: NonNullable<Page["blocks"]>[number]) {
