@@ -55,7 +55,7 @@ export function FooterBlock({ block }: FooterBlockProps) {
 						</div>
 
 						{/* Menu Groups — accordion on mobile, flex columns on sm+ */}
-						<div className="w-full sm:w-auto sm:max-w-131.75">
+						<div className="w-full sm:w-auto flex-1 lg:pl-50 md:pl-15">
 							{/* Desktop: flex layout */}
 							<div className="hidden sm:flex gap-5 md:gap-8 justify-between">
 								{menuGroups.map((group, index) => (
