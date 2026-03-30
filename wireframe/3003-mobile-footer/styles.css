@@ -1,0 +1,306 @@
+/* Footer wireframe content styles */
+
+.footer-wrap {
+  padding: 24px 16px 16px;
+}
+
+.footer-logo {
+  margin-bottom: 24px;
+}
+
+.logo-placeholder {
+  width: 120px;
+  height: 32px;
+  background: #eee;
+  border: 1px solid #ccc;
+}
+
+.footer-centered .logo-placeholder {
+  margin: 0 auto;
+}
+
+.footer-heading {
+  font-size: 15px;
+  font-weight: 600;
+  color: #000;
+  margin: 0 0 12px;
+}
+
+.footer-heading-gap {
+  margin-top: 20px;
+}
+
+.footer-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-links li {
+  margin-bottom: 8px;
+}
+
+.footer-links a {
+  font-size: 13px;
+  color: #333;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  color: #000;
+}
+
+/* Option 1: Balanced Grid */
+.footer-grid-balanced {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+/* Option 2: Accordion */
+.footer-accordion {
+  margin-bottom: 24px;
+}
+
+.accordion-group {
+  border-bottom: 1px solid #eee;
+}
+
+.accordion-group[open] .accordion-icon {
+  transform: rotate(45deg);
+}
+
+.accordion-trigger {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: #000;
+  cursor: pointer;
+  list-style: none;
+}
+
+.accordion-trigger::-webkit-details-marker {
+  display: none;
+}
+
+.accordion-icon {
+  font-size: 18px;
+  color: #666;
+  transition: transform 0.2s;
+  font-weight: 300;
+}
+
+.accordion-content {
+  padding: 0 0 14px;
+}
+
+/* Option 3: Flat Links */
+.footer-flat {
+  margin-bottom: 24px;
+}
+
+.flat-group {
+  margin-bottom: 16px;
+}
+
+.flat-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.flat-links {
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.flat-links a {
+  color: #333;
+  text-decoration: none;
+}
+
+.flat-links a:hover {
+  color: #000;
+}
+
+.flat-sep {
+  color: #ccc;
+  margin: 0 4px;
+}
+
+/* Option 4: Centered Stack */
+.footer-centered {
+  text-align: center;
+}
+
+.footer-centered-nav {
+  margin-bottom: 24px;
+}
+
+.centered-group {
+  margin-bottom: 20px;
+}
+
+.centered-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Option 5: Split Pair */
+.footer-split {
+  margin-bottom: 24px;
+}
+
+.split-row {
+  display: flex;
+  gap: 12px;
+  padding: 14px 0;
+  border-bottom: 1px solid #eee;
+  align-items: baseline;
+}
+
+.split-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #000;
+  white-space: nowrap;
+  min-width: 72px;
+}
+
+.split-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.split-links a {
+  font-size: 12px;
+  color: #333;
+  text-decoration: none;
+  background: #eee;
+  padding: 3px 8px;
+  border-radius: 3px;
+}
+
+.split-links a:hover {
+  background: #ccc;
+}
+
+/* Newsletter */
+.footer-newsletter {
+  border-top: 1px solid #eee;
+  padding-top: 20px;
+  margin-bottom: 20px;
+}
+
+.footer-newsletter-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #000;
+  margin: 0 0 6px;
+}
+
+.footer-newsletter-sub {
+  font-size: 13px;
+  color: #666;
+  margin: 0 0 12px;
+}
+
+.footer-btn {
+  display: inline-block;
+  padding: 10px 24px;
+  border: 1px solid #000;
+  color: #000;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 20px;
+}
+
+.footer-btn:hover {
+  background: #000;
+  color: #fff;
+}
+
+.footer-centered .footer-newsletter {
+  text-align: center;
+}
+
+/* Bottom */
+.footer-bottom {
+  border-top: 1px solid #eee;
+  padding-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-social {
+  display: flex;
+  gap: 10px;
+}
+
+.social-dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #ccc;
+}
+
+.footer-copy {
+  font-size: 12px;
+  color: #666;
+  margin: 0;
+}
+
+.footer-centered .footer-bottom {
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Summary */
+.summary-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+
+.summary-table th,
+.summary-table td {
+  padding: 8px 10px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.summary-table th {
+  font-weight: 600;
+  color: #333;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.rec-row {
+  background: #f5f5f5;
+  font-weight: 500;
+}
+
+.summary-rec {
+  padding: 12px;
+  background: #f9f9f9;
+  border: 1px solid #eee;
+  border-radius: 6px;
+  font-size: 13px;
+  color: #333;
+  line-height: 1.5;
+}

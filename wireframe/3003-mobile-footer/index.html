@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mobile Footer Layout — DDMM Wireframes</title>
+  <link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles-opt1.css">
+  <link rel="stylesheet" href="styles-opt2.css">
+  <link rel="stylesheet" href="styles-opt3.css">
+  <link rel="stylesheet" href="styles-opt4.css">
+  <link rel="stylesheet" href="styles-opt5.css">
+</head>
+<body>
+
+<div class="completion-banner" id="completion-banner" style="display:none;">
+  ✦ Visual designs complete — all options now have Clean + Polished variants
+  <button onclick="this.parentElement.style.display='none'" style="float:right;background:none;border:none;cursor:pointer;font-size:16px;">×</button>
+</div>
+
+<div class="page-wrapper">
+
+  <div class="title-bar">
+    <span><span id="feature-name">Mobile Footer Layout</span> — <span id="project-name">Anara Dreams</span></span>
+    <span class="rec">★ Recommended: Option <span id="rec-number">2</span></span>
+  </div>
+
+  <nav class="main-tabs">
+    <button class="tab-btn active" data-tab="option-1">1: Balanced Grid</button>
+    <button class="tab-btn" data-tab="option-2">2: Accordion</button>
+    <button class="tab-btn" data-tab="option-3">3: Flat Links</button>
+    <button class="tab-btn" data-tab="option-4">4: Centered Stack</button>
+    <button class="tab-btn" data-tab="option-5">5: Split Pair</button>
+    <button class="tab-btn" data-tab="summary">Summary</button>
+  </nav>
+
+  <!-- ===== OPTION 1 ===== -->
+  <div class="option-panel active" id="option-1">
+    <h2>Option 1: <span class="opt-name">Balanced Grid</span></h2>
+    <p class="option-description">Keep the 2-column grid but rebalance columns by stacking Resources + Support on the right to match Explore's height.</p>
+    <div class="sub-tab-bar" id="frame-opt1-tabs">
+      <button class="sub-tab-btn active" data-variant="wireframe" data-frame="frame-opt1">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTsketch1"><g fill="#555" stroke="#fff" stroke-linejoin="round" stroke-width="4"><rect width="36" height="36" x="6" y="6" rx="3"/><path stroke-linecap="round" d="M18.6 16h10.8l3.6 4.706L24 32l-9-11.294z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTsketch1)"/></svg>
+        <span class="sub-tab-label">Wireframe</span>
+      </button>
+      <button class="sub-tab-btn" data-variant="clean" data-frame="frame-opt1">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTpaint1"><g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"><path d="m15.536 22.898l9.899 9.9m-9.899-9.9L7.05 31.383a7 7 0 1 0 9.9 9.9l8.485-8.486m-9.899 0l-4.243 4.243"/><path fill="#555" d="m25.435 32.797l14.907-6.432c2.688-1.16 3.809-4.379 2.086-6.745C38.264 13.903 32.65 8.89 28.51 5.823c-2.29-1.696-5.33-.64-6.46 1.975l-6.514 15.1z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTpaint1)"/></svg>
+        <span class="sub-tab-label">Clean</span>
+        <span class="sub-tab-badge">generating...</span>
+      </button>
+      <button class="sub-tab-btn" data-variant="polished" data-frame="frame-opt1">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTdiamond1"><path fill="#555" stroke="#fff" stroke-width="4" d="M5.939 13.934L23.036 4.53a2 2 0 0 1 1.928 0l17.097 9.404a2 2 0 0 1 .683 2.888l-17.098 24.79a2 2 0 0 1-3.292 0L5.256 16.823a2 2 0 0 1 .683-2.888Z"/></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTdiamond1)"/></svg>
+        <span class="sub-tab-label">Polished</span>
+        <span class="sub-tab-badge">generating...</span>
+      </button>
+    </div>
+    <div class="browser-frame wireframe mobile-frame" id="frame-opt1">
+      <div class="browser-chrome">
+        <div class="browser-dots"><span></span><span></span><span></span></div>
+        <div class="browser-url">yourapp.com/footer</div>
+        <div class="browser-controls">─ □ ✕</div>
+      </div>
+      <div class="browser-content">
+        <div class="footer-wrap">
+          <div class="footer-logo">
+            <div class="logo-placeholder"></div>
+          </div>
+          <div class="footer-grid-balanced">
+            <div class="footer-col">
+              <h5 class="footer-heading">Explore</h5>
+              <ul class="footer-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Practices</a></li>
+                <li><a href="#">Pricing</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Contact</a></li>
+              </ul>
+            </div>
+            <div class="footer-col">
+              <h5 class="footer-heading">Resources</h5>
+              <ul class="footer-links">
+                <li><a href="#">Guided Meditations</a></li>
+                <li><a href="#">Breathwork Sessions</a></li>
+                <li><a href="#">Community</a></li>
+              </ul>
+              <h5 class="footer-heading footer-heading-gap">Support</h5>
+              <ul class="footer-links">
+                <li><a href="#">FAQ</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="footer-newsletter">
+            <h4 class="footer-newsletter-title">Stay connected with your inner journey</h4>
+            <p class="footer-newsletter-sub">Get mindful insights and practice updates</p>
+            <a href="#" class="footer-btn">Subscribe</a>
+          </div>
+          <div class="footer-bottom">
+            <div class="footer-social">
+              <span class="social-dot"></span>
+              <span class="social-dot"></span>
+              <span class="social-dot"></span>
+              <span class="social-dot"></span>
+            </div>
+            <p class="footer-copy">&copy; 2026 Anara Dreams</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wf-annotations">
+      <h3>UX Notes</h3>
+      <ul>
+        <li>Resources + Support stacked in right column to visually balance Explore's 6 links</li>
+        <li>Familiar 2-column grid pattern from existing desktop layout</li>
+        <li>Low-risk: minimal change from current approach, just rebalanced</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ===== OPTION 2 ===== -->
+  <div class="option-panel" id="option-2">
+    <h2>Option 2: <span class="opt-name">Accordion</span></h2>
+    <p class="option-description">Collapse menu groups into expandable accordions to minimize vertical space and let users find what they need.</p>
+    <div class="sub-tab-bar" id="frame-opt2-tabs">
+      <button class="sub-tab-btn active" data-variant="wireframe" data-frame="frame-opt2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTsketch2"><g fill="#555" stroke="#fff" stroke-linejoin="round" stroke-width="4"><rect width="36" height="36" x="6" y="6" rx="3"/><path stroke-linecap="round" d="M18.6 16h10.8l3.6 4.706L24 32l-9-11.294z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTsketch2)"/></svg>
+        <span class="sub-tab-label">Wireframe</span>
+      </button>
+      <button class="sub-tab-btn" data-variant="clean" data-frame="frame-opt2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTpaint2"><g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"><path d="m15.536 22.898l9.899 9.9m-9.899-9.9L7.05 31.383a7 7 0 1 0 9.9 9.9l8.485-8.486m-9.899 0l-4.243 4.243"/><path fill="#555" d="m25.435 32.797l14.907-6.432c2.688-1.16 3.809-4.379 2.086-6.745C38.264 13.903 32.65 8.89 28.51 5.823c-2.29-1.696-5.33-.64-6.46 1.975l-6.514 15.1z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTpaint2)"/></svg>
+        <span class="sub-tab-label">Clean</span>
+        <span class="sub-tab-badge">generating...</span>
+      </button>
+      <button class="sub-tab-btn" data-variant="polished" data-frame="frame-opt2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTdiamond2"><path fill="#555" stroke="#fff" stroke-width="4" d="M5.939 13.934L23.036 4.53a2 2 0 0 1 1.928 0l17.097 9.404a2 2 0 0 1 .683 2.888l-17.098 24.79a2 2 0 0 1-3.292 0L5.256 16.823a2 2 0 0 1 .683-2.888Z"/></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTdiamond2)"/></svg>
+        <span class="sub-tab-label">Polished</span>
+        <span class="sub-tab-badge">generating...</span>
+      </button>
+    </div>
+    <div class="browser-frame wireframe mobile-frame" id="frame-opt2">
+      <div class="browser-chrome">
+        <div class="browser-dots"><span></span><span></span><span></span></div>
+        <div class="browser-url">yourapp.com/footer</div>
+        <div class="browser-controls">─ □ ✕</div>
+      </div>
+      <div class="browser-content">
+        <div class="footer-wrap">
+          <div class="footer-logo">
+            <div class="logo-placeholder"></div>
+          </div>
+          <div class="footer-accordion">
+            <details class="accordion-group" open>
+              <summary class="accordion-trigger">
+                <span>Explore</span>
+                <span class="accordion-icon">+</span>
+              </summary>
+              <ul class="footer-links accordion-content">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Practices</a></li>
+                <li><a href="#">Pricing</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Contact</a></li>
+              </ul>
+            </details>
+            <details class="accordion-group">
+              <summary class="accordion-trigger">
+                <span>Resources</span>
+                <span class="accordion-icon">+</span>
+              </summary>
+              <ul class="footer-links accordion-content">
+                <li><a href="#">Guided Meditations</a></li>
+                <li><a href="#">Breathwork Sessions</a></li>
+                <li><a href="#">Community</a></li>
+              </ul>
+            </details>
+            <details class="accordion-group">
+              <summary class="accordion-trigger">
+                <span>Support</span>
+                <span class="accordion-icon">+</span>
+              </summary>
+              <ul class="footer-links accordion-content">
+                <li><a href="#">FAQ</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+              </ul>
+            </details>
+          </div>
+          <div class="footer-newsletter">
+            <h4 class="footer-newsletter-title">Stay connected with your inner journey</h4>
+            <p class="footer-newsletter-sub">Get mindful insights and practice updates</p>
+            <a href="#" class="footer-btn">Subscribe</a>
+          </div>
+          <div class="footer-bottom">
+            <div class="footer-social">
+              <span class="social-dot"></span>
+              <span class="social-dot"></span>
+              <span class="social-dot"></span>
+              <span class="social-dot"></span>
+            </div>
+            <p class="footer-copy">&copy; 2026 Anara Dreams</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wf-annotations">
+      <h3>UX Notes</h3>
+      <ul>
+        <li>Accordions dramatically reduce vertical space when collapsed</li>
+        <li>Users tap to reveal only the section they need</li>
+        <li>Uses native &lt;details&gt; element for zero-JS interactivity</li>
+        <li>Common mobile pattern (Apple, Stripe, Shopify all use this)</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ===== OPTION 3 ===== -->
+  <div class="option-panel" id="option-3">
+    <h2>Option 3: <span class="opt-name">Flat Links</span></h2>
+    <p class="option-description">Remove column structure entirely; show links as inline comma-separated groups for maximum density.</p>
+    <div class="sub-tab-bar" id="frame-opt3-tabs">
+      <button class="sub-tab-btn active" data-variant="wireframe" data-frame="frame-opt3">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTsketch3"><g fill="#555" stroke="#fff" stroke-linejoin="round" stroke-width="4"><rect width="36" height="36" x="6" y="6" rx="3"/><path stroke-linecap="round" d="M18.6 16h10.8l3.6 4.706L24 32l-9-11.294z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTsketch3)"/></svg>
+        <span class="sub-tab-label">Wireframe</span>
+      </button>
+      <button class="sub-tab-btn" data-variant="clean" data-frame="frame-opt3">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTpaint3"><g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"><path d="m15.536 22.898l9.899 9.9m-9.899-9.9L7.05 31.383a7 7 0 1 0 9.9 9.9l8.485-8.486m-9.899 0l-4.243 4.243"/><path fill="#555" d="m25.435 32.797l14.907-6.432c2.688-1.16 3.809-4.379 2.086-6.745C38.264 13.903 32.65 8.89 28.51 5.823c-2.29-1.696-5.33-.64-6.46 1.975l-6.514 15.1z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTpaint3)"/></svg>
+        <span class="sub-tab-label">Clean</span>
+        <span class="sub-tab-badge">generating...</span>
+      </button>
+      <button class="sub-tab-btn" data-variant="polished" data-frame="frame-opt3">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTdiamond3"><path fill="#555" stroke="#fff" stroke-width="4" d="M5.939 13.934L23.036 4.53a2 2 0 0 1 1.928 0l17.097 9.404a2 2 0 0 1 .683 2.888l-17.098 24.79a2 2 0 0 1-3.292 0L5.256 16.823a2 2 0 0 1 .683-2.888Z"/></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTdiamond3)"/></svg>
+        <span class="sub-tab-label">Polished</span>
+        <span class="sub-tab-badge">generating...</span>
+      </button>
+    </div>
+    <div class="browser-frame wireframe mobile-frame" id="frame-opt3">
+      <div class="browser-chrome">
+        <div class="browser-dots"><span></span><span></span><span></span></div>
+        <div class="browser-url">yourapp.com/footer</div>
+        <div class="browser-controls">─ □ ✕</div>
+      </div>
+      <div class="browser-content">
+        <div class="footer-wrap">
+          <div class="footer-logo">
+            <div class="logo-placeholder"></div>
+          </div>
+          <div class="footer-flat">
+            <div class="flat-group">
+              <span class="flat-label">Explore</span>
+              <span class="flat-links">
+                <a href="#">Home</a> <span class="flat-sep">/</span>
+                <a href="#">About Us</a> <span class="flat-sep">/</span>
+                <a href="#">Practices</a> <span class="flat-sep">/</span>
+                <a href="#">Pricing</a> <span class="flat-sep">/</span>
+                <a href="#">Blog</a> <span class="flat-sep">/</span>
+                <a href="#">Contact</a>
+              </span>
+            </div>
+            <div class="flat-group">
+              <span class="flat-label">Resources</span>
+              <span class="flat-links">
+                <a href="#">Guided Meditations</a> <span class="flat-sep">/</span>
+                <a href="#">Breathwork Sessions</a> <span class="flat-sep">/</span>
+                <a href="#">Community</a>
+              </span>
+            </div>
+            <div class="flat-group">
+              <span class="flat-label">Support</span>
+              <span class="flat-links">
+                <a href="#">FAQ</a> <span class="flat-sep">/</span>
+                <a href="#">Privacy Policy</a> <span class="flat-sep">/</span>
+                <a href="#">Terms of Service</a>
+              </span>
+            </div>
+          </div>
+          <div class="footer-newsletter">
+            <h4 class="footer-newsletter-title">Stay connected with your inner journey</h4>
+            <p class="footer-newsletter-sub">Get mindful insights and practice updates</p>
+            <a href="#" class="footer-btn">Subscribe</a>
+          </div>
+          <div class="footer-bottom">
+            <div class="footer-social">
+              <span class="social-dot"></span>
+              <span class="social-dot"></span>
+              <span class="social-dot"></span>
+              <span class="social-dot"></span>
+            </div>
+            <p class="footer-copy">&copy; 2026 Anara Dreams</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wf-annotations">
+      <h3>UX Notes</h3>
+      <ul>
+        <li>Inline flow with slash separators eliminates column height issues entirely</li>
+        <li>Most compact option — minimal vertical footprint</li>
+        <li>Trade-off: harder to scan quickly vs. vertical lists</li>
+        <li>Works well for footers with fewer than 20 total links</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ===== OPTION 4 ===== -->
+  <div class="option-panel" id="option-4">
+    <h2>Option 4: <span class="opt-name">Centered Stack</span></h2>
+    <p class="option-description">Single centered column with minimal headings, visually calm and balanced with generous whitespace.</p>
+    <div class="sub-tab-bar" id="frame-opt4-tabs">
+      <button class="sub-tab-btn active" data-variant="wireframe" data-frame="frame-opt4">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTsketch4"><g fill="#555" stroke="#fff" stroke-linejoin="round" stroke-width="4"><rect width="36" height="36" x="6" y="6" rx="3"/><path stroke-linecap="round" d="M18.6 16h10.8l3.6 4.706L24 32l-9-11.294z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTsketch4)"/></svg>
+        <span class="sub-tab-label">Wireframe</span>
+      </button>
+      <button class="sub-tab-btn" data-variant="clean" data-frame="frame-opt4">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTpaint4"><g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"><path d="m15.536 22.898l9.899 9.9m-9.899-9.9L7.05 31.383a7 7 0 1 0 9.9 9.9l8.485-8.486m-9.899 0l-4.243 4.243"/><path fill="#555" d="m25.435 32.797l14.907-6.432c2.688-1.16 3.809-4.379 2.086-6.745C38.264 13.903 32.65 8.89 28.51 5.823c-2.29-1.696-5.33-.64-6.46 1.975l-6.514 15.1z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTpaint4)"/></svg>
+        <span class="sub-tab-label">Clean</span>
+        <span class="sub-tab-badge">generating...</span>
+      </button>
+      <button class="sub-tab-btn" data-variant="polished" data-frame="frame-opt4">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTdiamond4"><path fill="#555" stroke="#fff" stroke-width="4" d="M5.939 13.934L23.036 4.53a2 2 0 0 1 1.928 0l17.097 9.404a2 2 0 0 1 .683 2.888l-17.098 24.79a2 2 0 0 1-3.292 0L5.256 16.823a2 2 0 0 1 .683-2.888Z"/></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTdiamond4)"/></svg>
+        <span class="sub-tab-label">Polished</span>
+        <span class="sub-tab-badge">generating...</span>
+      </button>
+    </div>
+    <div class="browser-frame wireframe mobile-frame" id="frame-opt4">
+      <div class="browser-chrome">
+        <div class="browser-dots"><span></span><span></span><span></span></div>
+        <div class="browser-url">yourapp.com/footer</div>
+        <div class="browser-controls">─ □ ✕</div>
+      </div>
+      <div class="browser-content">
+        <div class="footer-wrap footer-centered">
+          <div class="footer-logo">
+            <div class="logo-placeholder"></div>
+          </div>
+          <div class="footer-centered-nav">
+            <div class="centered-group">
+              <h5 class="footer-heading">Explore</h5>
+              <ul class="footer-links centered-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Practices</a></li>
+                <li><a href="#">Pricing</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Contact</a></li>
+              </ul>
+            </div>
+            <div class="centered-group">
+              <h5 class="footer-heading">Resources</h5>
+              <ul class="footer-links centered-links">
+                <li><a href="#">Guided Meditations</a></li>
+                <li><a href="#">Breathwork Sessions</a></li>
+                <li><a href="#">Community</a></li>
+              </ul>
+            </div>
+            <div class="centered-group">
+              <h5 class="footer-heading">Support</h5>
+              <ul class="footer-links centered-links">
+                <li><a href="#">FAQ</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="footer-newsletter">
+            <h4 class="footer-newsletter-title">Stay connected with your inner journey</h4>
+            <p class="footer-newsletter-sub">Get mindful insights and practice updates</p>
+            <a href="#" class="footer-btn">Subscribe</a>
+          </div>
+          <div class="footer-bottom">
+            <div class="footer-social">
+              <span class="social-dot"></span>
+              <span class="social-dot"></span>
+              <span class="social-dot"></span>
+              <span class="social-dot"></span>
+            </div>
+            <p class="footer-copy">&copy; 2026 Anara Dreams</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wf-annotations">
+      <h3>UX Notes</h3>
+      <ul>
+        <li>Center alignment creates a calm, meditative feel matching the brand</li>
+        <li>Single column avoids all balance/height issues</li>
+        <li>Generous spacing between groups aids readability</li>
+        <li>Trade-off: uses more vertical space, but feels intentional</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ===== OPTION 5 ===== -->
+  <div class="option-panel" id="option-5">
+    <h2>Option 5: <span class="opt-name">Split Pair</span></h2>
+    <p class="option-description">Horizontal label-link pairs: group title on left, links on right, creating clean rows.</p>
+    <div class="sub-tab-bar" id="frame-opt5-tabs">
+      <button class="sub-tab-btn active" data-variant="wireframe" data-frame="frame-opt5">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTsketch5"><g fill="#555" stroke="#fff" stroke-linejoin="round" stroke-width="4"><rect width="36" height="36" x="6" y="6" rx="3"/><path stroke-linecap="round" d="M18.6 16h10.8l3.6 4.706L24 32l-9-11.294z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTsketch5)"/></svg>
+        <span class="sub-tab-label">Wireframe</span>
+      </button>
+      <button class="sub-tab-btn" data-variant="clean" data-frame="frame-opt5">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTpaint5"><g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"><path d="m15.536 22.898l9.899 9.9m-9.899-9.9L7.05 31.383a7 7 0 1 0 9.9 9.9l8.485-8.486m-9.899 0l-4.243 4.243"/><path fill="#555" d="m25.435 32.797l14.907-6.432c2.688-1.16 3.809-4.379 2.086-6.745C38.264 13.903 32.65 8.89 28.51 5.823c-2.29-1.696-5.33-.64-6.46 1.975l-6.514 15.1z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTpaint5)"/></svg>
+        <span class="sub-tab-label">Clean</span>
+        <span class="sub-tab-badge">generating...</span>
+      </button>
+      <button class="sub-tab-btn" data-variant="polished" data-frame="frame-opt5">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTdiamond5"><path fill="#555" stroke="#fff" stroke-width="4" d="M5.939 13.934L23.036 4.53a2 2 0 0 1 1.928 0l17.097 9.404a2 2 0 0 1 .683 2.888l-17.098 24.79a2 2 0 0 1-3.292 0L5.256 16.823a2 2 0 0 1 .683-2.888Z"/></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTdiamond5)"/></svg>
+        <span class="sub-tab-label">Polished</span>
+        <span class="sub-tab-badge">generating...</span>
+      </button>
+    </div>
+    <div class="browser-frame wireframe mobile-frame" id="frame-opt5">
+      <div class="browser-chrome">
+        <div class="browser-dots"><span></span><span></span><span></span></div>
+        <div class="browser-url">yourapp.com/footer</div>
+        <div class="browser-controls">─ □ ✕</div>
+      </div>
+      <div class="browser-content">
+        <div class="footer-wrap">
+          <div class="footer-logo">
+            <div class="logo-placeholder"></div>
+          </div>
+          <div class="footer-split">
+            <div class="split-row">
+              <span class="split-label">Explore</span>
+              <div class="split-links">
+                <a href="#">Home</a>
+                <a href="#">About Us</a>
+                <a href="#">Practices</a>
+                <a href="#">Pricing</a>
+                <a href="#">Blog</a>
+                <a href="#">Contact</a>
+              </div>
+            </div>
+            <div class="split-row">
+              <span class="split-label">Resources</span>
+              <div class="split-links">
+                <a href="#">Guided Meditations</a>
+                <a href="#">Breathwork</a>
+                <a href="#">Community</a>
+              </div>
+            </div>
+            <div class="split-row">
+              <span class="split-label">Support</span>
+              <div class="split-links">
+                <a href="#">FAQ</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+              </div>
+            </div>
+          </div>
+          <div class="footer-newsletter">
+            <h4 class="footer-newsletter-title">Stay connected with your inner journey</h4>
+            <p class="footer-newsletter-sub">Get mindful insights and practice updates</p>
+            <a href="#" class="footer-btn">Subscribe</a>
+          </div>
+          <div class="footer-bottom">
+            <div class="footer-social">
+              <span class="social-dot"></span>
+              <span class="social-dot"></span>
+              <span class="social-dot"></span>
+              <span class="social-dot"></span>
+            </div>
+            <p class="footer-copy">&copy; 2026 Anara Dreams</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wf-annotations">
+      <h3>UX Notes</h3>
+      <ul>
+        <li>Label-value pair layout: title anchored left, links flow right</li>
+        <li>Clear visual hierarchy between group names and links</li>
+        <li>Compact tag-style links use horizontal space efficiently</li>
+        <li>Each row is self-contained — easy to scan</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ===== SUMMARY ===== -->
+  <div class="option-panel" id="summary">
+    <h2>Summary</h2>
+    <table class="summary-table">
+      <thead>
+        <tr>
+          <th>Option</th>
+          <th>Approach</th>
+          <th>Balance</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1: Balanced Grid</td>
+          <td>2-col with Resources+Support stacked right</td>
+          <td>&#9733;&#9733;&#9733;&#9734;&#9734;</td>
+        </tr>
+        <tr class="rec-row">
+          <td>2: Accordion</td>
+          <td>Collapsible sections, minimal footprint</td>
+          <td>&#9733;&#9733;&#9733;&#9733;&#9733;</td>
+        </tr>
+        <tr>
+          <td>3: Flat Links</td>
+          <td>Inline slash-separated link groups</td>
+          <td>&#9733;&#9733;&#9733;&#9733;&#9734;</td>
+        </tr>
+        <tr>
+          <td>4: Centered Stack</td>
+          <td>Single centered column, spacious</td>
+          <td>&#9733;&#9733;&#9733;&#9733;&#9734;</td>
+        </tr>
+        <tr>
+          <td>5: Split Pair</td>
+          <td>Label-left, tag-links right</td>
+          <td>&#9733;&#9733;&#9733;&#9734;&#9734;</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="summary-rec">
+      <strong>Recommendation: Option 2 (Accordion)</strong> — the accordion pattern is the most widely adopted mobile footer solution because it eliminates height imbalance entirely, saves vertical space, and is familiar to users. It also scales well if more menu groups are added in the future.
+    </div>
+  </div>
+
+</div>
+
+<footer class="skill-footer">
+  This design was crafted by the <a href="https://github.com/Magdoub/claude-wireframe-skill">Wireframe skill</a> — follow on GitHub
+</footer>
+
+<script>
+(function() {
+  // Main tab switching
+  var tabBtns = document.querySelectorAll('.tab-btn');
+  var panels = document.querySelectorAll('.option-panel');
+  tabBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      tabBtns.forEach(function(b) { b.classList.remove('active'); });
+      panels.forEach(function(p) { p.classList.remove('active'); });
+      btn.classList.add('active');
+      var target = document.getElementById(btn.dataset.tab);
+      if (target) target.classList.add('active');
+    });
+  });
+
+  // Sub-tab switching
+  var subBtns = document.querySelectorAll('.sub-tab-btn');
+  subBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var frameId = btn.dataset.frame;
+      var siblings = btn.parentElement.querySelectorAll('.sub-tab-btn');
+      siblings.forEach(function(s) { s.classList.remove('active'); });
+      btn.classList.add('active');
+      var frame = document.getElementById(frameId);
+      if (frame) {
+        frame.classList.remove('wireframe', 'clean', 'polished');
+        frame.classList.add(btn.dataset.variant);
+      }
+    });
+  });
+
+  // Completion banner — one-time load check
+  window.addEventListener('load', function() {
+    var badges = document.querySelectorAll('.sub-tab-badge');
+    var anyVisible = false;
+    badges.forEach(function(b) {
+      if (getComputedStyle(b).display !== 'none') anyVisible = true;
+    });
+    if (!anyVisible && badges.length > 0) {
+      var banner = document.getElementById('completion-banner');
+      if (banner) {
+        banner.style.display = 'block';
+        setTimeout(function() { banner.style.display = 'none'; }, 8000);
+      }
+    }
+  });
+})();
+</script>
+
+</body>
+</html>

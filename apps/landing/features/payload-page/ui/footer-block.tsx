@@ -13,7 +13,9 @@ interface FooterBlockProps {
 
 export function FooterBlock({ block }: FooterBlockProps) {
 	const logoUrl =
-		typeof block.logo === "object" && block.logo?.url ? block.logo.url : null;
+		typeof block.logo === "object" && block.logo?.url
+			? block.logo.url
+			: null;
 
 	const menuGroups = block.menuGroups || [];
 	const socialLinks = block.socialLinks || [];
@@ -35,13 +37,15 @@ export function FooterBlock({ block }: FooterBlockProps) {
 						className={`flex flex-wrap justify-between items-start gap-6 sm:gap-7 md:gap-8 ${fadeClass(isTopVisible)}`}
 					>
 						{/* Logo */}
-						<div className="w-full sm:w-auto">
-							<a
-								href="/"
-								className="inline-block max-sm:w-[90px] max-md:w-[95px]"
-							>
+						<div className="w-full sm:w-auto flex max-sm:justify-center">
+							<a href="/" className="inline-block">
 								{logoUrl ? (
-									<img src={logoUrl} loading="lazy" alt="" className="w-auto" />
+									<img
+										src={logoUrl}
+										loading="lazy"
+										alt=""
+										className="w-auto max-w-50"
+									/>
 								) : (
 									<span className="text-brand-primary font-[family-name:var(--font-inter-tight)] text-xl font-semibold">
 										Anara Dreams
@@ -50,26 +54,64 @@ export function FooterBlock({ block }: FooterBlockProps) {
 							</a>
 						</div>
 
-						{/* Menu Groups */}
-						<div className="w-full sm:w-auto sm:max-w-[527px]">
-							<div className="flex gap-6 sm:gap-5 md:gap-8 justify-between max-sm:flex-col">
+						{/* Menu Groups — accordion on mobile, flex columns on sm+ */}
+						<div className="w-full sm:w-auto sm:max-w-131.75">
+							{/* Desktop: flex layout */}
+							<div className="hidden sm:flex gap-5 md:gap-8 justify-between">
 								{menuGroups.map((group, index) => (
 									<div key={index}>
-										<h5 className="text-brand-primary tracking-[-0.02em] mt-0 mb-0 font-[family-name:var(--font-inter-tight)] text-xl leading-[30px] font-medium max-sm:text-lg max-sm:leading-7">
+										<h5 className="text-brand-primary tracking-[-0.02em] mt-0 mb-0 font-[family-name:var(--font-inter-tight)] text-xl leading-[30px] font-medium">
 											{group.title}
 										</h5>
-										<div className="flex flex-col gap-3 sm:gap-3.5 md:gap-4 mt-4 sm:mt-5 md:mt-6">
-											{(group.links || []).map((link, linkIndex) => (
-												<SmartLink
-													key={linkIndex}
-													href={resolveHref(link?.url)}
-													className="text-brand-primary font-[family-name:var(--font-inter-tight)] text-base font-normal leading-6 no-underline transition-colors duration-300 hover:text-brand-purple"
-												>
-													{link.label}
-												</SmartLink>
-											))}
+										<div className="flex flex-col gap-3.5 md:gap-4 mt-5 md:mt-6">
+											{(group.links || []).map(
+												(link, linkIndex) => (
+													<SmartLink
+														key={linkIndex}
+														href={resolveHref(
+															link?.url,
+														)}
+														className="text-brand-primary font-[family-name:var(--font-inter-tight)] text-base font-normal leading-6 no-underline transition-colors duration-300 hover:text-brand-purple"
+													>
+														{link.label}
+													</SmartLink>
+												),
+											)}
 										</div>
 									</div>
+								))}
+							</div>
+							{/* Mobile: accordion */}
+							<div className="sm:hidden">
+								{menuGroups.map((group, index) => (
+									<details
+										key={index}
+										className="border-b border-brand-footer-border group"
+									>
+										<summary className="flex justify-between items-center py-3.5 cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+											<span className="text-brand-primary tracking-[-0.02em] font-[family-name:var(--font-inter-tight)] text-lg leading-7 font-medium">
+												{group.title}
+											</span>
+											<span className="text-brand-purple text-xl leading-none transition-transform duration-200 group-open:rotate-45">
+												+
+											</span>
+										</summary>
+										<div className="flex flex-col gap-3 pb-3.5">
+											{(group.links || []).map(
+												(link, linkIndex) => (
+													<SmartLink
+														key={linkIndex}
+														href={resolveHref(
+															link?.url,
+														)}
+														className="text-brand-primary font-[family-name:var(--font-inter-tight)] text-base font-normal leading-6 no-underline transition-colors duration-300 hover:text-brand-purple"
+													>
+														{link.label}
+													</SmartLink>
+												),
+											)}
+										</div>
+									</details>
 								))}
 							</div>
 						</div>
@@ -93,7 +135,10 @@ export function FooterBlock({ block }: FooterBlockProps) {
 						<div className="w-full md:w-auto md:ml-auto">
 							<SmartLink
 								href={resolveHref(block.newsletter?.url)}
-								className={cn(buttonVariants({ variant: "secondary" }), "h-[50px] px-5 sm:px-[30px]")}
+								className={cn(
+									buttonVariants({ variant: "secondary" }),
+									"h-[50px] px-5 sm:px-[30px]",
+								)}
 							>
 								{block.newsletter?.buttonText}
 							</SmartLink>
@@ -107,7 +152,8 @@ export function FooterBlock({ block }: FooterBlockProps) {
 					>
 						<div className="w-full sm:w-auto max-md:mx-auto">
 							<div className="text-brand-primary font-[family-name:var(--font-inter-tight)] text-base font-normal leading-6 max-sm:text-sm max-sm:leading-[22px] max-sm:text-center max-md:text-center">
-								&copy; {new Date().getFullYear()} - {block.copyright}
+								&copy; {new Date().getFullYear()} -{" "}
+								{block.copyright}
 							</div>
 						</div>
 						{socialLinks.length > 0 && (
@@ -115,7 +161,8 @@ export function FooterBlock({ block }: FooterBlockProps) {
 								<div className="flex gap-5 sm:gap-5 md:gap-6 justify-end">
 									{socialLinks.map((social, index) => {
 										const iconUrl =
-											typeof social.icon === "object" && social.icon?.url
+											typeof social.icon === "object" &&
+											social.icon?.url
 												? social.icon.url
 												: null;
 
@@ -125,7 +172,10 @@ export function FooterBlock({ block }: FooterBlockProps) {
 												href={social.href}
 												target="_blank"
 												rel="noopener noreferrer"
-												aria-label={social.label || "Social link"}
+												aria-label={
+													social.label ||
+													"Social link"
+												}
 												className="w-5 sm:w-6 h-5 sm:h-6 transition-opacity duration-300 hover:opacity-70"
 											>
 												{iconUrl ? (
