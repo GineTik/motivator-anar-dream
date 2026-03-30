@@ -2,6 +2,7 @@ export const STYLES = {
 	container: {
 		position: "relative" as const,
 		fontFamily: "var(--font-body)",
+		marginBottom: "20px",
 	},
 	label: {
 		display: "block",
@@ -15,7 +16,6 @@ export const STYLES = {
 		alignItems: "center",
 		border: "1px solid var(--theme-elevation-150)",
 		borderRadius: "4px",
-		background: "var(--theme-elevation-50)",
 		overflow: "hidden" as const,
 	},
 	input: {
@@ -41,11 +41,11 @@ export const STYLES = {
 		alignItems: "center",
 		gap: "4px",
 		padding: "4px 10px",
-		borderRadius: "12px",
+		borderRadius: "50px",
 		fontSize: "13px",
 		fontWeight: 500,
-		background: "var(--theme-success-500)",
-		color: "#fff",
+		background: "var(--theme-success-100)",
+		color: "var(--theme-success-700)",
 	},
 	chipClear: {
 		display: "inline-flex",
@@ -56,7 +56,7 @@ export const STYLES = {
 		borderRadius: "50%",
 		border: "none",
 		background: "rgba(255,255,255,0.25)",
-		color: "#fff",
+		color: "var(--theme-success-700)",
 		cursor: "pointer",
 		padding: 0,
 		marginLeft: "2px",
@@ -132,6 +132,6 @@ export const STYLES = {
 	description: {
 		marginTop: "6px",
 		fontSize: "12px",
-		color: "var(--theme-dim)",
+		color: "rgb(154, 154, 154)",
 	},
 };

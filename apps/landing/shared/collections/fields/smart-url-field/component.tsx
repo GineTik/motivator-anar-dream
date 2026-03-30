@@ -17,180 +17,17 @@ type DisplayInfo = {
 	sectionName: string | null;
 };
 
-function resolveDisplayInfo(
-	value: string,
-	pages: PageWithSections[],
-): DisplayInfo {
-	const [path, anchor] = value.replace(/^\//, "").split("#");
-	const page = pages.find((p) => p.slug === path);
-	if (!page) return { pageName: path, sectionName: anchor ?? null };
-	const section = anchor
-		? page.sections.find((s) => s.anchor === anchor)
-		: null;
-	return {
-		pageName: page.title,
-		sectionName: section?.label ?? anchor ?? null,
-	};
-}
-
 type FlatItem = {
 	type: "page" | "section";
 	label: string;
 	value: string;
 };
 
-function flattenItems(pages: PageWithSections[], search: string): FlatItem[] {
-	const query = search.toLowerCase();
-	const items: FlatItem[] = [];
-
-	for (const page of pages) {
-		const pageMatches = page.title.toLowerCase().includes(query);
-		const matchingSections = page.sections.filter((s) =>
-			pageMatches ? true : s.label.toLowerCase().includes(query),
-		);
-
-		if (!pageMatches && matchingSections.length === 0) continue;
-
-		items.push({
-			type: "page",
-			label: page.title,
-			value: `/${page.slug}`,
-		});
-
-		for (const section of matchingSections) {
-			const displayLabel =
-				section.label === section.blockType
-					? section.blockType
-					: `${section.label} (${section.blockType})`;
-			items.push({
-				type: "section",
-				label: displayLabel,
-				value: `/${page.slug}#${section.anchor}`,
-			});
-		}
-	}
-
-	return items;
-}
-
-function SmartUrlChip({
-	info,
-	onChipClick,
-	onClear,
-}: {
-	info: DisplayInfo | null;
-	onChipClick: () => void;
-	onClear: (e: React.MouseEvent) => void;
-}) {
-	return (
-		<div
-			style={STYLES.chip}
-			onClick={onChipClick}
-			role="button"
-			tabIndex={0}
-			onKeyDown={(e) => {
-				if (e.key === "Enter") onChipClick();
-			}}
-		>
-			<span style={STYLES.chipBadge}>
-				{info?.pageName}
-				{info?.sectionName && ` → ${info.sectionName}`}
-				<button
-					type="button"
-					style={STYLES.chipClear}
-					onClick={onClear}
-					aria-label="Clear link"
-				>
-					<X size={10} />
-				</button>
-			</span>
-		</div>
-	);
-}
-
-function SmartUrlDropdown({
-	items,
-	isLoading,
-	error,
-	search,
-	highlightedIndex,
-	searchRef,
-	onSearchChange,
-	onKeyDown,
-	onSelect,
-	onHighlight,
-	onRetry,
-}: {
-	items: FlatItem[];
-	isLoading: boolean;
-	error: string | null;
-	search: string;
-	highlightedIndex: number;
-	searchRef: React.RefObject<HTMLInputElement | null>;
-	onSearchChange: (value: string) => void;
-	onKeyDown: (e: React.KeyboardEvent) => void;
-	onSelect: (value: string) => void;
-	onHighlight: (index: number) => void;
-	onRetry: () => void;
-}) {
-	return (
-		<div style={STYLES.dropdown} role="listbox" onKeyDown={onKeyDown}>
-			<input
-				ref={searchRef}
-				style={STYLES.searchInput}
-				value={search}
-				onChange={(e) => onSearchChange(e.target.value)}
-				onKeyDown={onKeyDown}
-				placeholder="Search pages..."
-			/>
-
-			{isLoading && <div style={STYLES.loading}>Loading pages...</div>}
-
-			{error && (
-				<div
-					style={STYLES.error}
-					onClick={onRetry}
-					role="button"
-					tabIndex={0}
-					onKeyDown={(e) => {
-						if (e.key === "Enter") onRetry();
-					}}
-				>
-					Failed to load pages. Click to retry.
-				</div>
-			)}
-
-			{!isLoading && !error && items.length === 0 && (
-				<div style={STYLES.loading}>No pages found</div>
-			)}
-
-			{!isLoading &&
-				!error &&
-				items.map((item, index) => (
-					<div key={item.value}>
-						{item.type === "page" && (
-							<div style={STYLES.groupHeader}>{item.label}</div>
-						)}
-						<div
-							role="option"
-							aria-selected={highlightedIndex === index}
-							style={{
-								...STYLES.item,
-								...(item.type === "section" ? STYLES.sectionItem : {}),
-								...(highlightedIndex === index
-									? STYLES.itemHighlighted
-									: {}),
-							}}
-							onClick={() => onSelect(item.value)}
-							onMouseEnter={() => onHighlight(index)}
-						>
-							{item.type === "page" ? `/${item.label}` : item.label}
-						</div>
-					</div>
-				))}
-		</div>
-	);
-}
+export const SmartUrlField: TextFieldClientComponent = (props) => (
+	<QueryClientProvider client={queryClient}>
+		<SmartUrlFieldInner {...props} />
+	</QueryClientProvider>
+);
 
 const SmartUrlFieldInner: TextFieldClientComponent = ({ field, path }) => {
 	const { value, setValue } = useField<string>({ path });
@@ -395,8 +232,178 @@ const SmartUrlFieldInner: TextFieldClientComponent = ({ field, path }) => {
 	);
 };
 
-export const SmartUrlField: TextFieldClientComponent = (props) => (
-	<QueryClientProvider client={queryClient}>
-		<SmartUrlFieldInner {...props} />
-	</QueryClientProvider>
-);
+function SmartUrlChip({
+	info,
+	onChipClick,
+	onClear,
+}: {
+	info: DisplayInfo | null;
+	onChipClick: () => void;
+	onClear: (e: React.MouseEvent) => void;
+}) {
+	return (
+		<div
+			style={STYLES.chip}
+			onClick={onChipClick}
+			role="button"
+			tabIndex={0}
+			onKeyDown={(e) => {
+				if (e.key === "Enter") onChipClick();
+			}}
+		>
+			<span style={STYLES.chipBadge}>
+				{info?.pageName}
+				{info?.sectionName && ` → ${info.sectionName}`}
+				<button
+					type="button"
+					style={STYLES.chipClear}
+					onClick={onClear}
+					aria-label="Clear link"
+				>
+					<X size={10} />
+				</button>
+			</span>
+		</div>
+	);
+}
+
+function SmartUrlDropdown({
+	items,
+	isLoading,
+	error,
+	search,
+	highlightedIndex,
+	searchRef,
+	onSearchChange,
+	onKeyDown,
+	onSelect,
+	onHighlight,
+	onRetry,
+}: {
+	items: FlatItem[];
+	isLoading: boolean;
+	error: string | null;
+	search: string;
+	highlightedIndex: number;
+	searchRef: React.RefObject<HTMLInputElement | null>;
+	onSearchChange: (value: string) => void;
+	onKeyDown: (e: React.KeyboardEvent) => void;
+	onSelect: (value: string) => void;
+	onHighlight: (index: number) => void;
+	onRetry: () => void;
+}) {
+	return (
+		<div style={STYLES.dropdown} role="listbox" onKeyDown={onKeyDown}>
+			<input
+				ref={searchRef}
+				style={STYLES.searchInput}
+				value={search}
+				onChange={(e) => onSearchChange(e.target.value)}
+				onKeyDown={onKeyDown}
+				placeholder="Search pages..."
+			/>
+
+			{isLoading && <div style={STYLES.loading}>Loading pages...</div>}
+
+			{error && (
+				<div
+					style={STYLES.error}
+					onClick={onRetry}
+					role="button"
+					tabIndex={0}
+					onKeyDown={(e) => {
+						if (e.key === "Enter") onRetry();
+					}}
+				>
+					Failed to load pages. Click to retry.
+				</div>
+			)}
+
+			{!isLoading && !error && items.length === 0 && (
+				<div style={STYLES.loading}>No pages found</div>
+			)}
+
+			{!isLoading &&
+				!error &&
+				items.map((item, index) => (
+					<div key={item.value}>
+						{item.type === "page" && (
+							<div style={STYLES.groupHeader}>{item.label}</div>
+						)}
+						<div
+							role="option"
+							aria-selected={highlightedIndex === index}
+							style={{
+								...STYLES.item,
+								...(item.type === "section"
+									? STYLES.sectionItem
+									: {}),
+								...(highlightedIndex === index
+									? STYLES.itemHighlighted
+									: {}),
+							}}
+							onClick={() => onSelect(item.value)}
+							onMouseEnter={() => onHighlight(index)}
+						>
+							{item.type === "page"
+								? `/${item.label}`
+								: item.label}
+						</div>
+					</div>
+				))}
+		</div>
+	);
+}
+
+function resolveDisplayInfo(
+	value: string,
+	pages: PageWithSections[],
+): DisplayInfo {
+	const [rawPath, anchor] = value.replace(/^\//, "").split("#");
+	const path = rawPath === "" ? "home" : rawPath;
+	const page = pages.find((p) => p.slug === path);
+	if (!page) return { pageName: path, sectionName: anchor ?? null };
+	const section = anchor
+		? page.sections.find((s) => s.anchor === anchor)
+		: null;
+	return {
+		pageName: page.title,
+		sectionName: section?.label ?? anchor ?? null,
+	};
+}
+
+function flattenItems(pages: PageWithSections[], search: string): FlatItem[] {
+	const query = search.toLowerCase();
+	const items: FlatItem[] = [];
+
+	for (const page of pages) {
+		const pageMatches = page.title.toLowerCase().includes(query);
+		const matchingSections = page.sections.filter((s) =>
+			pageMatches ? true : s.label.toLowerCase().includes(query),
+		);
+
+		if (!pageMatches && matchingSections.length === 0) continue;
+
+		const pagePath = page.slug === "home" ? "/" : `/${page.slug}`;
+
+		items.push({
+			type: "page",
+			label: page.title,
+			value: pagePath,
+		});
+
+		for (const section of matchingSections) {
+			const displayLabel =
+				section.label === section.blockType
+					? section.blockType
+					: `${section.label} (${section.blockType})`;
+			items.push({
+				type: "section",
+				label: displayLabel,
+				value: `${pagePath}#${section.anchor}`,
+			});
+		}
+	}
+
+	return items;
+}
